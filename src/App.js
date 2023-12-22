@@ -13,6 +13,7 @@ import LoginNavbar from './Components/LoginNavbar';
 import Logout from './Pages/Logout';
 import LoaderOne from './Components/Subcomponents/loader/LoaderOne'
 import FormsRepository from './Pages/FormsRepository';
+import Wiki from './Pages/Wiki';
 
 
 function App() {
@@ -102,7 +103,8 @@ function App() {
                             <div className='p-3' style={{}}>
                                 <Routes>
                                     <Route path="/" element={<Home/>} />
-                                    <Route path='/Forms-Repository' element={<FormsRepository/>} />
+                                    <Route path='/forms-repository' element={<FormsRepository/>} />
+                                    <Route path='/wiki' element={<Wiki/>} />
                                     <Route path='/login' element={<Login />} />
                                     <Route path='/logout' element={<Logout />} />
                                     <Route path="*" element={<PageNotFound />} />

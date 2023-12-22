@@ -26,12 +26,14 @@ const AppSidebar = () => {
       <div className="sidenavbar-content">
         {/* Add sidenavbar content here */}
         <Link to='/' className=''>Home</Link>
-        <Link to='/Forms-Repository' className=''>Forms Repository</Link>
+        <Link to='/forms-repository' className=''>Forms Repository</Link>
+        <Link to={'/wiki'}>Wiki</Link>
         <p className='user-select-none'><span className='text-muted'>My Profile <ComingSoonBadge/></span></p>
         <p className='user-select-none'><span className='text-muted'>My Calendar <ComingSoonBadge/></span></p>
         <p className='user-select-none'><span className='text-muted'>News & Updates <ComingSoonBadge/></span></p>
         <p className='user-select-none'><span className='text-muted'>Team Directory <ComingSoonBadge/></span></p>
-        <p className='user-select-none'><span className='text-muted'>Wiki <ComingSoonBadge/></span></p>
+        
+        {/* <p className='user-select-none'><span className='text-muted'>Wiki <ComingSoonBadge/></span></p> */}
         
         {/* Add more sidenavbar links as needed */}
       </div>
