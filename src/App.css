@@ -1,0 +1,196 @@
+:root{
+  --base: #016B83;
+  --darkest: #330000;
+  --dark: #400D0D;
+  --light: #732E2E;
+  --lightest: #A66363;
+  --black: #000000;
+  --white: #FFFFFF;
+  --mute: #016B83;
+  --good: #24EF06;
+  --bad: #F22F41;
+  --extra-accent: #6D5FF5;
+  
+  --brand-color-1: #F3F3F3;
+  --brand-color-2: #383C3F;
+  --brand-color-3: #016B83;
+  --brand-color-accent: #FFD082;
+}
+
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
+.smallest{
+  font-size: 10.24px !important;
+}
+.small{
+  font-size: 12.8px !important;
+}
+.brand-text-white{
+  color:var(--brand-color-1);
+}
+a{
+  font-size: 16px !important;
+}
+.anchor-underline{
+  font-size: 16px !important;
+  color: var(--brand-color-3) !important;
+  text-decoration: underline !important;
+}
+span{
+  font-size: 16px !important;  
+}
+p{
+  font-size: 16px !important;  
+}
+h6{
+  font-size: 20px !important;  
+}
+h5{
+  font-size: 25px !important;  
+}
+h4{
+  font-size: 31.25px !important;  
+}
+h3{
+  font-size: 39.06px !important;  
+}
+h2{
+  font-size: 48.83px !important;  
+}
+h1{
+  font-size: 61.04px !important;  
+}
+.navbar-min-height{
+  min-height: 68px !important;
+}
+.navbarContainer {
+  padding-right: 0;
+  border-radius: 3px;
+  background-color: var(--base);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+.sidenavbar {
+  position: sticky;
+  top: 15%; 
+  max-width: 246px;
+  border: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: var(--brand-color-2);
+  background-color: var(--white);
+  transition: left 0.3s ease;
+  /* z-index: 1000; */
+}
+
+.sidenavbar-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.sidenavbar-content {
+  padding: 20px;
+}
+
+.sidenavbar a {
+  display: block;
+  color:var(--black);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  min-height: 100vh;
+  border: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: var(--brand-color-2);
+  background-color: var(--white);
+}
+
+/* Add other styles as needed */
+.cursor-pointer{
+  cursor: pointer;
+}
+.linkStyle {
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-search-input:focus {
+  border-width: 1px !important; /* Adjust the thickness as needed */
+  box-shadow: none !important;
+  border-color: var(--mute) !important;
+}
+
+.hsq-border{
+  border: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: var(--brand-color-2);
+}
+.hsq-border-capsule{
+  border: solid;
+  border-width: 1px;
+  border-radius: 25px;
+  border-color: var(--brand-color-2);
+}
+
+.custom-search-input:focus {
+  border-width: 1px !important; /* Adjust the thickness as needed */
+  box-shadow: none !important;
+  border-color: var(--brand-color-2) !important;
+}
+
+.button-bg{
+  background-color: var(--base) !important;
+  border-radius: 8px !important;
+}
+.button-cancel{
+  background-color: orange !important;
+  border-color: orange !important;
+  border-radius: 8px !important;
+}
+
+.custom-swal-title {
+  font-size: 31.25px !important;
+}
+.custom-swal-confirm-button{
+  background-color: var(--base) !important;
+  border: none !important;
+  border-color:  var(--base) !important;
+  box-shadow: none !important;
+}
+
+
+/* Login.css */
+
+.animated-background {
+
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the background behind other elements */
+  animation: gradientAnimation 5s ease infinite;
+
+  /* Customize the gradient colors and direction */
+  background: linear-gradient(45deg, #016B83,#F3F3F3 , #016B83); /* Use the specified colors */
+
+  /* Add a subtle gradient animation for a dynamic effect */
+  background-size: 200% 200%;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
