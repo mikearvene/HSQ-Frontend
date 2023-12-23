@@ -42,7 +42,7 @@ export default function FormsRepository (){
         <>
         <div className="row">
             <div className="mb-0 col-5">
-                <h4 style={{color:'#383C3F'}}>Forms Repository</h4>
+                <h4 className="text-muted">Forms Repository</h4>
             </div>
             <div className="col-6 ml-auto">
                 <SearchArea setForms={setForms} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
