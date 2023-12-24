@@ -20,7 +20,12 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
-
+.very-very-small{
+  font-size: 6.55px !important;
+}
+.very-small{
+  font-size: 8.19px !important;
+}
 .smallest{
   font-size: 10.24px !important;
 }
