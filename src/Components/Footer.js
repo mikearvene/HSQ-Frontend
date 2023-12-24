@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 const Footer = () => {
 
     return (
-        <nav className="navbarContainer " >
+        <nav className="navbarContainer mt-5" >
             <Container className='navbar-min-height'>
                 <Row className='align-items-center navbar-min-height'>
 
