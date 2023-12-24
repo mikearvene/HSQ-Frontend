@@ -8,9 +8,8 @@ export default function AppQuickLinksBar () {
         <>
         <div className="quick-link-bar" >
             {/* Below serves as a header */}
-            <div className="p-2">
-                <p className="text-muted text-center smallest">Company Tools</p>
-                <hr />
+            <div className="p-2 mb-1">
+                <p className="text-muted text-center smallest mb-0">Company Tools</p>
             </div>
             <Container>
                 <Row className="mb-4">
