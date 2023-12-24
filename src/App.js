@@ -14,6 +14,7 @@ import Logout from './Pages/Logout';
 import LoaderOne from './Components/Subcomponents/loader/LoaderOne'
 import FormsRepository from './Pages/FormsRepository';
 import Wiki from './Pages/Wiki';
+import AppQuickLinksBar from './Components/AppQuickLinksBar';
 
 
 function App() {
@@ -111,8 +112,8 @@ function App() {
                                 </Routes> 
                             </div>
                         </div>
-                        <div className='col-2'>
-                            
+                        <div className='col-1 mr-auto'>
+                            <AppQuickLinksBar/>
                         </div>
                         </>
                         }
