@@ -6,10 +6,10 @@ export default function AppQuickLinksBar () {
 
     return(
         <>
-        <div className="sidenavbar" >
+        <div className="quick-link-bar" >
             {/* Below serves as a header */}
             <div className="p-2">
-                <p className="text-muted text-center smallest">Company External Tools</p>
+                <p className="text-muted text-center smallest">Company Tools</p>
                 <hr />
             </div>
             <Container>

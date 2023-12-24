@@ -90,6 +90,20 @@ h1{
   /* z-index: 1000; */
 }
 
+.quick-link-bar {
+  position: sticky;
+  top: 15%; 
+  max-width: 246px;
+  border: solid;
+  padding: 2px;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: var(--brand-color-2);
+  background-color: var(--white);
+  transition: left 0.3s ease;
+  /* z-index: 1000; */
+}
+
 .sidenavbar-toggle {
   position: absolute;
   top: 10px;
