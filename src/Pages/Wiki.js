@@ -8,9 +8,23 @@ import NoFormsFound from "../Components/NoFormsFound";
 
 export default function Wiki(){
     const {user} = useContext(UserContext);
-    const [forms, setForms]=useState(null);
+    const [articles, setArticles]=useState(null);
     const [loading, setLoading] = useState(true); // Add loading state
     const [header, setHeader] = useState('All Forms & Docs')
+
+    useEffect(()=>{
+        fetch(`${process.env.REACT_APP_API_URL}/api/articles/`,{
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            setArticles(data)
+            setLoading(false);
+        })
+        
+    },[])
 
     const refreshEffect = () =>{
         setLoading(true); 
@@ -21,7 +35,8 @@ export default function Wiki(){
         })
         .then(res => res.json())
         .then(data => {
-            setForms(data)
+            setArticles(data)
+            console.log(data);
             setLoading(false);
         })
     }
@@ -32,7 +47,7 @@ export default function Wiki(){
                 <h4 className="text-muted">Wiki</h4>
             </div>
             <div className="col-6 ml-auto">
-                <WikiSearchArea setForms={setForms} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
+                <WikiSearchArea setArticles={setArticles} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
             </div>
         </div>
         <hr />

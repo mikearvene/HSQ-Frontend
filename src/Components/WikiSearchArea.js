@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button} from "react-bootstrap"
 
-export default function WikiSearchArea({setForms,setLoading,refreshEffect,setHeader}){
+export default function WikiSearchArea({setArticles,setLoading,refreshEffect,setHeader}){
     const [title, setTitle] = useState('');
 
     const submitSearchRequest = () =>{
@@ -18,7 +18,7 @@ export default function WikiSearchArea({setForms,setLoading,refreshEffect,setHea
         })
         .then(res => res.json())
         .then(data => {
-            setForms(data)
+            setArticles(data);
             setLoading(false);
             setHeader('Custom Search')
         })
@@ -27,7 +27,7 @@ export default function WikiSearchArea({setForms,setLoading,refreshEffect,setHea
     const reset = () =>{
         setTitle(''); 
         refreshEffect();
-        setHeader('All Forms & Docs')
+        setHeader('All Articles')
     }
     return(
         <div className="d-flex">
