@@ -15,6 +15,7 @@
   --brand-color-2: #383C3F;
   --brand-color-3: #016B83;
   --brand-color-accent: #FFD082;
+  --muted: #516473;
 }
 
 *{
@@ -213,3 +214,25 @@ h1{
     background-position: 0% 50%;
   }
 }
+
+/* for article editor */
+.bold-italic-buttons {
+  margin-top: 10px;
+}
+
+.bold-italic-buttons button,
+.text-align-buttons button {
+  margin-right: 10px;
+}
+
+.article-editor {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.text-align-buttons {
+  margin-top: 10px;
+}
+/* end for article editor */
