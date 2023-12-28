@@ -184,7 +184,7 @@ export default function ComposeArticle() {
         
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
             <label htmlFor="department" style={fontstyle}>
-              Which department is this article relevant?
+              To which department is this article relevant?
             </label>
             <select style={fontstyle} id="department" onChange={(e) => handleDepartmentChange(e.target.value)} value={department}>
               <option value="general">General</option>
@@ -201,7 +201,7 @@ export default function ComposeArticle() {
 
           {/* INSERT BENEFICIARY SELECTIONS HERE */}
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
-          <label style={fontstyle}>Who is this article intended for?</label>
+          <label style={fontstyle}>To whom is this article intended for?</label>
           {beneficiariesOptions.map((option) => (
             <div key={option} className="form-check">
               <input
