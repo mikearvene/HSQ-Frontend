@@ -21,7 +21,7 @@ export default function ArticleViewer() {
   return (
     <>
       <div
-        className="mt-4 container-fluid"
+        className="mt-4 container-fluid ml-auto mr-auto"
         style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}
       >
         <div
