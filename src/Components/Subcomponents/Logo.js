@@ -1,7 +1,9 @@
-
+import { Link } from 'react-router-dom';
 
 export default function Logo() {
-    return(
-        <img src="/icons/navbar-logo.svg" alt="brand-logo" />
-    )
+    return (
+        <Link to="/">
+            <img src="/icons/navbar-logo.svg" alt="brand-logo" />
+        </Link>
+    );
 }
