@@ -16,11 +16,12 @@ import FormsRepository from './Pages/FormsRepository';
 import Wiki from './Pages/Wiki';
 import AppQuickLinksBar from './Components/AppQuickLinksBar';
 import ComposeArticle from './Pages/ComposeArticle'
-
+import ArticleViewer from './Pages/ArticleViewer';
 
 function App() {
 
     const [isInCompose, setIsInCompose] = useState(false)
+    const [isInArticleView, setIsInArticleView] = useState(false)
     const [isUserHovered, setIsUserHovered] = useState(true)
     const [isDoneInitializing, setIsDoneInitialing] = useState(false);
     const [user, setUser] = useState({
@@ -86,7 +87,7 @@ function App() {
                             <LoginNavbar />
                             :
                             <>
-                            <AppNavbar setIsUserHovered={setIsUserHovered} setIsInCompose={setIsInCompose}/>
+                            <AppNavbar setIsUserHovered={setIsUserHovered} setIsInCompose={setIsInCompose} setIsInArticleView={setIsInArticleView}/>
                             {isUserHovered? 
                             <></>
                             :
@@ -100,6 +101,13 @@ function App() {
                         {user.id == null? <Login /> 
                         :
                         isInCompose ? <ComposeArticle /> :
+                        
+                        <>
+                        {isInArticleView ? 
+                        <Routes>
+                            <Route path='/article/:articleId' element={<ArticleViewer/>} />
+                        </Routes>
+                        :
                         <>
                         <div className='col-3 mt-3 ml-5'>
                             <AppSidebar />
@@ -119,6 +127,8 @@ function App() {
                         <div className='col-1 mr-auto'>
                             <AppQuickLinksBar/>
                         </div>
+                        </>
+                        }
                         </>
                         }
                         <div className='col-12 pr-0 pl-0'>

@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 
 export default function ComposeArticle() {
   const { user } = useContext(UserContext);
-  const [department, setDepartment] = useState(null);
+  const [department, setDepartment] = useState('general');
   const [beneficiary, setBenificiary] = useState([]);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('How To Use The Article Editor: A guide to writing an HSQ Article');
   const [editableContent, setEditableContent] = useState('');
   const [fontSize, setFontSize] = useState('3'); // Default to 16px
   const [alignment, setAlignment] = useState('Left'); // Default alignment
@@ -59,8 +59,6 @@ export default function ComposeArticle() {
   };
 
   const handlePost = (dept, benf, titl, cont) => {
-    
-
     fetch(`${process.env.REACT_APP_API_URL}/api/articles/newArticle`, {
       method: 'POST',
       headers: {
@@ -84,6 +82,10 @@ export default function ComposeArticle() {
             title: 'custom-swal-title',
             confirmButton: 'custom-swal-confirm-button',
           },
+          didClose: () => {
+            // Navigate to "/wiki" here
+            window.location.href = '/wiki';
+          },
         });
       } else {
         Swal.fire({
@@ -94,6 +96,7 @@ export default function ComposeArticle() {
       }
     });
   };
+  
 
   const handleDepartmentChange = (selectedDepartment) => {
     setDepartment(selectedDepartment);
@@ -174,7 +177,7 @@ export default function ComposeArticle() {
           </div>
         </div>
 
-        <div className="mt-4 container-fluid" style={{ border: '1px solid #ccc', margin: '2rem', width: '75vw' }}>
+        <div className="mt-4 container-fluid" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
           <div contentEditable ref={editorRef} onInput={handleContentChange} style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none' }} />
         </div>
 
@@ -229,6 +232,7 @@ export default function ComposeArticle() {
             Post
           </button>
         </div>
+
       </div>
       </div>
     </Container>
