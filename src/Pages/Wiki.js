@@ -51,17 +51,21 @@ export default function Wiki(){
             </div>
 
             <div className="col-6 ml-auto">
-                {user.isManager ?
-                <Link to="/compose-article">Compose Article</Link>
-                :
-                <>
-                </>
-                }
                 <WikiSearchArea setArticles={setArticles} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
             </div>
         </div>
         <hr />
         <div>
+        {user.isManager ?
+            <>
+            <div className="d-flex justify-content-end mb-4">
+            <Link to="/compose-article"><span className="anchor-underline">Compose New Article</span></Link>
+            </div>
+            </>
+            :
+            <>
+            </>
+        }
         {loading ? (
                 // Render loader if data is still being fetched
                 <LoaderTwo />
