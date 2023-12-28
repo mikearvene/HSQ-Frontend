@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavUserIcon from './Subcomponents/NavUserIcon';
 import Logo from './Subcomponents/Logo';
 import UserIconPop from './UserIconPop';
+import { useLocation } from 'react-router-dom';
 
-const AppNavbar = () => {
+
+const AppNavbar = ({setIsInCompose}) => {
+    let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(()=>{
+        console.log(location.pathname)
+        if(location.pathname === "/compose-article"){
+            setIsInCompose(true)
+        } else {
+            setIsInCompose(false)
+        }
+        
+    },[location])
     
     return (
-        <nav className="navbarContainer " >
+        <nav className="navbarContainer" >
             <Container className='navbar-min-height'>
                 <Row className='align-items-center navbar-min-height'>
                     {/* Column Below is for logo */}
@@ -25,7 +38,6 @@ const AppNavbar = () => {
                         {isOpen ? <UserIconPop />:
                         <></>
                         }
-                        
                     </Col>
                 </Row>
             </Container>

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-
+import { Container } from 'react-bootstrap';
 
 export default function ComposeArticle(){
   const [editableContent, setEditableContent] = useState('');
@@ -12,8 +12,12 @@ export default function ComposeArticle(){
   useEffect(() => {
     // Set the default font size and alignment on mount
     handleFontSizeChange();
+    handleColorChange();
+
     handleAlign(alignment);
-  }, [alignment]);
+
+
+  }, [alignment,fontSizeRef, colorRef, fontSize, editorRef]);
 
   const handleContentChange = () => {
     const content = editorRef.current.innerHTML;
@@ -35,11 +39,6 @@ export default function ComposeArticle(){
     }
   };
 
-  const handleConvertToHTML = () => {
-    const contentHTML = editorRef.current.innerHTML;
-    console.log(contentHTML);
-  };
-
   const handleSetBold = () => {
     document.execCommand('bold', false, null);
   };
@@ -52,57 +51,66 @@ export default function ComposeArticle(){
     document.execCommand(`justify${alignmentValue}`, false, null);
     setAlignment(alignmentValue);
   };
+  
+  const handleConvertToHTML = () => {
+    const contentHTML = editorRef.current.innerHTML;
+    console.log(contentHTML);
+  };
 
+  const fontstyle = {
+    fontSize:'12.8px'
+  }
   return (
-    
+    <Container>
     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginTop:'2.5rem'}}>
       
-      <div className='formattingTools' style={{ display: 'flex', justifyContent:'center', position: 'sticky', top: 0, background: '#F3F3F3',width:'100%', zIndex: 1000 }}>
+      <div className='formattingTools' style={{ display: 'flex', justifyContent:'center', position: 'sticky', top: 40, background: '#F3F3F3',width:'100%', zIndex: 1000, borderRadius:"8px"}}>
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <label htmlFor="fontSize" style={{fontSize:'12.8px'}}>Font Size:  </label>
-          <select id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
-            <option value="2">12.8px</option>
-            <option value="3">16px</option>
-            <option value="5">25px</option>
-            <option value="6">31.25px</option>
+          <label htmlFor="fontSize" style={fontstyle}>Font Size:  </label>
+          <select style={fontstyle} id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
+            <option style={fontstyle} value="2">10.24px</option>
+            <option style={fontstyle} value="3">16px</option>
+            <option style={fontstyle} value="6">31.25px</option>
           </select>
         </div>
 
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <label htmlFor="color" style={{fontSize:'12.8px'}}>Text Color:  </label>
-          <select id="color" ref={colorRef} onChange={handleColorChange}>
-            <option value="#000000">Black</option>
-            <option value="#F22F41">Red</option>
-            <option value="#516473">Steel Blue</option>
-            <option value="#FFD082">Orange</option>
+          <label htmlFor="color" style={fontstyle}>Text Color:  </label>
+          <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
+            <option style={fontstyle} value="#000000">Black</option>
+            <option style={fontstyle} value="#F22F41">Red</option>
+            <option style={fontstyle} value="#516473">Steel Blue</option>
+            <option style={fontstyle} value="#FFD082">Orange</option>
           </select>
         </div>
         
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <button onClick={handleSetBold}>Bold</button>
-          <button onClick={handleSetItalic}>Italic</button>
+          <button style={fontstyle} onClick={handleSetBold}>Bold</button>
+          <button style={fontstyle} onClick={handleSetItalic}>Italic</button>
         </div>
 
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <button onClick={() => handleAlign('Left')}>Left Align</button>
-          <button onClick={() => handleAlign('Center')}>Center Align</button>
-          <button onClick={() => handleAlign('Right')}>Right Align</button>
+          <button style={fontstyle} onClick={() => handleAlign('Left')}>Left Align</button>
+          <button style={fontstyle} onClick={() => handleAlign('Center')}>Center Align</button>
+          <button style={fontstyle} onClick={() => handleAlign('Right')}>Right Align</button>
         </div>
 
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <button onClick={handleConvertToHTML}>Convert to HTML</button>
+          <button style={fontstyle} onClick={handleConvertToHTML}>Convert to HTML</button>
         </div>
 
       </div>
 
-      <div style={{border: '1px solid #ccc', margin: '2rem', width:'1000px'}}>
+      <div className='mt-4 container-fluid' style={{border: '1px solid #ccc', margin: '2rem', width:'75vw'}}>
         <div
           contentEditable
           ref={editorRef}
           onInput={handleContentChange}
-          style={{ minHeight: '80vh', padding: '2rem', margin: '2rem', outline: 'none'}}
+          style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none'}}
         />
       </div>
+      
     </div>
+    </Container>
   );
 };

@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import UserContext from '../userContext';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 import FormCard from "../Components/FormCard";
 import AddNewForm from "../Components/AddNewForm";
 import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
@@ -43,10 +44,18 @@ export default function Wiki(){
     return( 
         <>
         <div className="row">
+
             <div className="mb-0 col-5">
                 <h4 className="text-muted">Wiki</h4>
             </div>
+
             <div className="col-6 ml-auto">
+                {user.isManager ?
+                <Link to="/compose-article">Compose Article</Link>
+                :
+                <>
+                </>
+                }
                 <WikiSearchArea setArticles={setArticles} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
             </div>
         </div>

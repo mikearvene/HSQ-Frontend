@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { UserProvider } from './userContext';
 import { Container } from 'react-bootstrap';
@@ -15,9 +15,12 @@ import LoaderOne from './Components/Subcomponents/loader/LoaderOne'
 import FormsRepository from './Pages/FormsRepository';
 import Wiki from './Pages/Wiki';
 import AppQuickLinksBar from './Components/AppQuickLinksBar';
+import ComposeArticle from './Pages/ComposeArticle'
 
 
 function App() {
+
+    const [isInCompose, setIsInCompose] = useState(false)
     const [isUserHovered, setIsUserHovered] = useState(true)
     const [isDoneInitializing, setIsDoneInitialing] = useState(false);
     const [user, setUser] = useState({
@@ -83,7 +86,7 @@ function App() {
                             <LoginNavbar />
                             :
                             <>
-                            <AppNavbar setIsUserHovered={setIsUserHovered}/>
+                            <AppNavbar setIsUserHovered={setIsUserHovered} setIsInCompose={setIsInCompose}/>
                             {isUserHovered? 
                             <></>
                             :
@@ -96,6 +99,7 @@ function App() {
                         </div>
                         {user.id == null? <Login /> 
                         :
+                        isInCompose ? <ComposeArticle /> :
                         <>
                         <div className='col-3 mt-3 ml-5'>
                             <AppSidebar />
