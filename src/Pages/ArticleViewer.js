@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
 
 export default function ArticleViewer() {
@@ -37,24 +37,27 @@ export default function ArticleViewer() {
   return (
     
     <>
+
     { article === null?  <div style={{backgroundColor:'#F3F3F3', minHeight:'100vh'}}></div>:
+      
+      <>
+      <Container>
+      <Row className="p-4 background-style mt-2">
+        {/* this is for the title */}
+        <Col md='6' className="d-flex justify-content-end align-items-center">
+          <span style={{color:'#516473'}}><b><i>{article.title}</i></b></span>
+        </Col>
+        <Col md='5' className="d-flex flex-column align-items-end mt-auto mb-auto ml-auto">
+          <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.originalPostDate)} - Original post</i></span>
+          <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.latestUpdate)} - Latest update</i></span>
+          <span style={{color:'#516473'}} className="smallest"><i>{article.author[0].firstName} {article.author[0].lastName} - Author</i></span>
+        </Col>
+      </Row>
+      
       <div
-        className="mt-4 container-fluid ml-auto mr-auto"
-        style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}
+        className="mt-4 container-fluid ml-auto mr-auto content-background-style"
+        style={{ border: '1px solid #ccc', margin: '2rem', width: '800px', borderRadius:'3px' }}
       >
-        
-        <Row className="p-4" style={{backgroundColor:'#F3F3F3', minHeight:'90px'}}>
-          {/* this is for the title */}
-          <Col md='6' className="d-flex align-items-center" >
-            <span style={{color:'#516473'}}><b><i>{article.title}</i></b></span>
-          </Col>
-          <Col md='6' className="d-flex flex-column align-items-end mt-auto mb-auto">
-            <span style={{color:'#516473'}} className="smallest"><i>Date posted: {formatDate(article?.originalPostDate)}</i></span>
-            <span style={{color:'#516473'}} className="smallest"><i>Last update: {formatDate(article?.latestUpdate)}</i></span>
-            <span style={{color:'#516473'}} className="smallest"><i>Author: {article.author[0].firstName} {article.author[0].lastName}</i></span>
-            <span style={{color:'#516473'}} className="smallest"><i>Article Intended for: {article.department}</i></span>
-          </Col>
-        </Row>
 
         <div
           style={{
@@ -66,6 +69,8 @@ export default function ArticleViewer() {
           dangerouslySetInnerHTML={{ __html: article ? article.content : '' }}
         />
       </div>
+      </Container>
+      </>
       }
     </>
   );

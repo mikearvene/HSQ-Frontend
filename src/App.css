@@ -243,3 +243,25 @@ h1{
   border: none !important;
   box-shadow: none !important;
 }
+
+/* ArticleViewer.css */
+
+.background-style {
+  background-color: #ffffff; /* Set your preferred background color */
+  border-radius: 8px; /* Add rounded corners for a clean look */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.background-style:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Increase shadow on hover for interactive feel */
+}
+
+.content-background-style {
+  background-color: #ffffff; /* Set your preferred background color */
+  border-radius: 8px; /* Add rounded corners for a clean look */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.content-background-style:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increase shadow on hover for interactive feel */
+}
