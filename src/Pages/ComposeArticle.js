@@ -27,9 +27,8 @@ export default function ComposeArticle() {
     handleFontSizeChange();
     handleColorChange();
     handleAlign(alignment);
+      
     setEditableContent(editorRef.current.innerHTML);
-    // Explicitly set the font size for the contentEditable area
-    
 
     return () => {
 
@@ -40,6 +39,16 @@ export default function ComposeArticle() {
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
   })
+  useEffect(()=>{
+    console.log(editableContent.length)
+    console.log(characters.length)
+    console.log(characters)
+    // Check if all elements in the characters array are spaces
+    const allSpaces = characters.every(char => char === ' ');
+
+    // Set placeholderVisible to true if all elements are spaces
+    setPlaceholderVisible(allSpaces);
+  },[characters])
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -259,14 +268,14 @@ export default function ComposeArticle() {
               Font Size:{' '}
             </label>
             <select style={fontstyle} id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
-              <option style={fontstyle} value="2">
-                10.24px
+              <option onClick={handleFontSizeChange} style={fontstyle} value="1">
+                10px
               </option>
-              <option style={fontstyle} value="3">
+              <option onClick={handleFontSizeChange} style={fontstyle} value="3">
                 16px
               </option>
-              <option style={fontstyle} value="6">
-                31.25px
+              <option onClick={handleFontSizeChange} style={fontstyle} value="6">
+                32px
               </option>
             </select>
           </div>
