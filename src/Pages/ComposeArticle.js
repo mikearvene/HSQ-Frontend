@@ -329,20 +329,20 @@ if(isPlaceholderVisible){handleAlign('Center')}
           <div style={{position:'relative', bottom:'795px', left: '100px', zIndex:'-1'}}>
           {isPlaceholderVisible && (
                 <>
-                  <div className='fade-in-out-text d-flex' style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px'}}>
+                  <div className='fade-in-out-text d-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px'}}>
                     <span className=''><i>{`Start writing to remove placeholders . . .`}</i></span>
                   </div>
-                  <div className='d-inline-flex' style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '-45px', left: '250px' }}>
-                    <h4 className='d-inline-flex'>{placeholderText.title}</h4>
+                  <div className='d-inline-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '-45px', left: '250px' }}>
+                    <h4 className='d-inline-flex' >{placeholderText.title}</h4>
                   </div>
-                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '45px', left: '-10px' }}>
-                    <h6 className='d-inline-flex'>{placeholderText.introduction}:</h6>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '45px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.introduction}</h6>
                   </div>
-                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '135px', left: '-10px' }}>
-                    <h6 className='d-inline-flex'>{placeholderText.body}:</h6>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '135px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.body}</h6>
                   </div>
-                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '225px', left: '-10px' }}>
-                    <h6 className='d-inline-flex'>{placeholderText.conclusion}:</h6>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '225px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.conclusion}</h6>
                   </div>
                 </>
             )}
