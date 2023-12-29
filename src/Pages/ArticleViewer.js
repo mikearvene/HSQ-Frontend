@@ -44,10 +44,10 @@ export default function ArticleViewer() {
       <Container>
       <Row className="p-4 background-style mt-2">
         {/* this is for the title */}
-        <Col md='6' className="d-flex justify-content-end align-items-center">
-          <span style={{color:'#516473'}}><b><i>{article.title}</i></b></span>
+        <Col md='8' className="d-flex justify-content-start align-items-center">
+          <h6 style={{color:'#516473'}}><b><i>{article.title}</i></b></h6>
         </Col>
-        <Col md='5' className="d-flex flex-column align-items-end mt-auto mb-auto ml-auto">
+        <Col md='3' className="d-flex flex-column align-items-end mt-auto mb-auto ml-auto">
           <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.originalPostDate)} - Original post</i></span>
           <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.latestUpdate)} - Latest update</i></span>
           <span style={{color:'#516473'}} className="smallest"><i>{article.author[0].firstName} {article.author[0].lastName} - Author</i></span>
