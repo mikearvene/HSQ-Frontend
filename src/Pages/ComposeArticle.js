@@ -326,7 +326,7 @@ export default function ComposeArticle() {
           />
         </div>
         <div>
-          <span className='text-muted smallest'><i>Note: this version of article editor/composer is only capable of creating a single page article. The page/canvas will automatically stretch if you need more length for your article.</i>
+          <span className='text-muted smallest'><i>Note: this version of article editor/composer is only capable of creating a single page article. The page/canvas will automatically stretch if you need more vertical length for your article.</i>
           </span>
         </div>
         
