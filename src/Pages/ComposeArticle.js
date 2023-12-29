@@ -255,7 +255,7 @@ export default function ComposeArticle() {
           {/* ... (existing formatting tools) */}
 
           <div style={{ padding: '5px', margin: '2rem' }}>
-            <label htmlFor="fontSize" style={fontstyle}>
+            <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
               Font Size:{' '}
             </label>
             <select style={fontstyle} id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
@@ -272,7 +272,7 @@ export default function ComposeArticle() {
           </div>
 
           <div style={{ padding: '5px', margin: '2rem' }}>
-            <label htmlFor="color" style={fontstyle}>
+            <label className='mr-1' htmlFor="color" style={fontstyle}>
               Text Color:{' '}
             </label>
             <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
