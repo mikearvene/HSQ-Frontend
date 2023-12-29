@@ -39,16 +39,6 @@ export default function ComposeArticle() {
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
   })
-  useEffect(()=>{
-    console.log(editableContent.length)
-    console.log(characters.length)
-    console.log(characters)
-    // Check if all elements in the characters array are spaces
-    const allSpaces = characters.every(char => char === ' ');
-
-    // Set placeholderVisible to true if all elements are spaces
-    setPlaceholderVisible(allSpaces);
-  },[characters])
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -285,8 +275,8 @@ export default function ComposeArticle() {
               Text Color:{' '}
             </label>
             <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
-              <option style={fontstyle} value="#000000">
-                Black
+              <option style={fontstyle} value="#383C3F">
+                dark grayish-blue
               </option>
               <option style={fontstyle} value="#F22F41">
                 Red
