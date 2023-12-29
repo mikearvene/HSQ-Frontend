@@ -150,6 +150,8 @@ export default function ComposeArticle() {
 
   const fontstyle = {
     fontSize: '12.8px',
+    borderRadius:'5px',
+    borderColor:'#383C3F'
   };
 
   const buttonStyle = {
@@ -190,10 +192,7 @@ export default function ComposeArticle() {
                 Red
               </option>
               <option style={fontstyle} value="#516473">
-                Steel Blue
-              </option>
-              <option style={fontstyle} value="#FFD082">
-                Orange
+                {`Steel Blue (For subtitles)`}
               </option>
             </select>
           </div>
