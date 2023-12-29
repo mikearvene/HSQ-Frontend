@@ -235,7 +235,6 @@ h1{
 .text-align-buttons {
   margin-top: 10px;
 }
-/* end for article editor */
 
 .swal-red-button {
   background-color: #F22F41 !important;
@@ -243,6 +242,25 @@ h1{
   border: none !important;
   box-shadow: none !important;
 }
+
+
+
+.fade-in-out-text {
+  position: absolute;
+  top: 240px;
+  left: 550px;
+  animation: fadeInOut 1s infinite alternate; /* Adjust the duration as needed */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 /* ArticleViewer.css */
 

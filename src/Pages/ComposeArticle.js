@@ -89,7 +89,12 @@ export default function ComposeArticle() {
     txt.innerHTML = html;
     return txt.value;
   };
-  const placeholderText = "Title";
+  const placeholderText = {
+    title: "Title",
+    introduction: "Introduction",
+    body: "Body",
+    conclusion: "Conclusion"
+  };
 
   const handleContentChange = () => {
     const content = editorRef.current.innerHTML;
@@ -312,17 +317,33 @@ export default function ComposeArticle() {
         <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
           
           {isPlaceholderVisible && (
-                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '260px', left: '350px' }}>
-                  <h4>{placeholderText}</h4>
+                <>
+                <div className='mt-5 ml-4 fade-in-out-text' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '240px', left: '550px' }}>
+                  <span><i>{`{Start writing to remove placeholders...}`}</i></span>
                 </div>
+                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '292px', left: '378px' }}>
+                  <h4>{placeholderText.title}:</h4>
+                </div>
+                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '382px', left: '378px' }}>
+                  <h6>{placeholderText.introduction}:</h6>
+                </div>
+                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '472px', left: '378px' }}>
+                  <h6>{placeholderText.body}:</h6>
+                </div>
+                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '562px', left: '378px' }}>
+                  <h6>{placeholderText.conclusion}:</h6>
+                </div>
+                </>
             )}
           <div 
           contentEditable 
           ref={editorRef} 
           onInput={handleContentChange} 
           onKeyDown={handleKeyDown} // Listen to the keydown event
-          style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none' }}
+          style={{ minHeight: '800px', padding: '2rem', margin: '4rem', outline: 'none' }}
           />
+
+          
         </div>
         <div>
           <span className='text-muted smallest'><i>Note: this version of article editor/composer is only capable of creating a single page article. The page/canvas will automatically stretch if you need more vertical length for your article.</i>
