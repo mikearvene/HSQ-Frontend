@@ -261,6 +261,13 @@ h1{
   }
 }
 
+/* .unselectable {
+  user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+}
+ */
 
 /* ArticleViewer.css */
 

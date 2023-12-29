@@ -11,7 +11,7 @@ export default function ComposeArticle() {
   const [title, setTitle] = useState('');
   const [editableContent, setEditableContent] = useState('');
   const [fontSize, setFontSize] = useState('6'); // Default to 16px
-  const [alignment, setAlignment] = useState('Left'); // Default alignment
+  const [alignment, setAlignment] = useState('Center'); // Default alignment
   const editorRef = useRef(null);
   const fontSizeRef = useRef(null);
   const colorRef = useRef(null);
@@ -100,10 +100,10 @@ export default function ComposeArticle() {
     const content = editorRef.current.innerHTML;
     const previousContent = editableContent;
     setEditableContent(content);
-
+if(isPlaceholderVisible){handleAlign('Center')}
     // Hide the placeholder when content is present
     setPlaceholderVisible(content.trim() === '');
-
+    
     // Decode HTML entities (e.g., '&#160;') to get actual characters
     const decodedContent = decodeHtmlEntities(content);
     const decodedPreviousContent = decodeHtmlEntities(previousContent);
@@ -314,34 +314,40 @@ export default function ComposeArticle() {
           </div>
         </div>
 
-        <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
+        <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
           
-          {isPlaceholderVisible && (
-                <>
-                <div className='mt-5 ml-4 fade-in-out-text' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '240px', left: '550px' }}>
-                  <span><i>{`{Start writing to remove placeholders...}`}</i></span>
-                </div>
-                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '292px', left: '378px' }}>
-                  <h4>{placeholderText.title}:</h4>
-                </div>
-                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '382px', left: '378px' }}>
-                  <h6>{placeholderText.introduction}:</h6>
-                </div>
-                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '472px', left: '378px' }}>
-                  <h6>{placeholderText.body}:</h6>
-                </div>
-                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '562px', left: '378px' }}>
-                  <h6>{placeholderText.conclusion}:</h6>
-                </div>
-                </>
-            )}
+          
           <div 
           contentEditable 
           ref={editorRef} 
           onInput={handleContentChange} 
           onKeyDown={handleKeyDown} // Listen to the keydown event
-          style={{ minHeight: '800px', padding: '2rem', margin: '4rem', outline: 'none' }}
+          style={{ minHeight: '800px', padding: '2rem', margin: '4rem', outline: 'none', zIndex:'-1' }}
+          onClick={()=>{if(isPlaceholderVisible){setPlaceholderVisible(false); handleAlign('Center')}}}
+          
           />
+          <div style={{position:'relative', bottom:'795px', left: '100px', zIndex:'-1'}}>
+          {isPlaceholderVisible && (
+                <>
+                  <div className='fade-in-out-text d-flex' style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px'}}>
+                    <span className=''><i>{`Start writing to remove placeholders . . .`}</i></span>
+                  </div>
+                  <div className='d-inline-flex' style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '-45px', left: '250px' }}>
+                    <h4 className='d-inline-flex'>{placeholderText.title}</h4>
+                  </div>
+                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '45px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.introduction}:</h6>
+                  </div>
+                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '135px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.body}:</h6>
+                  </div>
+                  <div  style={{ color: '#aaa', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '225px', left: '-10px' }}>
+                    <h6 className='d-inline-flex'>{placeholderText.conclusion}:</h6>
+                  </div>
+                </>
+            )}
+          
+          </div>
 
           
         </div>
@@ -414,7 +420,7 @@ export default function ComposeArticle() {
           <Button
             style={buttonStyle}
             onClick={() => handlePost(department, beneficiary, title, editableContent)}
-            disabled={loading} // Disable the button when loading is true
+            disabled={loading || isPlaceholderVisible || title==='' || beneficiary.length === 0} // Disable the button when loading is true
           >
             {loading ? 'Posting...' : 'Post'}
           </Button>
