@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import LoaderOne from "../Components/Subcomponents/loader/LoaderOne";
+import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
 
 export default function ArticleViewer() {
 
@@ -37,7 +37,7 @@ export default function ArticleViewer() {
   return (
     
     <>
-    { article === null?  <div style={{backgroundColor:'#F3F3F3', minHeight:'80vh'}}></div>:
+    { article === null?  <div style={{backgroundColor:'#F3F3F3', minHeight:'100vh'}}></div>:
       <div
         className="mt-4 container-fluid ml-auto mr-auto"
         style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}
