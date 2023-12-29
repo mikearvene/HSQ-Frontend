@@ -10,12 +10,17 @@ export default function ComposeArticle() {
   const [beneficiary, setBenificiary] = useState([]);
   const [title, setTitle] = useState('');
   const [editableContent, setEditableContent] = useState('');
-  const [fontSize, setFontSize] = useState('3'); // Default to 16px
+  const [fontSize, setFontSize] = useState('6'); // Default to 16px
   const [alignment, setAlignment] = useState('Left'); // Default alignment
   const editorRef = useRef(null);
   const fontSizeRef = useRef(null);
   const colorRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+  const [isPlaceholderVisible, setPlaceholderVisible] = useState(true);
+
+  
 
   useEffect(() => {
     // Set the default font size and alignment on mount
@@ -23,25 +28,77 @@ export default function ComposeArticle() {
     handleColorChange();
     handleAlign(alignment);
     setEditableContent(editorRef.current.innerHTML);
+    // Explicitly set the font size for the contentEditable area
+    
 
     return () => {
 
     };
 
   }, [alignment, fontSizeRef, colorRef, fontSize, editorRef, department, beneficiary]);
+
   useEffect(()=>{
-    console.log(characters)
-  },[characters])
+    editorRef.current.style.fontSize = `${32}px`;
+  })
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        event.preventDefault(); // Prevent the default behavior of the Tab key
+        document.execCommand('insertHTML', false, '&#160;&#160;&#160;&#160;');
+      }
+
+      if (event.key === 'b' && (event.metaKey || event.ctrlKey)) {
+        // Check for the "Ctrl+B" or "Cmd+B" (bold) shortcut
+        setIsBold(!isBold); // Toggle the bold state
+      }
+    };
+
+    // Add the event listener when the component mounts
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isBold]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        event.preventDefault(); // Prevent the default behavior of the Tab key
+        document.execCommand('insertHTML', false, '&#160;&#160;&#160;&#160;');
+      }
+
+      if (event.key === 'i' && (event.metaKey || event.ctrlKey)) {
+        // Check for the "Ctrl+I" or "Cmd+I" (italic) shortcut
+        setIsItalic(!isItalic); // Toggle the italic state
+      }
+    };
+
+    // Add the event listener when the component mounts
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isItalic]);
+
   const decodeHtmlEntities = (html) => {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
   };
+  const placeholderText = "Title";
 
   const handleContentChange = () => {
     const content = editorRef.current.innerHTML;
     const previousContent = editableContent;
     setEditableContent(content);
+
+    // Hide the placeholder when content is present
+    setPlaceholderVisible(content.trim() === '');
 
     // Decode HTML entities (e.g., '&#160;') to get actual characters
     const decodedContent = decodeHtmlEntities(content);
@@ -84,10 +141,26 @@ export default function ComposeArticle() {
 
   const handleSetBold = () => {
     document.execCommand('bold', false, null);
+    setIsBold(!isBold); // Toggle the bold state
+  };
+
+  const boldButtonStyle = {
+    fontSize: '12.8px',
+    backgroundColor: isBold ? '#516473' : '', // Change color when bold is enabled
+    fontWeight: isBold ? 'bold' : 'normal', // Add bold font weight when bold is enabled
+    borderRadius:'8px'
   };
 
   const handleSetItalic = () => {
     document.execCommand('italic', false, null);
+    setIsItalic(!isItalic)
+  };
+
+  const italicButtonStyle = {
+    fontSize: '12.8px',
+    backgroundColor: isItalic ? '#516473' : '', // Change color when italic is enabled
+    fontStyle: isItalic ? 'italic' : 'normal', // Add italic style when italic is enabled
+    borderRadius:'8px'
   };
 
   const handleAlign = (alignmentValue) => {
@@ -140,8 +213,8 @@ export default function ComposeArticle() {
           });
         } else {
           Swal.fire({
-            title: 'Error!!',
-            icon: 'error',
+            title: 'Something went wrong. :(',
+            // icon: 'error',
             text: 'Please try again',
           });
           setLoading(false);
@@ -178,7 +251,7 @@ export default function ComposeArticle() {
   return (
     <Container>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
-        <div className="formattingTools" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '100%', zIndex: 1000, borderRadius: '8px' }}>
+        <div className="formattingTools" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
           {/* ... (existing formatting tools) */}
 
           <div style={{ padding: '5px', margin: '2rem' }}>
@@ -216,19 +289,19 @@ export default function ComposeArticle() {
           </div>
 
           <div style={{ padding: '5px', margin: '2rem' }}>
-            <button style={fontstyle} onClick={handleSetBold}>
+            <button className='mr-1' style={boldButtonStyle} onClick={handleSetBold}>
               Bold
             </button>
-            <button style={fontstyle} onClick={handleSetItalic}>
+            <button style={italicButtonStyle} onClick={handleSetItalic}>
               Italic
             </button>
           </div>
 
           <div style={{ padding: '5px', margin: '2rem' }}>
-            <button style={fontstyle} onClick={() => handleAlign('Left')}>
+            <button className='mr-1' style={fontstyle} onClick={() => handleAlign('Left')}>
               Left Align
             </button>
-            <button style={fontstyle} onClick={() => handleAlign('Center')}>
+            <button  className='mr-1' style={fontstyle} onClick={() => handleAlign('Center')}>
               Center Align
             </button>
             <button style={fontstyle} onClick={() => handleAlign('Right')}>
@@ -237,7 +310,13 @@ export default function ComposeArticle() {
           </div>
         </div>
 
-        <div className="mt-4 container-fluid" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
+        <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
+          
+          {isPlaceholderVisible && (
+                <div className='mt-5 ml-4' style={{ color: '#aaa', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '260px', left: '350px' }}>
+                  <h4>{placeholderText}</h4>
+                </div>
+            )}
           <div 
           contentEditable 
           ref={editorRef} 
@@ -246,16 +325,19 @@ export default function ComposeArticle() {
           style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none' }}
           />
         </div>
-
+        <div>
+          <span className='text-muted smallest'><i>Note: this version of article editor/composer is only capable of creating a single page article. The page/canvas will automatically stretch if you need more length for your article.</i>
+          </span>
+        </div>
         
-        <div className='d-flex flex-column align-items-center' style={{backgroundColor:'#F3F3F3', borderRadius:'8px'}}>
+        <div className='d-flex flex-column align-items-center mt-5' style={{backgroundColor:'#F3F3F3', borderRadius:'10px'}}>
 
           <div className='p-5 text-center'>
             <h6 className='mb-0'><u>Ready to post your article?</u></h6>
             <span className='text-muted smallest'><i>Kindly fill the necessary information below...</i></span>
           </div>
           
-          <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
+          <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
             <label style={fontstyle} htmlFor="title" className='text-center'><b>Please enter the title of the article</b></label>
             <input
             type="text"
@@ -266,7 +348,7 @@ export default function ComposeArticle() {
             />
           </div>
         
-          <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
+          <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
             <label htmlFor="department" style={fontstyle}>
               <b>To which department is this article relevant?</b>
             </label>
@@ -284,7 +366,7 @@ export default function ComposeArticle() {
           </div>
 
           {/* INSERT BENEFICIARY SELECTIONS HERE */}
-          <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
+          <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
           <label style={fontstyle}><b>To whom is this article intended for?</b></label>
           {beneficiariesOptions.map((option) => (
             <div key={option} className="form-check">
@@ -308,7 +390,7 @@ export default function ComposeArticle() {
         </div>
 
 
-        <div style={{ padding: '5px', margin: '2rem' }}>
+        <div className='mt-0' style={{ padding: '5px', margin: '2rem' }}>
           <Button
             style={buttonStyle}
             onClick={() => handlePost(department, beneficiary, title, editableContent)}
