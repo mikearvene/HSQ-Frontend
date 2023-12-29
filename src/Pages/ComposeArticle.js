@@ -8,13 +8,14 @@ export default function ComposeArticle() {
   const [characters, setCharacters] = useState([]);
   const [department, setDepartment] = useState('general');
   const [beneficiary, setBenificiary] = useState([]);
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState('');
   const [editableContent, setEditableContent] = useState('');
   const [fontSize, setFontSize] = useState('3'); // Default to 16px
   const [alignment, setAlignment] = useState('Left'); // Default alignment
   const editorRef = useRef(null);
   const fontSizeRef = useRef(null);
   const colorRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Set the default font size and alignment on mount
@@ -95,42 +96,58 @@ export default function ComposeArticle() {
   };
 
   const handlePost = (dept, benf, titl, cont) => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/articles/newArticle`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-      body: JSON.stringify({
-        department: dept,
-        beneficiary: benf,
-        title: titl,
-        content: cont,
-        originalPostDate: new Date(),
-        latestUpdate: new Date(),
-        author: [user.id],
-      }),
-    }).then((data) => {
-      if (data.status === 201) {
-        Swal.fire({
-          title: 'Article Posted!',
-          customClass: {
-            title: 'custom-swal-title',
-            confirmButton: 'custom-swal-confirm-button',
-          },
-          didClose: () => {
-            // Navigate to "/wiki" here
-            window.location.href = '/wiki';
-          },
-        });
-      } else {
-        Swal.fire({
-          title: 'Error!!',
-          icon: 'error',
-          text: 'Please try again',
-        });
-      }
-    });
+    setLoading(true);
+    if(title === '' || title.length < 4){
+      setLoading(false);
+      Swal.fire({
+        title: 'Something went wrong :(',
+        // icon: 'error',
+        text: 'Title is empty or is too short.',
+        customClass: {
+          confirmButton: 'swal-red-button',
+        },
+      });
+    } else {
+
+      fetch(`${process.env.REACT_APP_API_URL}/api/articles/newArticle`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({
+          department: dept,
+          beneficiary: benf,
+          title: titl,
+          content: cont,
+          originalPostDate: new Date(),
+          latestUpdate: new Date(),
+          author: [user.id],
+        }),
+      }).then((data) => {
+        if (data.status === 201) {
+          setLoading(false);
+          Swal.fire({
+            title: 'Article Posted!',
+            customClass: {
+              title: 'custom-swal-title',
+              confirmButton: 'custom-swal-confirm-button',
+            },
+            didClose: () => {
+              // Navigate to "/wiki" here
+              window.location.href = '/wiki';
+            },
+          });
+        } else {
+          Swal.fire({
+            title: 'Error!!',
+            icon: 'error',
+            text: 'Please try again',
+          });
+          setLoading(false);
+        }
+      });
+    } 
   };
   
 
@@ -156,6 +173,7 @@ export default function ComposeArticle() {
 
   const buttonStyle = {
     fontSize: '12.8px',
+    backgroundColor:'#016B83'
   }
   return (
     <Container>
@@ -229,22 +247,28 @@ export default function ComposeArticle() {
           />
         </div>
 
-
+        
         <div className='d-flex flex-column align-items-center' style={{backgroundColor:'#F3F3F3', borderRadius:'8px'}}>
 
+          <div className='p-5 text-center'>
+            <h6 className='mb-0'><u>Ready to post your article?</u></h6>
+            <span className='text-muted smallest'><i>Kindly fill the necessary information below...</i></span>
+          </div>
+          
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
-            <label style={fontstyle} htmlFor="title">Enter the title of this article:</label>
+            <label style={fontstyle} htmlFor="title" className='text-center'><b>Please enter the title of the article</b></label>
             <input
             type="text"
             onChange={(e) => { handleTitleChange(e) }}
             placeholder='Type the title here...'
-            style={fontstyle}
+            style={{fontSize:'12.8px', width:'400px', borderRadius:'5px'}}
+            className='p-2'
             />
           </div>
         
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
             <label htmlFor="department" style={fontstyle}>
-              To which department is this article relevant?
+              <b>To which department is this article relevant?</b>
             </label>
             <select style={fontstyle} id="department" onChange={(e) => handleDepartmentChange(e.target.value)} value={department}>
               <option value="general">General</option>
@@ -261,7 +285,7 @@ export default function ComposeArticle() {
 
           {/* INSERT BENEFICIARY SELECTIONS HERE */}
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
-          <label style={fontstyle}>To whom is this article intended for?</label>
+          <label style={fontstyle}><b>To whom is this article intended for?</b></label>
           {beneficiariesOptions.map((option) => (
             <div key={option} className="form-check">
               <input
@@ -285,8 +309,12 @@ export default function ComposeArticle() {
 
 
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <Button style={buttonStyle} onClick={() => handlePost(department, beneficiary, title, editableContent)}>
-            Post
+          <Button
+            style={buttonStyle}
+            onClick={() => handlePost(department, beneficiary, title, editableContent)}
+            disabled={loading} // Disable the button when loading is true
+          >
+            {loading ? 'Posting...' : 'Post'}
           </Button>
         </div>
 

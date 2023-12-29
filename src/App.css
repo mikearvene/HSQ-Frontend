@@ -236,3 +236,10 @@ h1{
   margin-top: 10px;
 }
 /* end for article editor */
+
+.swal-red-button {
+  background-color: #F22F41 !important;
+  color: #ffffff; /* Set text color to white or any contrasting color */
+  border: none !important;
+  box-shadow: none !important;
+}
