@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 export default function ComposeArticle() {
   const { user } = useContext(UserContext);
+  const [characters, setCharacters] = useState([]);
   const [department, setDepartment] = useState('general');
   const [beneficiary, setBenificiary] = useState([]);
   const [title, setTitle] = useState('How To Use The Article Editor: A guide to writing an HSQ Article');
@@ -21,13 +22,48 @@ export default function ComposeArticle() {
     handleColorChange();
     handleAlign(alignment);
     setEditableContent(editorRef.current.innerHTML);
-    console.log(department);
-    console.log(beneficiary);
+
+    return () => {
+
+    };
+
   }, [alignment, fontSizeRef, colorRef, fontSize, editorRef, department, beneficiary]);
+  useEffect(()=>{
+    console.log(characters)
+  },[characters])
+  const decodeHtmlEntities = (html) => {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
 
   const handleContentChange = () => {
     const content = editorRef.current.innerHTML;
+    const previousContent = editableContent;
     setEditableContent(content);
+
+    // Decode HTML entities (e.g., '&#160;') to get actual characters
+    const decodedContent = decodeHtmlEntities(content);
+    const decodedPreviousContent = decodeHtmlEntities(previousContent);
+
+    // Find added and removed characters
+    const addedCharacters = Array.from(decodedContent).filter((char, index) => char !== decodedPreviousContent[index]);
+    const removedCharacters = Array.from(decodedPreviousContent).filter((char, index) => char !== decodedContent[index]);
+
+    // Update characters array
+    const updatedCharacters = characters.concat(addedCharacters).filter((char) => !removedCharacters.includes(char));
+    setCharacters(updatedCharacters);
+
+  };
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Prevent the default behavior of the Tab key
+
+      // Insert four spaces for indentation (you can modify this as needed)
+      document.execCommand('insertHTML', false, '&#160;&#160;&#160;&#160;');
+    }
   };
 
   const handleFontSizeChange = () => {
@@ -178,7 +214,13 @@ export default function ComposeArticle() {
         </div>
 
         <div className="mt-4 container-fluid" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px' }}>
-          <div contentEditable ref={editorRef} onInput={handleContentChange} style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none' }} />
+          <div 
+          contentEditable 
+          ref={editorRef} 
+          onInput={handleContentChange} 
+          onKeyDown={handleKeyDown} // Listen to the keydown event
+          style={{ minHeight: '800px', padding: '2rem', margin: '2rem', outline: 'none' }}
+          />
         </div>
 
 
