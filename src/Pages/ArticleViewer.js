@@ -23,7 +23,14 @@ export default function ArticleViewer() {
   console.log(article)
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric',
+      timeZone: 'UTC' ,
+    };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
