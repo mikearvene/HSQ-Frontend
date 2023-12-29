@@ -337,7 +337,7 @@ export default function ComposeArticle() {
           </div>
           
           <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
-            <label style={fontstyle} htmlFor="title" className='text-center'><b>Please enter the title of the article</b></label>
+            <label style={fontstyle} htmlFor="title" className='text-center'><b>Please enter the title of this article you created...</b></label>
             <input
             type="text"
             onChange={(e) => { handleTitleChange(e) }}
