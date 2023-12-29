@@ -59,7 +59,7 @@ export default function Wiki(){
         {user.isManager ?
             <>
             <div className="d-flex justify-content-end mb-4">
-            <Link to="/compose-article"><span className="anchor-underline">Compose New Article</span></Link>
+            <Link to="/compose-article"><span className="anchor-underline">Create New Article</span></Link>
             </div>
             </>
             :
