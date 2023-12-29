@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import UserContext from '../userContext';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 
 export default function ComposeArticle() {
@@ -8,7 +8,7 @@ export default function ComposeArticle() {
   const [characters, setCharacters] = useState([]);
   const [department, setDepartment] = useState('general');
   const [beneficiary, setBenificiary] = useState([]);
-  const [title, setTitle] = useState('How To Use The Article Editor: A guide to writing an HSQ Article');
+  const [title, setTitle] = useState(null);
   const [editableContent, setEditableContent] = useState('');
   const [fontSize, setFontSize] = useState('3'); // Default to 16px
   const [alignment, setAlignment] = useState('Left'); // Default alignment
@@ -144,10 +144,17 @@ export default function ComposeArticle() {
     setBenificiary(selectedBeneficiaries);
   };
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  }
+
   const fontstyle = {
     fontSize: '12.8px',
   };
 
+  const buttonStyle = {
+    fontSize: '12.8px',
+  }
   return (
     <Container>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
@@ -224,8 +231,17 @@ export default function ComposeArticle() {
         </div>
 
 
-        <div className='d-flex'>
+        <div className='d-flex flex-column align-items-center' style={{backgroundColor:'#F3F3F3', borderRadius:'8px'}}>
 
+          <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
+            <label style={fontstyle} htmlFor="title">Enter the title of this article:</label>
+            <input
+            type="text"
+            onChange={(e) => { handleTitleChange(e) }}
+            placeholder='Type the title here...'
+            style={fontstyle}
+            />
+          </div>
         
           <div className="d-flex flex-column" style={{ padding: '5px', margin: '2rem' }}>
             <label htmlFor="department" style={fontstyle}>
@@ -270,12 +286,13 @@ export default function ComposeArticle() {
 
 
         <div style={{ padding: '5px', margin: '2rem' }}>
-          <button style={fontstyle} onClick={() => handlePost(department, beneficiary, title, editableContent)}>
+          <Button style={buttonStyle} onClick={() => handlePost(department, beneficiary, title, editableContent)}>
             Post
-          </button>
+          </Button>
         </div>
 
       </div>
+      
       </div>
     </Container>
   );
