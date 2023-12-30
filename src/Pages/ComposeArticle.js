@@ -281,13 +281,13 @@ if(isPlaceholderVisible){handleAlign('Center')}
             </label>
             <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
               <option style={fontstyle} value="#383C3F">
-                dark grayish-blue
+                dark
+              </option>
+              <option style={fontstyle} value="#AAB6BF">
+                light dark
               </option>
               <option style={fontstyle} value="#F22F41">
                 Red
-              </option>
-              <option style={fontstyle} value="#516473">
-                {`Steel Blue (For subtitles)`}
               </option>
             </select>
           </div>
