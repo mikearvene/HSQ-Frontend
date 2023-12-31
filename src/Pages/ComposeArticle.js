@@ -15,6 +15,7 @@ export default function ComposeArticle() {
   const editorRef = useRef(null);
   const fontSizeRef = useRef(null);
   const colorRef = useRef(null);
+  const paper = useRef(null);
   const [loading, setLoading] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -252,11 +253,27 @@ export default function ComposeArticle() {
     fontSize: '12.8px',
     backgroundColor:'#016B83'
   }
+
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const minZoom = 0.4;
+  const maxZoom = 1;
+  useEffect(() => {
+    paper.current.style.transform = `scale(${zoomLevel})`;
+  }, [zoomLevel]);
+
+  const handleZoomIn = () => {
+    setZoomLevel(prevZoomLevel => Math.min(prevZoomLevel + 0.1, maxZoom));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel(prevZoomLevel => Math.max(prevZoomLevel - 0.1, minZoom));
+  };
   return (
     <Container fluid className='p-0'>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
-        <div className="formattingTools" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
+        <div className="formattingTools align-items-center" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
           {/* ... (existing formatting tools) */}
+          
 
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
@@ -312,9 +329,22 @@ export default function ComposeArticle() {
               Right Align
             </button>
           </div>
+
+          <div style={{ padding: '5px', margin: '2rem' }} className='d-flex flex-column'>
+            <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
+              Zoom:{' '}
+            </label>
+            <button  style={fontstyle} onClick={handleZoomIn}>
+              +
+            </button>
+            <button style={fontstyle} onClick={handleZoomOut}>
+              -
+            </button>
+          </div>
+
         </div>
 
-        <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
+        <div ref={paper} className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
           
           
           <div 
