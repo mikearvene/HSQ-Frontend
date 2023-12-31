@@ -34,7 +34,7 @@ export default function ComposeArticle() {
 
     };
 
-  }, [alignment, fontSizeRef, colorRef, fontSize, editorRef, department, beneficiary]);
+  }, [alignment, fontSizeRef, colorRef, editorRef, department, beneficiary]);
 
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
@@ -100,7 +100,7 @@ export default function ComposeArticle() {
     const content = editorRef.current.innerHTML;
     const previousContent = editableContent;
     setEditableContent(content);
-if(isPlaceholderVisible){handleAlign('Center')}
+    if(isPlaceholderVisible){handleAlign('Center')}
     // Hide the placeholder when content is present
     setPlaceholderVisible(content.trim() === '');
     
