@@ -268,13 +268,30 @@ export default function ComposeArticle() {
   const handleZoomOut = () => {
     setZoomLevel(prevZoomLevel => Math.max(prevZoomLevel - 0.1, minZoom));
   };
+
+  const handleTransformIntoLink = () => {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const selectedText = range.toString();
+  
+    if (selectedText.trim() !== '') {
+      const url = selectedText;
+      if (url !== null) {
+        const link = `<a href="${url}" target="_blank">${selectedText}</a>`;
+        document.execCommand('insertHTML', false, link);
+      }
+    }
+  };
+  
   return (
     <Container fluid className='p-0'>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
         <div className="formattingTools align-items-center" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
           {/* ... (existing formatting tools) */}
           
-
+          {/* <div style={{ padding: '5px', margin: '2rem' }}>
+            
+          </div> */}
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
               Font Size:{' '}
@@ -309,12 +326,15 @@ export default function ComposeArticle() {
             </select>
           </div>
 
-          <div style={{ padding: '5px', margin: '2rem' }}>
+          <div className='' style={{ padding: '5px', margin: '2rem' }}>
             <button className='mr-1' style={boldButtonStyle} onClick={handleSetBold}>
               Bold
             </button>
             <button style={italicButtonStyle} onClick={handleSetItalic}>
               Italic
+            </button>
+            <button className='d-block ml-auto mr-auto mt-1' style={{borderRadius:'8px', fontSize:'12.8px'}} onClick={handleTransformIntoLink}>
+              text to link
             </button>
           </div>
 
@@ -330,16 +350,20 @@ export default function ComposeArticle() {
             </button>
           </div>
 
-          <div style={{ padding: '5px', margin: '2rem' }} className='d-flex flex-column'>
-            <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
-              Zoom:{' '}
-            </label>
-            <button  style={fontstyle} onClick={handleZoomIn}>
-              +
-            </button>
-            <button style={fontstyle} onClick={handleZoomOut}>
-              -
-            </button>
+          <div style={{ padding: '5px', margin: '2rem' }} className='row justify-content-center align-items-center'>
+            <div className='col-4'>
+              <label className='mr-1 text-center mb-0' htmlFor="fontSize" style={fontstyle}>
+                Zoom:{' '}
+              </label>
+            </div>
+            <div className='col-6 d-flex flex-column'>
+              <Button size='sm' className='' style={{borderRadius:'8px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'30px', width:'30px'}} onClick={handleZoomIn}>
+                <span  className=''>+</span>
+              </Button>
+              <Button size='sm' className='mt-1' style={{borderRadius:'8px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'30px', width:'30px'}} onClick={handleZoomOut}>
+                <span className=''>-</span>
+              </Button>
+            </div>
           </div>
 
         </div>
