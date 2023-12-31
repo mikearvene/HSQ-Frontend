@@ -285,8 +285,8 @@ export default function ComposeArticle() {
   
   return (
     <Container fluid className='p-0'>
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
-        <div className="formattingTools align-items-center" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="formattingTools align-items-center" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 72, background: '#F3F3F3', width: '95%', zIndex: 1000, borderRadius: '8px', height:'80px' }}>
           {/* ... (existing formatting tools) */}
           
           {/* <div style={{ padding: '5px', margin: '2rem' }}>
