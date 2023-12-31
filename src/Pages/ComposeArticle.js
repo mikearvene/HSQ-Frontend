@@ -253,7 +253,7 @@ export default function ComposeArticle() {
     backgroundColor:'#016B83'
   }
   return (
-    <Container>
+    <Container fluid className='p-0'>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
         <div className="formattingTools" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
           {/* ... (existing formatting tools) */}
