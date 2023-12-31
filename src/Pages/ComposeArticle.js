@@ -294,7 +294,7 @@ export default function ComposeArticle() {
           </div> */}
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
-              Font Size:{' '}
+              <b>Font Size:{' '}</b>
             </label>
             <select style={fontstyle} id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
               <option onClick={handleFontSizeChange} style={fontstyle} value="1">
@@ -311,7 +311,7 @@ export default function ComposeArticle() {
 
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="color" style={fontstyle}>
-              Text Color:{' '}
+              <b>Text Color:{' '}</b>
             </label>
             <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
               <option style={fontstyle} value="#383C3F">
@@ -353,7 +353,7 @@ export default function ComposeArticle() {
           <div style={{ padding: '5px', margin: '2rem' }} className='row justify-content-center align-items-center'>
             <div className='col-4'>
               <label className='mr-1 text-center mb-0' htmlFor="fontSize" style={fontstyle}>
-                Zoom:{' '}
+                <b>Zoom:{' '}</b>
               </label>
             </div>
             <div className='col-6 d-flex flex-column'>
