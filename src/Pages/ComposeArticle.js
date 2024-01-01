@@ -15,6 +15,7 @@ export default function ComposeArticle() {
   const editorRef = useRef(null);
   const fontSizeRef = useRef(null);
   const colorRef = useRef(null);
+  const paper = useRef(null);
   const [loading, setLoading] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -34,7 +35,7 @@ export default function ComposeArticle() {
 
     };
 
-  }, [alignment, fontSizeRef, colorRef, fontSize, editorRef, department, beneficiary]);
+  }, [alignment, fontSizeRef, colorRef, editorRef, department, beneficiary]);
 
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
@@ -100,7 +101,7 @@ export default function ComposeArticle() {
     const content = editorRef.current.innerHTML;
     const previousContent = editableContent;
     setEditableContent(content);
-if(isPlaceholderVisible){handleAlign('Center')}
+    if(isPlaceholderVisible){handleAlign('Center')}
     // Hide the placeholder when content is present
     setPlaceholderVisible(content.trim() === '');
     
@@ -252,15 +253,48 @@ if(isPlaceholderVisible){handleAlign('Center')}
     fontSize: '12.8px',
     backgroundColor:'#016B83'
   }
-  return (
-    <Container>
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
-        <div className="formattingTools" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 40, background: '#F3F3F3', width: '90%', zIndex: 1000, borderRadius: '8px' }}>
-          {/* ... (existing formatting tools) */}
 
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const minZoom = 0.4;
+  const maxZoom = 1;
+  useEffect(() => {
+    paper.current.style.transform = `scale(${zoomLevel})`;
+  }, [zoomLevel]);
+
+  const handleZoomIn = () => {
+    setZoomLevel(prevZoomLevel => Math.min(prevZoomLevel + 0.1, maxZoom));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel(prevZoomLevel => Math.max(prevZoomLevel - 0.1, minZoom));
+  };
+
+  const handleTransformIntoLink = () => {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const selectedText = range.toString();
+  
+    if (selectedText.trim() !== '') {
+      const url = selectedText;
+      if (url !== null) {
+        const link = `<a href="${url}" target="_blank">${selectedText}</a>`;
+        document.execCommand('insertHTML', false, link);
+      }
+    }
+  };
+  
+  return (
+    <Container fluid className='p-0'>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="formattingTools align-items-center" style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: 72, background: '#F3F3F3', width: '95%', zIndex: 1000, borderRadius: '8px', height:'80px' }}>
+          {/* ... (existing formatting tools) */}
+          
+          {/* <div style={{ padding: '5px', margin: '2rem' }}>
+            
+          </div> */}
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="fontSize" style={fontstyle}>
-              Font Size:{' '}
+              <b>Font Size:{' '}</b>
             </label>
             <select style={fontstyle} id="fontSize" ref={fontSizeRef} onChange={handleFontSizeChange} value={fontSize}>
               <option onClick={handleFontSizeChange} style={fontstyle} value="1">
@@ -277,7 +311,7 @@ if(isPlaceholderVisible){handleAlign('Center')}
 
           <div style={{ padding: '5px', margin: '2rem' }}>
             <label className='mr-1' htmlFor="color" style={fontstyle}>
-              Text Color:{' '}
+              <b>Text Color:{' '}</b>
             </label>
             <select style={fontstyle} id="color" ref={colorRef} onChange={handleColorChange}>
               <option style={fontstyle} value="#383C3F">
@@ -292,12 +326,15 @@ if(isPlaceholderVisible){handleAlign('Center')}
             </select>
           </div>
 
-          <div style={{ padding: '5px', margin: '2rem' }}>
+          <div className='' style={{ padding: '5px', margin: '2rem' }}>
             <button className='mr-1' style={boldButtonStyle} onClick={handleSetBold}>
               Bold
             </button>
             <button style={italicButtonStyle} onClick={handleSetItalic}>
               Italic
+            </button>
+            <button className='d-block ml-auto mr-auto mt-1' style={{borderRadius:'8px', fontSize:'12.8px'}} onClick={handleTransformIntoLink}>
+              text to link
             </button>
           </div>
 
@@ -312,9 +349,26 @@ if(isPlaceholderVisible){handleAlign('Center')}
               Right Align
             </button>
           </div>
+
+          <div style={{ padding: '5px', margin: '2rem' }} className='row justify-content-center align-items-center'>
+            <div className='col-4'>
+              <label className='mr-1 text-center mb-0' htmlFor="fontSize" style={fontstyle}>
+                <b>Zoom:{' '}</b>
+              </label>
+            </div>
+            <div className='col-6 d-flex flex-column'>
+              <Button className='d-flex justify-content-center align-items-center' style={{borderRadius:'5px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'20px', width:'20px'}} onClick={handleZoomIn}>
+                <span  className='small'>+</span>
+              </Button>
+              <Button className='mt-1 d-flex justify-content-center align-items-center' style={{borderRadius:'5px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'20px', width:'20px'}} onClick={handleZoomOut}>
+                <span className=''>-</span>
+              </Button>
+            </div>
+          </div>
+
         </div>
 
-        <div className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
+        <div ref={paper} className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
           
           
           <div 
