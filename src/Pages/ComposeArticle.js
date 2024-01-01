@@ -357,10 +357,10 @@ export default function ComposeArticle() {
               </label>
             </div>
             <div className='col-6 d-flex flex-column'>
-              <Button size='sm' className='' style={{borderRadius:'8px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'30px', width:'30px'}} onClick={handleZoomIn}>
-                <span  className=''>+</span>
+              <Button className='d-flex justify-content-center align-items-center' style={{borderRadius:'5px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'20px', width:'20px'}} onClick={handleZoomIn}>
+                <span  className='small'>+</span>
               </Button>
-              <Button size='sm' className='mt-1' style={{borderRadius:'8px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'30px', width:'30px'}} onClick={handleZoomOut}>
+              <Button className='mt-1 d-flex justify-content-center align-items-center' style={{borderRadius:'5px', borderStyle:'none', boxShadow:'none', backgroundColor:`#AAB6BF`, height:'20px', width:'20px'}} onClick={handleZoomOut}>
                 <span className=''>-</span>
               </Button>
             </div>
