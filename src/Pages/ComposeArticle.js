@@ -383,7 +383,7 @@ export default function ComposeArticle() {
           <div style={{position:'relative', bottom:'795px', left: '100px', zIndex:'-1'}}>
           {isPlaceholderVisible && (
                 <>
-                  <div className='fade-in-out-text d-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px'}}>
+                  <div className='fade-in-out-text d-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px', width:'300px'}}>
                     <span className=''><i>{`Start writing to remove placeholders . . .`}</i></span>
                   </div>
                   <div className='d-inline-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '-45px', left: '250px' }}>
