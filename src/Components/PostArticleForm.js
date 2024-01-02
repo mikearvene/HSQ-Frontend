@@ -6,7 +6,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible}){
 
     const [title, setTitle] = useState('');
     const [loading, setLoading] = useState(false);
-    const [department, setDepartment] = useState('general');
+    const [department, setDepartment] = useState('company-wide');
     const [beneficiary, setBenificiary] = useState([]);
     const [images, setImages] = useState([]);
     const fontstyle = {
@@ -35,7 +35,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible}){
         setDepartment(selectedDepartment);
     };
 
-    const beneficiariesOptions = ['general', 'managers', 'newHires', 'executives'];
+    const beneficiariesOptions = ['everyone', 'managers', 'newHires', 'executives'];
 
     const handleBeneficiaryChange = (selectedBeneficiaries) => {
     setBenificiary(selectedBeneficiaries);
@@ -131,7 +131,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible}){
                         <b>To which department is this article relevant?</b>
                         </label>
                         <select className="form-control" style={fontstyle} id="department" onChange={(e) => handleDepartmentChange(e.target.value)} value={department}>
-                            <option value="general">General</option>
+                            <option value="company-wide">Company-wide</option>
                             <option value="executive">Executive</option>
                             <option value="legal&finance">Legal & Finance</option>
                             <option value="it">IT</option>
