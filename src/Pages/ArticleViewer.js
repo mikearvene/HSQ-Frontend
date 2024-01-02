@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
+import ArticleImageView from "../Components/ArticleImageView";
 
 export default function ArticleViewer() {
 
@@ -20,7 +21,6 @@ export default function ArticleViewer() {
         
       });
   }, [articleId]);
-  console.log(article)
 
   const formatDate = (dateString) => {
     const options = { 
@@ -69,6 +69,9 @@ export default function ArticleViewer() {
           dangerouslySetInnerHTML={{ __html: article ? article.content : '' }}
         />
       </div>
+      
+      <ArticleImageView images={article.imageUrl}/>
+
       </Container>
       </>
       }
