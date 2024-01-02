@@ -71,7 +71,6 @@ export default function PostArticleForm({content,user, isPlaceholderVisible}){
             for (let i = 0; i < images.length; i++) {
                 formData.append('images', images[i]);
               }
-            console.log(images)
             await fetch(`${process.env.REACT_APP_API_URL}/api/articles/newArticle`, {
                 method: 'POST',
                 headers: {

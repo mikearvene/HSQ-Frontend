@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import EditForm from "./EditForm";
 
 export default function ArticleCard({article, user}){
-    console.log(article)
+
     return(
         <Container className="mb-1 mt-1 pr-5 pl-5 pt-2 pb-2">
             <Row className="d-flex align-items-center">

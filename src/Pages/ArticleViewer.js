@@ -20,7 +20,6 @@ export default function ArticleViewer() {
         
       });
   }, [articleId]);
-  console.log(article)
 
   const formatDate = (dateString) => {
     const options = { 
