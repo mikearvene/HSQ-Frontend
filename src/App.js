@@ -11,17 +11,19 @@ import PageNotFound from './Pages/PageNotFound';
 import Login from './Pages/Login';
 import LoginNavbar from './Components/LoginNavbar';
 import Logout from './Pages/Logout';
-import LoaderOne from './Components/Subcomponents/loader/LoaderOne'
+import LoaderOne from './Components/Subcomponents/loader/LoaderOne' 
 import FormsRepository from './Pages/FormsRepository';
 import Wiki from './Pages/Wiki';
 import AppQuickLinksBar from './Components/AppQuickLinksBar';
 import ComposeArticle from './Pages/ComposeArticle'
 import ArticleViewer from './Pages/ArticleViewer';
+import EditArticle from './Pages/EditArticle';
 
 function App() {
 
     const [isInCompose, setIsInCompose] = useState(false)
     const [isInArticleView, setIsInArticleView] = useState(false)
+    const [isInEditArticleView, setIsInEditArticleView] = useState(false)
     const [isUserHovered, setIsUserHovered] = useState(true)
     const [isDoneInitializing, setIsDoneInitialing] = useState(false);
     const [user, setUser] = useState({
@@ -87,7 +89,7 @@ function App() {
                             <LoginNavbar />
                             :
                             <>
-                            <AppNavbar setIsUserHovered={setIsUserHovered} setIsInCompose={setIsInCompose} setIsInArticleView={setIsInArticleView}/>
+                            <AppNavbar setIsUserHovered={setIsUserHovered} setIsInCompose={setIsInCompose} setIsInArticleView={setIsInArticleView} setIsInEditArticleView={setIsInEditArticleView}/>
                             {isUserHovered? 
                             <></>
                             :
@@ -101,11 +103,11 @@ function App() {
                         {user.id == null? <Login /> 
                         :
                         isInCompose ? <ComposeArticle /> :
-                        
                         <>
-                        {isInArticleView ? 
+                        {isInArticleView || isInEditArticleView? 
                         <Routes>
                             <Route path='/article/:articleId' element={<ArticleViewer/>} />
+                            <Route path='/article/edit/:articleId' element={<EditArticle/>} />
                         </Routes>
                         :
                         <>

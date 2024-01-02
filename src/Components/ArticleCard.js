@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import EditForm from "./EditForm";
+import { Link } from 'react-router-dom'; 
 
 export default function ArticleCard({article, user}){
 
@@ -14,8 +14,9 @@ export default function ArticleCard({article, user}){
                         <a href={`/article/${article._id}`} target="_blank" rel="noopener noreferrer" className="anchor-underline"><i>View</i></a>
                     </div>
                     {user.isManager? 
-                    <div>
-                        {/* <EditArticle props={ {name, description, link, formId, refreshEffect}}/> */}
+                    <div className="mr-1 d-flex justify-content-end">
+                        {/* <a href={`/article/edit/${article._id}`} target="_blank" rel="noopener noreferrer" className="anchor-underline"><i>Edit</i></a> */}
+                        <Link to={`/article/edit/${article._id}`}><span className="anchor-underline">Edit</span></Link>
                     </div>
                     : 
                     <></>}

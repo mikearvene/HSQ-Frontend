@@ -6,7 +6,7 @@ import UserIconPop from './UserIconPop';
 import { useLocation } from 'react-router-dom';
 
 
-const AppNavbar = ({setIsInCompose,setIsInArticleView}) => {
+const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
     let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -18,11 +18,16 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView}) => {
             setIsInCompose(false)
         }
         // Check if the first 8 characters of location.pathname are "/article"
-        const isInArticlePath = location.pathname.slice(0, 8) === '/article';
+        const isInArticlePath = location.pathname.slice(0, 8) === '/article' && location.pathname.slice(0, 13) !== '/article/edit';
+       
+        const isInEditArticlePath = location.pathname.slice(0, 13) === '/article/edit';
 
-        // Set the state based on the condition
-        setIsInArticleView(isInArticlePath);
+         // Set the state based on the condition
+         setIsInArticleView(isInArticlePath);
+         setIsInEditArticleView(isInEditArticlePath)    
+        
         console.log(`isInArticlePath: ${isInArticlePath}`)
+        console.log(`isInEditArticlePath: ${isInEditArticlePath}`)
     },[location])
     
     return (
