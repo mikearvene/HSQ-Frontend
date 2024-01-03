@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import UserContext from '../userContext';
 import { Container, Button } from 'react-bootstrap';
 import PostEditedArticleForm from '../Components/PostEditedArticleForm';
+import ArticleImageViewEdit from '../Components/ArticleImageViewEdit';
 
 export default function EditArticle() {
   const { user } = useContext(UserContext);
@@ -341,6 +342,8 @@ export default function EditArticle() {
         </div>
       
       </div>
+
+      <ArticleImageViewEdit refresh={refresh} originalArticle={originalArticle}/>
     </Container>
   );
 }
