@@ -1,11 +1,10 @@
 import { useContext, useState, useEffect } from "react"
 import UserContext from '../userContext';
 import { Link } from 'react-router-dom';  // Import Link from react-router-dom
-import AddNewForm from "../Components/AddNewForm";
 import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
 import WikiSearchArea from "../Components/WikiSearchArea";
-import NoFormsFound from "../Components/NoFormsFound";
 import ArticleCard from "../Components/ArticleCard"
+import NoArticlesFound from "../Components/NoArticlesFound";
 
 
 export default function Wiki(){
@@ -46,11 +45,11 @@ export default function Wiki(){
         <>
         <div className="row">
 
-            <div className="mb-0 col-5">
+            <div className="mb-0 col-3">
                 <h4 className="text-muted">Wiki</h4>
             </div>
 
-            <div className="col-6 ml-auto">
+            <div className="col-9 ml-auto">
                 <WikiSearchArea setArticles={setArticles} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader}/>
             </div>
         </div>
@@ -81,7 +80,7 @@ export default function Wiki(){
                         />
                     ))
                 ) : (
-                        <NoFormsFound />
+                        <NoArticlesFound />
                     )
             )}
         </div>

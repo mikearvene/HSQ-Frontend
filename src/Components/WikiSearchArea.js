@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Form, Button} from "react-bootstrap"
+import { useEffect, useState } from "react";
+import { Form, Button, Dropdown} from "react-bootstrap"
 
 export default function WikiSearchArea({setArticles,setLoading,refreshEffect,setHeader}){
     const [title, setTitle] = useState('');
+    const [category, setCategory] = useState('');
 
     const submitSearchRequest = () =>{
         setLoading(true); 
+
         fetch(`${process.env.REACT_APP_API_URL}/api/articles/article`,{
             method: "POST",
             headers: {
@@ -13,7 +15,8 @@ export default function WikiSearchArea({setArticles,setLoading,refreshEffect,set
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
-                title: title.replace(/\\/g, "\\\\")
+                title: title.replace(/\\/g, "\\\\"),
+                department: category.toLowerCase()
             })
         })
         .then(res => res.json())
@@ -22,13 +25,22 @@ export default function WikiSearchArea({setArticles,setLoading,refreshEffect,set
             setLoading(false);
             setHeader('Custom Search')
         })
-
     }
     const reset = () =>{
         setTitle(''); 
+        setCategory('');
         refreshEffect();
         setHeader('All Articles')
     }
+
+    const handleCategorySelect = (selectedCategory) => {
+        setCategory(selectedCategory);
+      };
+
+      useEffect(()=>{
+        console.log(category)
+        console.log(title)
+      },[category, title])
     return(
         <div className="d-flex">
             <Form.Control
@@ -39,7 +51,25 @@ export default function WikiSearchArea({setArticles,setLoading,refreshEffect,set
             className='custom-search-input'
             value={title} 
             />
+            
             <div className="d-flex align-items-center">
+                <Dropdown onSelect={handleCategorySelect} className="ml-1" >
+                <Dropdown.Toggle variant="secondary" id="categoryDropdown" size='sm'>
+                {category ? category : 'Deparment'}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                <Dropdown.Item eventKey="Company-wide">Company-wide</Dropdown.Item>
+                <Dropdown.Item eventKey="Executive">Executive</Dropdown.Item>
+                <Dropdown.Item eventKey="Legal&Finance">Legal & Finance</Dropdown.Item>
+                <Dropdown.Item eventKey="IT">IT</Dropdown.Item>
+                <Dropdown.Item eventKey="HR">HR</Dropdown.Item>
+                <Dropdown.Item eventKey="Operations">Operations</Dropdown.Item>
+                <Dropdown.Item eventKey="Marketing">Marketing</Dropdown.Item>
+                <Dropdown.Item eventKey="Shows&Touring">Shows & Touring</Dropdown.Item>
+                <Dropdown.Item eventKey="ArtistDevelopment">Artist Development</Dropdown.Item>
+                {/* Add more categories as needed */}
+                </Dropdown.Menu>
+                </Dropdown>
                 <Button className="d-flex ml-1 button-bg" style={{boxShadow:'none', height:'30px'}} size='sm' onClick={submitSearchRequest}>Search</Button>
                 <Button className="d-flex ml-1 button-cancel"  style={{boxShadow:'none', height:'30px'}} size='sm' onClick={reset}>Reset</Button>
             </div>
