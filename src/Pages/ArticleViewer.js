@@ -34,7 +34,7 @@ export default function ArticleViewer() {
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-
+  console.log(article )
   return (
     
     <>
@@ -59,7 +59,9 @@ export default function ArticleViewer() {
         <Col md='3' className="d-flex flex-column align-items-end mt-auto mb-auto ml-auto">
           <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.originalPostDate)} - Original post</i></span>
           <span style={{color:'#516473'}} className="smallest"><i>{formatDate(article?.latestUpdate)} - Latest update</i></span>
-          <span style={{color:'#516473'}} className="smallest"><i>{article.author[0].firstName} {article.author[0].lastName} - Author</i></span>
+          <span style={{color:'#516473'}} className="smallest"><i>{'('}Posted by: {article.author[0].firstName} {article.author[0].lastName} {')'}</i></span>
+          <span style={{color:'#516473'}} className="smallest"><i>{'('}Update by: {article.updatedBy.firstName} {article.updatedBy.lastName} {')'}</i></span>
+          
         </Col>
         
       </Row>

@@ -23,7 +23,7 @@ export default function EditArticle() {
   const [originalArticle, setOriginalArticle] = useState(null)
   const { articleId } = useParams();
 
-  console.log(articleId)
+
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
     
@@ -39,19 +39,28 @@ export default function EditArticle() {
         editorRef.current.innerHTML = data.content;
           
     });
-    console.log(originalArticle)
+
   },[])
-  
+  const refresh = () =>{
+      fetch(`${process.env.REACT_APP_API_URL}/api/articles/article/${articleId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+        .then((res) => res.json())
+        .then((data) => {
+        setOriginalArticle(data);
+        editorRef.current.innerHTML = data.content;
+          
+    });
+  }
   useEffect(() => {
     // Set the default font size and alignment on mount
     handleFontSizeChange();
     handleColorChange();
     handleAlign(alignment);
-    console.log('first use effect working')
-    console.log(editorRef == null)
-    console.log(editableContent)
     setEditableContent(editorRef.current.innerHTML);
-
+    console.log(editableContent)
     return () => {
 
     };
@@ -327,7 +336,7 @@ export default function EditArticle() {
 
         <div className='d-flex flex-column align-items-center mt-5' style={{backgroundColor:'#F3F3F3', borderRadius:'10px'}}>
           {/*  */}
-          <PostEditedArticleForm originalArticle={originalArticle} content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible}/>
+          <PostEditedArticleForm refresh={refresh} originalArticle={originalArticle} content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible}/>
 
         </div>
       
