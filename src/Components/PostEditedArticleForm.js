@@ -79,9 +79,10 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
                             title: 'custom-swal-title',
                             confirmButton: 'custom-swal-confirm-button',
                         }
+                    }).then(() => {
+                        // Redirect to /article/${articleId}
+                        window.location.href = `/article/${articleId}`;
                     });
-
-                    refresh();
                 } else {
                     Swal.fire({
                         title: 'Something went wrong. :(',
