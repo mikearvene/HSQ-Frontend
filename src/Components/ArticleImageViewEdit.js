@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import AddImageInterface from "./AddImageInterface";
 
 export default function ArticleImageViewEdit({ refresh, originalArticle }) {
     const { articleId } = useParams();
@@ -58,10 +59,8 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
         });
     }
     const handleDeleteImage = async () => {
+        setLoading(true);
         let imageKey = originalArticle.imageKeys[fullscreenIndex].key;
-
-        console.log(articleId)
-        console.log(imageKey)
 
         // Display a confirmation popup using SweetAlert
         const isConfirmed = await Swal.fire({
@@ -98,6 +97,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
                         },
                         didClose: () => {
                             fetchImageData();
+                            handleCloseFullscreen();
                         },
                     });
                 } else {
@@ -131,12 +131,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
                 <hr />
 
                 <div className="mb-3">
-                    <Button 
-                        style={{backgroundColor:'#016B83', fontSize:'12.8px'}}
-                        // onClick={{}}
-                        >
-                            Add Image
-                    </Button>
+                    <AddImageInterface setImages={setImages} fetchImageData={fetchImageData}/>
                 </div>
 
                 {images.length === 0 ?
@@ -177,6 +172,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
                         <Button 
                         style={buttonStyle}
                         onClick={handleDeleteImage}
+                        disabled={loading}
                         >
                             Delete image
                         </Button>
