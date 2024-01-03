@@ -86,11 +86,11 @@ export default function PostArticleForm({content,user, isPlaceholderVisible}){
                         customClass: {
                             title: 'custom-swal-title',
                             confirmButton: 'custom-swal-confirm-button',
-                        }
-                        // ,
-                        // didClose: () => {
-                        //     window.location.href = '/wiki';
-                        // },
+                        },
+                        
+                        didClose: () => {
+                            window.location.href = '/wiki';
+                        },
                     });
                 } else {
                     Swal.fire({
