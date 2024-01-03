@@ -58,6 +58,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
         });
     }
     const handleDeleteImage = async () => {
+        setLoading(true);
         let imageKey = originalArticle.imageKeys[fullscreenIndex].key;
 
         console.log(articleId)
@@ -98,6 +99,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
                         },
                         didClose: () => {
                             fetchImageData();
+                            handleCloseFullscreen();
                         },
                     });
                 } else {
@@ -177,6 +179,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
                         <Button 
                         style={buttonStyle}
                         onClick={handleDeleteImage}
+                        disabled={loading}
                         >
                             Delete image
                         </Button>
