@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Form, Button} from "react-bootstrap"
 
-export default function SearchArea({setForms,setLoading,refreshEffect,setHeader}){
+export default function SearchArea({setForms,setLoading,refreshEffect,setHeader,setCurrentPage}){
     const [name, setName] = useState('');
 
     const submitSearchRequest = () =>{
+        
         setLoading(true); 
+        setCurrentPage(1)
         fetch(`${process.env.REACT_APP_API_URL}/api/forms/form`,{
             method: "POST",
             headers: {
@@ -18,6 +20,7 @@ export default function SearchArea({setForms,setLoading,refreshEffect,setHeader}
         })
         .then(res => res.json())
         .then(data => {
+            
             setForms(data)
             setLoading(false);
             setHeader('Custom Search')
@@ -25,6 +28,7 @@ export default function SearchArea({setForms,setLoading,refreshEffect,setHeader}
 
     }
     const reset = () =>{
+        setCurrentPage(1)
         setName(''); 
         refreshEffect();
         setHeader('All Forms & Docs')
