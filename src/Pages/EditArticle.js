@@ -322,6 +322,7 @@ export default function EditArticle() {
           </div>
           <Button 
           style={{fontSize:'12.8px', backgroundColor:'#016B83', boxShadow:'none'}}
+          disabled={isPlaceholderVisible}
           onClick={handlOpenModal}>
             Post
           </Button>

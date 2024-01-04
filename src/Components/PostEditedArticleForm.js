@@ -120,7 +120,7 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
                             </div>
                             
                             <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
-                                <label style={fontstyle} htmlFor="title" className='text-center form-label'><b>Please confirm the title of this article you created...</b></label>
+                                <label style={fontstyle} htmlFor="title" className='form-label'><b>Please confirm the title of this article you created... <span className="small" style={{color:'red'}}>*</span></b></label>
                                 <input
                                 type="text"
                                 id="title"
@@ -134,7 +134,7 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
                             
                             <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
                                 <label htmlFor="department" style={fontstyle} className="form-label">
-                                <b>To which department is this article relevant?</b>
+                                <b>To which department is this article relevant? <span className="small" style={{color:'red'}}>*</span></b>
                                 </label>
                                 <select className="form-control" style={fontstyle} id="department" onChange={(e) => handleDepartmentChange(e.target.value)} value={department}>
                                     <option value="company-wide">Company-wide</option>
@@ -151,7 +151,7 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
 
                             {/* INSERT BENEFICIARY SELECTIONS HERE */}
                             <div className="d-flex flex-column mt-0" style={{ padding: '5px', margin: '2rem' }}>
-                            <label style={fontstyle}><b>To whom is this article intended for?</b></label>
+                            <label style={fontstyle}><b>To whom is this article intended for? <span className="small" style={{color:'red'}}>*</span></b></label>
                             {beneficiariesOptions.map((option) => (
                                 <div key={option} className="form-check">
                                 <input
