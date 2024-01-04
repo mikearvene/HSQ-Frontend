@@ -46,10 +46,10 @@ export default function FormsRepository() {
     return (
         <>
             <div className="row">
-                <div className="mb-0 col-5">
+                <div className="mb-0 col-3">
                     <h4 className="text-muted">Forms Repository</h4>
                 </div>
-                <div className="col-6 ml-auto">
+                <div className="col-8 ml-auto">
                     <SearchArea setForms={setForms} setLoading={setLoading} refreshEffect={refreshEffect} setHeader={setHeader} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>

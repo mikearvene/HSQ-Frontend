@@ -39,10 +39,6 @@ export default function WikiSearchArea({setArticles,setLoading,refreshEffect,set
         setCategory(selectedCategory);
       };
 
-      useEffect(()=>{
-        console.log(category)
-        console.log(title)
-      },[category, title])
     return(
         <div className="d-flex">
             <Form.Control
