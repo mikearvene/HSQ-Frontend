@@ -25,7 +25,15 @@ export default function ComposeArticle() {
     body: "Body",
     conclusion: "Conclusion"
   };
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  };
+
+  const handlOpenModal = () =>{
+    setIsModalOpen(true)
+  }
   useEffect(() => {
     // Set the default font size and alignment on mount
     handleFontSizeChange();
@@ -287,7 +295,11 @@ export default function ComposeArticle() {
               </Button>
             </div>
           </div>
-
+          <Button 
+          style={{fontSize:'12.8px', backgroundColor:'#016B83', boxShadow:'none'}}
+          onClick={handlOpenModal}>
+            Post
+          </Button>
         </div>
 
         <div ref={paper} className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
@@ -302,22 +314,22 @@ export default function ComposeArticle() {
           onClick={()=>{if(isPlaceholderVisible){setPlaceholderVisible(false); handleAlign('Center')}}}
           
           />
-          <div style={{position:'relative', bottom:'795px', left: '100px', zIndex:'-1'}}>
+          <div style={{position:'absolute', bottom:'795px', left: '100px', zIndex:'-1'}}>
           {isPlaceholderVisible && (
                 <>
-                  <div className='fade-in-out-text d-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top:'50px', left: '150px', width:'300px'}}>
+                  <div className='fade-in-out-text d-flex' style={{ color: '#516473', fontStyle: 'italic', position:'absolute',zIndex:'-1',top:'85px', left: '150px', width:'300px'}}>
                     <span className=''><i>{`Start writing to remove placeholders . . .`}</i></span>
                   </div>
-                  <div className='d-inline-flex' style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '-45px', left: '250px' }}>
+                  <div className='d-inline-flex' style={{ color: '#516473', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '-45px', left: '250px' }}>
                     <h4 className='d-inline-flex' >{placeholderText.title}</h4>
                   </div>
-                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '45px', left: '-10px' }}>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '45px', left: '-10px' }}>
                     <h6 className='d-inline-flex'>{placeholderText.introduction}</h6>
                   </div>
-                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '135px', left: '-10px' }}>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '135px', left: '-10px' }}>
                     <h6 className='d-inline-flex'>{placeholderText.body}</h6>
                   </div>
-                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'relative',zIndex:'-1',top: '225px', left: '-10px' }}>
+                  <div  style={{ color: '#516473', fontStyle: 'italic', position:'absolute',zIndex:'-1',top: '225px', left: '-10px' }}>
                     <h6 className='d-inline-flex'>{placeholderText.conclusion}</h6>
                   </div>
                 </>
@@ -332,11 +344,9 @@ export default function ComposeArticle() {
           </span>
         </div>
 
-        <div className='d-flex flex-column align-items-center mt-5' style={{backgroundColor:'#F3F3F3', borderRadius:'10px'}}>
-          {/*  */}
-          <PostArticleForm content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible}/>
+       
+        <PostArticleForm content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible} isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}/>
 
-        </div>
       
       </div>
     </Container>

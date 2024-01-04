@@ -317,3 +317,21 @@ h1{
 }
 
 /* Article Images */
+
+
+/* Post form modal */
+.form-container-enter {
+  animation: form-container-entry 0.5s ease-out;
+}
+
+@keyframes form-container-entry {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+/* Post form modal */
