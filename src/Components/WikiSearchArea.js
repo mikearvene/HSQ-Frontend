@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Dropdown} from "react-bootstrap"
 
-export default function WikiSearchArea({setArticles,setLoading,refreshEffect,setHeader}){
+export default function WikiSearchArea({setArticles,setLoading,refreshEffect,setHeader,setCurrentPage}){
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
 
@@ -21,12 +21,14 @@ export default function WikiSearchArea({setArticles,setLoading,refreshEffect,set
         })
         .then(res => res.json())
         .then(data => {
+            setCurrentPage(1)
             setArticles(data);
             setLoading(false);
             setHeader('Custom Search')
         })
     }
     const reset = () =>{
+        setCurrentPage(1)
         setTitle(''); 
         setCategory('');
         refreshEffect();
