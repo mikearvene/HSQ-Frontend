@@ -95,6 +95,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
                         },
                     });
                 } else {
+                    handleCloseModal();
                     Swal.fire({
                         title: 'Something went wrong. :(',
                         text: 'Please try again',
@@ -117,6 +118,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
                         <Button 
                         variant="secondary" 
                         style={{fontSize: '12.8px', borderEndEndRadius:'0px', borderTopLeftRadius:'0px', backgroundColor:'#FFD082', borderStyle:'none'}}
+                        disabled={loading}
                         onClick={handleCloseModal}>
                             Close
                         </Button>

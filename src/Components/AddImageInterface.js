@@ -24,7 +24,7 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
     };
     const handleUpload = async() => {
         // Handle the addition of new images
-        
+        setLoading(true);
         if (newImages.length > 0) {
             const formData = new FormData();
             for (let i = 0; i < newImages.length; i++) {
@@ -52,7 +52,6 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
                     },
                 });
             } else {
-                console.log(response)
                 Swal.fire({
                     title: 'Something went wrong. :(',
                     text: 'Please try again',
@@ -65,7 +64,7 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
         // Close the modal after adding images
         setShowModal(false);
     };
-
+    console.log(newImages.length)
     return (
         <>
             <Button
@@ -103,7 +102,7 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
+                    <Button variant="secondary" onClick={handleCloseModal} disabled={loading}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleUpload} disabled={loading || newImages.length === 0}>
