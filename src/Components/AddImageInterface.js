@@ -42,13 +42,14 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
                 setLoading(false);
                 Swal.fire({
                     title: 'Image(s) Uploaded!',
+                    text: 'Please refresh your browser to see the uploaded images',
                     customClass: {
                         title: 'custom-swal-title',
                         confirmButton: 'custom-swal-confirm-button',
                     },
                     didClose: () => {
                         handleCloseModal()
-                        fetchImageData()
+                        // fetchImageData()
                     },
                 });
             } else {
