@@ -23,7 +23,15 @@ export default function EditArticle() {
   const maxZoom = 1;
   const [originalArticle, setOriginalArticle] = useState(null)
   const { articleId } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  };
+
+  const handlOpenModal = () =>{
+    setIsModalOpen(true)
+  }
 
   useEffect(()=>{
     editorRef.current.style.fontSize = `${32}px`;
@@ -312,7 +320,11 @@ export default function EditArticle() {
               </Button>
             </div>
           </div>
-
+          <Button 
+          style={{fontSize:'12.8px', backgroundColor:'#016B83', boxShadow:'none'}}
+          onClick={handlOpenModal}>
+            Post
+          </Button>
         </div>
 
         <div ref={paper} className="mt-4 container-fluid mb-0" style={{ border: '1px solid #ccc', margin: '2rem', width: '800px'}}>
@@ -335,15 +347,13 @@ export default function EditArticle() {
           </span>
         </div>
 
-        <div className='d-flex flex-column align-items-center mt-5' style={{backgroundColor:'#F3F3F3', borderRadius:'10px'}}>
-          {/*  */}
-          <PostEditedArticleForm refresh={refresh} originalArticle={originalArticle} content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible}/>
 
-        </div>
+        <PostEditedArticleForm refresh={refresh} originalArticle={originalArticle} content={editableContent} characters={characters} user={user} isPlaceholderVisible={isPlaceholderVisible}  isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}/>
+
       
       </div>
 
-      <ArticleImageViewEdit refresh={refresh} originalArticle={originalArticle}/>
+      <ArticleImageViewEdit refresh={refresh} originalArticle={originalArticle} setOriginalArticle={setOriginalArticle}/>
     </Container>
   );
 }

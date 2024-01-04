@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import AddImageInterface from "./AddImageInterface";
 
-export default function ArticleImageViewEdit({ refresh, originalArticle }) {
+export default function ArticleImageViewEdit({ refresh, originalArticle,setOriginalArticle }) {
     const { articleId } = useParams();
     const [fullscreenIndex, setFullscreenIndex] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -60,6 +60,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
     }
     const handleDeleteImage = async () => {
         setLoading(true);
+
         let imageKey = originalArticle.imageKeys[fullscreenIndex].key;
 
         // Display a confirmation popup using SweetAlert
@@ -125,7 +126,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle }) {
         <>
         {
         originalArticle === null ? <span>loading</span>:
-            <div className="d-flex flex-column justify-content-start align-items-center pt-5 pb-5 overflow-auto" style={{ width: '150px', height: '500px', position: 'relative', bottom: '72%', left: '85%', borderRadius: '8px', backgroundColor: '#F3F3F3', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
+            <div className="d-flex flex-column justify-content-start align-items-center pt-5 pb-5 overflow-auto" style={{ width: '150px', height: '500px', position: 'relative', bottom: '60%', left: '85%', borderRadius: '8px', backgroundColor: '#F3F3F3', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
                 <span className="text-center text-muted small"><i>Attached Images</i></span>
                 
                 <hr />
