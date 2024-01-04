@@ -175,7 +175,7 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
                             
                             <div className='mt-0' style={{ padding: '5px', margin: '2rem' }}>
                             <Button 
-                                className=""
+                                className="mr-1"
                                 variant="secondary" 
                                 style={{fontSize: '12.8px', width:"60px"}}
                                 disabled={loading}
