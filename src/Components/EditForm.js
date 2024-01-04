@@ -59,7 +59,7 @@ export default function EditForm({props}){
     }
     return(
         <>
-        <span className="anchor-underline cursor-pointer" onClick={() => openEdit()}>Edit Form</span>
+        <span className="small cursor-pointer" onClick={() => openEdit()} style={{textDecoration:'underline', color:'#016B83'}}>Edit Form</span>
         <Modal show={showEditForm} onHide={closeEdit}>
             <Form onSubmit={(e)=> editForm(e)}>
                 <Modal.Header>

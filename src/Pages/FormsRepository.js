@@ -52,7 +52,7 @@ export default function FormsRepository (){
         </div>
         <hr />
         <div className="container">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center mb-4">
                 <div className="col-4">
 
                 </div>
