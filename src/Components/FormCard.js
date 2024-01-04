@@ -1,6 +1,6 @@
 import EditForm from "./EditForm";
 
-export default function FormCard({ name, description, link, formId, refreshEffect, user}){
+export default function FormCard({ name, description, link, formId, refreshEffect, user, department}){
     return(
         <div className="mb-0 mt-3 pr-5 pl-5 pt-2 pb-2">
             <div className="d-flex align-items-center">
@@ -15,7 +15,7 @@ export default function FormCard({ name, description, link, formId, refreshEffec
                     </div>
                     {user.isManager? 
                     <div>
-                        <EditForm props={ {name, description, link, formId, refreshEffect}}/>
+                        <EditForm props={ {name,department, description, link, formId, refreshEffect}}/>
                     </div>
                     
                     : 

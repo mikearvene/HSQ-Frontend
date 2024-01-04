@@ -80,6 +80,7 @@ export default function FormsRepository() {
                                 formId={form._id}
                                 key={form._id}
                                 name={form.name}
+                                department={form.department}
                                 description={form.description}
                                 link={form.link}
                                 refreshEffect={refreshEffect}
