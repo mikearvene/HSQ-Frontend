@@ -58,7 +58,7 @@ export default function FormsRepository() {
                 <div className="row justify-content-center mb-4">
                     <div className="col-4"></div>
                     <div className="col-4 text-center d-flex align-items-center justify-content-center">
-                        <h6 className="m-0" style={{ textDecoration: 'underline' }}>{header}</h6>
+                        <h6 className="m-0" style={{ textDecoration: 'underline', color:'#516473' }}>{header}</h6>
                     </div>
                     <div className="col-4 d-flex justify-content-end align-items-center">
                         {user.isManager ?
