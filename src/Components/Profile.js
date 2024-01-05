@@ -71,9 +71,9 @@ export default function Profile(){
       
           const formData = new FormData();
           formData.append("image", selectedImage);
-          formData.append("key", profilePictureKey.key);
-
-          console.log( profilePictureKey.key)
+            if(profilePictureKey.key != undefined){
+                formData.append("key", profilePictureKey.key);
+            }
           fetch(`${process.env.REACT_APP_API_URL}/api/users/user/profilePicture/update`, {
             method: "PUT",
             headers: {
@@ -97,6 +97,8 @@ export default function Profile(){
         // Close the modal after successful upload
         closeUpdatePictureModal();
       };
+
+      console.log(profilePictureUrl)
     return(
         <>
              {/* <div className="d-flex justify-content-center text-center">
