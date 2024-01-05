@@ -18,6 +18,7 @@ import AppQuickLinksBar from './Components/AppQuickLinksBar';
 import ComposeArticle from './Pages/ComposeArticle'
 import ArticleViewer from './Pages/ArticleViewer';
 import EditArticle from './Pages/EditArticle';
+import MyProfile from './Pages/MyProfile';
 
 function App() {
 
@@ -117,12 +118,15 @@ function App() {
                         <div className='col-6 mt-4 mb-4 mr-auto pl-0 main-content'>
                             <div className='p-3' style={{}}>
                                 <Routes>
+                                    
                                     <Route path="/" element={<Home/>} />
                                     <Route path='/forms-repository' element={<FormsRepository/>} />
                                     <Route path='/wiki' element={<Wiki/>} />
+                                    <Route path="/my-profile/*" element={<MyProfile />} />
                                     <Route path='/login' element={<Login />} />
                                     <Route path='/logout' element={<Logout />} />
                                     <Route path="*" element={<PageNotFound />} />
+
                                 </Routes> 
                             </div>
                         </div>

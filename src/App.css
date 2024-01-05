@@ -21,6 +21,9 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
+.muted{
+  color: var(--muted) !important;
+}
 .very-very-small{
   font-size: 6.55px !important;
 }
