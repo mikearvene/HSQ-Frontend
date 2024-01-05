@@ -52,13 +52,14 @@ function App() {
 
             data = data.result
             if(typeof data !== "undefined"){
-
+                console.log(data)
                 setUser({
                     id: data._id,
                     firstName: data.firstName,
                     lastName: data.lastName,
                     jobTitle: data.jobTitle,
-                    isManager: data.isManager
+                    isManager: data.isManager,
+                    profilePicture: data.profilePictureUrl
                 })
 
                 setIsDoneInitialing(true);
@@ -69,7 +70,8 @@ function App() {
                     firstName: null,
                     lastName: null,
                     jobTitle: null,
-                    isManager: null
+                    isManager: null,
+                    profilePicture:null
                 })
 
                 setIsDoneInitialing(true);
@@ -77,7 +79,7 @@ function App() {
         })
         
     }, [user.id])
-
+    console.log(user.profilePicture)
     return (
         
         <UserProvider value={{user, setUser, unsetUser}}>
