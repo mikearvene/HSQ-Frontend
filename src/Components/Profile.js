@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Swal from "sweetalert2";
 import UpdateProfilePicModal from "./Subcomponents/UpdateProfilePicModal";
 import UpdateMobileNoModal from "./Subcomponents/UpdateMobileNoModal";
+import UpdatePersonalEmailModal from "./Subcomponents/UpdatePersonalEmailModal";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -15,6 +16,7 @@ export default function Profile(){
     const [profilePictureUrl, setProfilePictureUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
     const [showMobileNoModal, setShowMobileNoModal] =useState(false);
+    const [showEmailModal, setShowEmailModal] =useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(()=>{
@@ -69,6 +71,14 @@ export default function Profile(){
         const closeUpdateMobileNoModal = () => {
             setShowMobileNoModal(false);
         };
+        const openUpdateEmailModal = () => {
+            setShowEmailModal(true);
+        };
+
+        const closeUpdateEmailModal = () => {
+            setShowEmailModal(false);
+        };
+    
     
       const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -195,11 +205,9 @@ export default function Profile(){
                     <span className="muted"><u>PERSONAL EMAIL</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{personalEmail}</i></b></span> 
+                    <span className="muted ml-3"><b><i>{personalEmail}</i></b></span> 
                     <span className="small"  style={linkStyle} >
-                        <i>
-                            edit  
-                        </i>
+                        <UpdatePersonalEmailModal openUpdateEmailModal={openUpdateEmailModal} showEmailModal={showEmailModal} oldEmail={personalEmail} closeUpdateEmailModal={closeUpdateEmailModal} fetchUserData={fetchUserData}/>
                     </span>
                 </div>
             </div>
