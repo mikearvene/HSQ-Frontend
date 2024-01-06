@@ -11,9 +11,10 @@ export default function NavUserIcon({setIsOpen, isOpen, user}){
             setIsOpen(false)
         }
     }
+
     return(
         <a style={{cursor:'pointer'}} onClick={handleClick}>
-            {typeof user.profilePicture !== false ? 
+            {user.profilePicture !== "false" ? 
             <>
             <img 
             src={user.profilePicture} 
