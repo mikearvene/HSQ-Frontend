@@ -4,7 +4,7 @@ export default function UserIconPop (){
 
     return(
         <>
-        <div className="d-flex flex-column justify-content-center align-items-center p-1" style={{border:`solid`,borderWidth:`1px`,borderRadius:`8px`,height:`129px`, width:`130px`, zIndex: '1', position: 'fixed', transform: 'translate(30%, 80%)', backgroundColor:'#F3F3F3'}}>
+        <div className="d-flex flex-column justify-content-center align-items-center p-1" style={{border:`solid`,borderWidth:`1px`,borderRadius:`8px`,height:`129px`, width:`130px`, zIndex: '1', position: 'fixed', transform: 'translate(0%, 80%)', backgroundColor:'#F3F3F3'}}>
 
             <div className="m-1 cursor-pointer">
             <Link to="/my-profile/detail" className="m-1 cursor-pointer" style={linkStyle}>            

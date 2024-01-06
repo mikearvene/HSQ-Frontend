@@ -39,7 +39,10 @@ export default function Profile(){
                 setProfilePictureKey(data.profilePictureKey)
                 setProfilePictureUrl(data.profilePictureUrl)
             } else {
-                
+                Swal.fire({
+                    title: 'Something went wrong :(',
+                    text: 'Please try to refresh your browser.'
+                });
             }   
         })
     }
@@ -115,7 +118,7 @@ export default function Profile(){
                     <img 
                         src={profilePictureUrl} 
                         alt="profile-picture" 
-                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "contain" }}
+                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "cover" }}
                     />
                 </div>
                 :

@@ -24,6 +24,9 @@
 .muted{
   color: var(--muted) !important;
 }
+.white{
+  color:var(--brand-color-1) !important;
+}
 .very-very-small{
   font-size: 6.55px !important;
 }
