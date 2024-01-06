@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { Modal, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import UpdateProfilePicModal from "./Subcomponents/UpdateProfilePicModal";
+import UpdateMobileNoModal from "./Subcomponents/UpdateMobileNoModal";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -14,8 +14,9 @@ export default function Profile(){
     const [profilePictureKey, setProfilePictureKey] = useState('');
     const [profilePictureUrl, setProfilePictureUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
+    const [showMobileNoModal, setShowMobileNoModal] =useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    
+
     useEffect(()=>{
         fetchUserData()
     },[])
@@ -54,19 +55,26 @@ export default function Profile(){
         textDecoration:'underline',
         cursor:'pointer'
     }
-    const openUpdatePictureModal = () => {
-        setShowModal(true);
-      };
-    
-      const closeUpdatePictureModal = () => {
-        setShowModal(false);
-      };
+        const openUpdatePictureModal = () => {
+            setShowModal(true);
+        };
+
+        const closeUpdatePictureModal = () => {
+            setShowModal(false);
+        };
+        const openUpdateMobileNoModal = () => {
+            setShowMobileNoModal(true);
+        };
+
+        const closeUpdateMobileNoModal = () => {
+            setShowMobileNoModal(false);
+        };
     
       const handleImageChange = (e) => {
         const file = e.target.files[0];
         setSelectedImage(file);
       };
-    
+
       const handleUpload = () => {
         if (!selectedImage) {
             // Handle case where no image is selected
@@ -177,14 +185,22 @@ export default function Profile(){
                     <span className="muted"><u>CONTACT NUMBER</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle}><i>Edit</i></span>
+                    <span className="muted ml-4"><b><i>{contactNo}</i></b></span>
+                    <span className="small" style={linkStyle}>
+                        <UpdateMobileNoModal openUpdateMobileNoModal={openUpdateMobileNoModal} showMobileNoModal={showMobileNoModal} closeUpdateMobileNoModal={closeUpdateMobileNoModal} fetchUserData={fetchUserData}/>
+                    </span>
                     <hr style={{width:'50%'}}/>
                 </div>
                 <div  className="mt-2">
                     <span className="muted"><u>PERSONAL EMAIL</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} ><i>Edit</i></span>
+                    <span className="muted"><b><i>{personalEmail}</i></b></span> 
+                    <span className="small"  style={linkStyle} >
+                        <i>
+                            edit  
+                        </i>
+                    </span>
                 </div>
             </div>
             <UpdateProfilePicModal showModal={showModal} closeUpdatePictureModal={closeUpdatePictureModal} handleImageChange={handleImageChange} handleUpload={handleUpload}/>
