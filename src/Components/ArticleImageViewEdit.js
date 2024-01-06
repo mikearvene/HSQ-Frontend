@@ -128,10 +128,10 @@ export default function ArticleImageViewEdit({ refresh, originalArticle,setOrigi
         <>
         {
         originalArticle === null ? <span>loading</span>:
-            <div className="d-flex flex-column justify-content-start align-items-center pt-5 pb-5 overflow-auto" style={{ width: '150px', height: '500px', position: 'relative', bottom: '60%', left: '85%', borderRadius: '8px', backgroundColor: '#F3F3F3', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
-                <span className="text-center text-muted small"><i>Attached Images</i></span>
+            <div className="d-flex flex-column justify-content-start align-items-center pt-3 pb-5 overflow-auto" style={{maxWidth:'70px', minWidth:'70px',  height: '300px', position: 'fixed', bottom: '20vh', left: '1%', borderColor:'#516473', borderStyle:'solid', borderRadius: '8px', backgroundColor: '', borderWidth:'1px', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
+                {/* <span className="text-center text-muted small"><i>Attached Images</i></span> */}
                 
-                <hr />
+                {/* <hr /> */}
 
                 <div className="mb-3">
                     <AddImageInterface setImages={setImages} fetchImageData={fetchImageData}/>
@@ -144,7 +144,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle,setOrigi
                     :
                     <>
                         {images.map((image, index) => (
-                            <div className="text-center mb-2" key={index} style={{ height: "100px", width: "100px", cursor: "pointer", backgroundColor: '#FFFFFF', borderRadius: '5px', borderColor: '#516473', border: '1px', borderStyle: 'solid' }} onClick={() => handleImageClick(index)}>
+                            <div className="text-center mb-2" key={index} style={{ height: "30px", width: "30px", cursor: "pointer", backgroundColor: '#FFFFFF', borderRadius: '5px', borderColor: '#516473', border: '1px', borderStyle: 'solid' }} onClick={() => handleImageClick(index)}>
                                 <img
                                     src={image}
                                     alt={`Image ${index + 1}`}

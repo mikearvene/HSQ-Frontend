@@ -68,12 +68,9 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
     console.log(newImages.length)
     return (
         <>
-            <Button
-                style={{ backgroundColor: '#016B83', fontSize: '12.8px' }}
-                onClick={openAddImageInterface}
-            >
-                Add Image
-            </Button>
+            <div className="d-flex justify-content-center align-items-center" style={{cursor:'pointer', backgroundColor:'#516473', borderRadius:'5px'}}>
+                <span onClick={openAddImageInterface} className="white pt-1 pb-1 pl-2 pr-2 m-0">+</span>
+            </div>
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header >
                     <Modal.Title className="text-center">Add Images</Modal.Title>
