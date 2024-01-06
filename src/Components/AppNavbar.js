@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavUserIcon from './Subcomponents/NavUserIcon';
 import Logo from './Subcomponents/Logo';
 import UserIconPop from './UserIconPop';
 import { useLocation } from 'react-router-dom';
-
+import UserContext from '../userContext';
 
 const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
+    const { user } = useContext(UserContext);
     let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +45,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
                     </Col>
                     {/* Column Below is for profile/notifications */}
                     <Col md='4' className='d-flex justify-content-end align-items-center'> 
-                        <NavUserIcon setIsOpen={setIsOpen} isOpen={isOpen}/>
+                        <NavUserIcon setIsOpen={setIsOpen} isOpen={isOpen} user={user}/>
                         {isOpen ? <UserIconPop />:
                         <></>
                         }
