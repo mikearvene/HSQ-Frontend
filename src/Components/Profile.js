@@ -39,7 +39,10 @@ export default function Profile(){
                 setProfilePictureKey(data.profilePictureKey)
                 setProfilePictureUrl(data.profilePictureUrl)
             } else {
-                
+                Swal.fire({
+                    title: 'Something went wrong :(',
+                    text: 'Please try to refresh your browser.'
+                });
             }   
         })
     }
@@ -115,7 +118,7 @@ export default function Profile(){
                     <img 
                         src={profilePictureUrl} 
                         alt="profile-picture" 
-                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "contain" }}
+                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "cover" }}
                     />
                 </div>
                 :
@@ -173,14 +176,14 @@ export default function Profile(){
                     <span className="muted"><u>CONTACT NUMBER</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle} onClick={{}}><i>Edit</i></span>
+                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle}><i>Edit</i></span>
                     <hr style={{width:'50%'}}/>
                 </div>
                 <div  className="mt-2">
                     <span className="muted"><u>PERSONAL EMAIL</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} onClick={{}}><i>Edit</i></span>
+                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} ><i>Edit</i></span>
                 </div>
             </div>
 
