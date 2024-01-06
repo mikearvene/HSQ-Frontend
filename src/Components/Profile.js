@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { Modal, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import UpdateProfilePicModal from "./Subcomponents/UpdateProfilePicModal";
+import UpdateMobileNoModal from "./Subcomponents/UpdateMobileNoModal";
+import UpdatePersonalEmailModal from "./Subcomponents/UpdatePersonalEmailModal";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -13,8 +15,10 @@ export default function Profile(){
     const [profilePictureKey, setProfilePictureKey] = useState('');
     const [profilePictureUrl, setProfilePictureUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
+    const [showMobileNoModal, setShowMobileNoModal] =useState(false);
+    const [showEmailModal, setShowEmailModal] =useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    
+
     useEffect(()=>{
         fetchUserData()
     },[])
@@ -53,19 +57,34 @@ export default function Profile(){
         textDecoration:'underline',
         cursor:'pointer'
     }
-    const openUpdatePictureModal = () => {
-        setShowModal(true);
-      };
+        const openUpdatePictureModal = () => {
+            setShowModal(true);
+        };
+
+        const closeUpdatePictureModal = () => {
+            setShowModal(false);
+        };
+        const openUpdateMobileNoModal = () => {
+            setShowMobileNoModal(true);
+        };
+
+        const closeUpdateMobileNoModal = () => {
+            setShowMobileNoModal(false);
+        };
+        const openUpdateEmailModal = () => {
+            setShowEmailModal(true);
+        };
+
+        const closeUpdateEmailModal = () => {
+            setShowEmailModal(false);
+        };
     
-      const closeUpdatePictureModal = () => {
-        setShowModal(false);
-      };
     
       const handleImageChange = (e) => {
         const file = e.target.files[0];
         setSelectedImage(file);
       };
-    
+
       const handleUpload = () => {
         if (!selectedImage) {
             // Handle case where no image is selected
@@ -176,34 +195,23 @@ export default function Profile(){
                     <span className="muted"><u>CONTACT NUMBER</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle}><i>Edit</i></span>
+                    <span className="muted ml-4"><b><i>{contactNo}</i></b></span>
+                    <span className="small" style={linkStyle}>
+                        <UpdateMobileNoModal openUpdateMobileNoModal={openUpdateMobileNoModal} showMobileNoModal={showMobileNoModal} closeUpdateMobileNoModal={closeUpdateMobileNoModal} fetchUserData={fetchUserData}/>
+                    </span>
                     <hr style={{width:'50%'}}/>
                 </div>
                 <div  className="mt-2">
                     <span className="muted"><u>PERSONAL EMAIL</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} ><i>Edit</i></span>
+                    <span className="muted ml-3"><b><i>{personalEmail}</i></b></span> 
+                    <span className="small"  style={linkStyle} >
+                        <UpdatePersonalEmailModal openUpdateEmailModal={openUpdateEmailModal} showEmailModal={showEmailModal} oldEmail={personalEmail} closeUpdateEmailModal={closeUpdateEmailModal} fetchUserData={fetchUserData}/>
+                    </span>
                 </div>
             </div>
-
-            {/* Modal */}
-            <Modal show={showModal} onHide={closeUpdatePictureModal}>
-            <Modal.Header closeButton>
-            <Modal.Title>Update Profile Picture</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <input type="file" onChange={handleImageChange} />
-            </Modal.Body>
-            <Modal.Footer>
-            <Button variant="secondary" onClick={closeUpdatePictureModal}>
-            Close
-            </Button>
-            <Button variant="primary" onClick={handleUpload}>
-            Upload
-            </Button>
-            </Modal.Footer>
-            </Modal>
+            <UpdateProfilePicModal showModal={showModal} closeUpdatePictureModal={closeUpdatePictureModal} handleImageChange={handleImageChange} handleUpload={handleUpload}/>
         </>
     )
 }

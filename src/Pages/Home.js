@@ -1,4 +1,5 @@
 import QuickLinks from "../Components/QuickLinks"
+import { Container, Row, Col } from "react-bootstrap"
 
 
 export default function Home(){
@@ -11,6 +12,13 @@ export default function Home(){
             </div>
         </div>
         <hr />
+        <Container>
+            <Row>
+                <Col>
+                    <h5 className="muted">Nothing to display...</h5>
+                </Col>
+            </Row>
+        </Container>
         {/* <QuickLinks /> */}
         </>
     )
