@@ -88,7 +88,7 @@ export default function Profile(){
 
             closeUpdatePictureModal();
             Swal.fire({
-            title: 'Article Posted!',
+            title: 'Profile updated!',
             customClass: {
                 title: 'custom-swal-title',
                 confirmButton: 'custom-swal-confirm-button',
