@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Modal, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -43,7 +44,6 @@ export default function Profile(){
         })
     }
     
-    console.log(profilePictureKey)
     const linkStyle = {
         fontSize: "12.8px",
         color: "#016B83",
@@ -71,7 +71,7 @@ export default function Profile(){
       
           const formData = new FormData();
           formData.append("image", selectedImage);
-            if(profilePictureKey.key != undefined){
+            if(typeof profilePictureKey === 'object'){
                 formData.append("key", profilePictureKey.key);
             }
           fetch(`${process.env.REACT_APP_API_URL}/api/users/user/profilePicture/update`, {
@@ -84,33 +84,38 @@ export default function Profile(){
             .then((response) => response.json())
             .then((data) => {
             fetchUserData()
-              // Handle successful upload response
-              console.log("Image uploaded successfully:", data);
-      
-              // Close the modal after successful upload
-              closeUpdatePictureModal();
+
+
+            closeUpdatePictureModal();
+            Swal.fire({
+            title: 'Article Posted!',
+            customClass: {
+                title: 'custom-swal-title',
+                confirmButton: 'custom-swal-confirm-button',
+            }
+            });
             })
             .catch((error) => {
               // Handle error during upload
-              console.error("Error uploading image:", error);
+              Swal.fire({
+                        title: 'Something went wrong. :(',
+                        text: 'Please try again',
+                    });
             });
         // Close the modal after successful upload
         closeUpdatePictureModal();
       };
 
-      console.log(profilePictureUrl)
     return(
         <>
-             {/* <div className="d-flex justify-content-center text-center">
-                <h3 className="muted">My Profile</h3>
-            </div> */}
+
             <div  className="d-flex flex-column justify-content-center text-center">
                 {profilePictureUrl !== 'false' ? 
                 <div>
                     <img 
                         src={profilePictureUrl} 
                         alt="profile-picture" 
-                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473' }}
+                        style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "contain" }}
                     />
                 </div>
                 :

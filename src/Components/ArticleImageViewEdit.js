@@ -102,7 +102,6 @@ export default function ArticleImageViewEdit({ refresh, originalArticle,setOrigi
                         },
                     });
                 } else {
-                    console.log(response)
                     Swal.fire({
                         title: 'Something went wrong. :(',
                         text: 'Please try again',
@@ -112,7 +111,10 @@ export default function ArticleImageViewEdit({ refresh, originalArticle,setOrigi
                 }
             } catch (error) {
                 console.error('Error:', error);
-                // Handle any additional error handling if needed
+                Swal.fire({
+                    title: 'Something went wrong. :(',
+                    text: 'Please try again',
+                });
             }
         }
     };

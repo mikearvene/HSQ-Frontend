@@ -52,7 +52,7 @@ function App() {
 
             data = data.result
             if(typeof data !== "undefined"){
-                console.log(data)
+
                 setUser({
                     id: data._id,
                     firstName: data.firstName,
@@ -79,7 +79,7 @@ function App() {
         })
         
     }, [user.id])
-    console.log(user.profilePicture)
+
     return (
         
         <UserProvider value={{user, setUser, unsetUser}}>

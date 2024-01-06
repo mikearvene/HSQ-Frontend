@@ -20,13 +20,10 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
         if(originalArticle!== null){
             setTitle(originalArticle.title);
             setDepartment(originalArticle.department);
-            console.log(originalArticle.beneficiary)
             setBenificiary(originalArticle.beneficiary);
         }
     },[originalArticle])
-    useEffect(()=>{
-        console.log(beneficiary)
-    },[beneficiary])
+
     const handleDepartmentChange = (selectedDepartment) => {
         setDepartment(selectedDepartment);
     };
