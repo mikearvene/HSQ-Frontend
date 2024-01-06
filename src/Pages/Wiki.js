@@ -5,6 +5,7 @@ import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
 import WikiSearchArea from "../Components/WikiSearchArea";
 import ArticleCard from "../Components/ArticleCard";
 import NoArticlesFound from "../Components/NoArticlesFound";
+import Swal from "sweetalert2";
 
 export default function Wiki() {
     const { user } = useContext(UserContext);
@@ -14,24 +15,32 @@ export default function Wiki() {
     const [articlesPerPage] = useState(10);
     const [header, setHeader] = useState('All Forms & Docs');
 
-    useEffect(() => {
-        fetchArticles();
-    }, []);
+    
 
     const fetchArticles = () => {
         setLoading(true);
-        fetch(`${process.env.REACT_APP_API_URL}/api/articles/`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            setArticles(data);
-            setLoading(false);
-        });
+        try{
+            fetch(`${process.env.REACT_APP_API_URL}/api/articles/`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                setArticles(data);
+                setLoading(false);
+            });
+        } catch(err){
+            Swal.fire({
+                title: 'Something went wrong. :(',
+                text: 'Please refresh your browser',
+            });
+        }
+        
     };
-
+    useEffect(() => {
+        fetchArticles();
+    }, []);
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const refreshEffect = () => {

@@ -176,14 +176,14 @@ export default function Profile(){
                     <span className="muted"><u>CONTACT NUMBER</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle} onClick={{}}><i>Edit</i></span>
+                    <span className="muted"><b><i>{contactNo}</i></b></span><span className="small" style={linkStyle}><i>Edit</i></span>
                     <hr style={{width:'50%'}}/>
                 </div>
                 <div  className="mt-2">
                     <span className="muted"><u>PERSONAL EMAIL</u></span>
                 </div>
                 <div>
-                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} onClick={{}}><i>Edit</i></span>
+                    <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} ><i>Edit</i></span>
                 </div>
             </div>
 
