@@ -28,9 +28,9 @@ const AppSidebar = () => {
       <div className="sidenavbar-content">
         {/* Add sidenavbar content here */}
         <Link to='/' className=''>Home</Link>
+        <Link to={'/my-profile/detail'}>My Profile <span style={{position:'relative', right:'0%'}}><NewFeatureBadge/></span></Link>
         <Link to='/forms-repository' className=''>Forms Repository</Link>
         <Link to={'/wiki'}>Wiki</Link>
-        <Link to={'/my-profile/detail'}>My Profile <span style={{position:'absolute', bottom:'40%', right:'48%'}}><NewFeatureBadge/></span></Link>
         <p className='user-select-none'><span className='text-muted'>My Calendar <ComingSoonBadge/></span></p>
         <p className='user-select-none'><span className='text-muted'>News & Updates <ComingSoonBadge/></span></p>
         <p className='user-select-none'><span className='text-muted'>Team Directory <ComingSoonBadge/></span></p>
