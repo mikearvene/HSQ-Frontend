@@ -69,7 +69,7 @@ export default function EditArticle() {
     handleColorChange();
     handleAlign(alignment);
     setEditableContent(editorRef.current.innerHTML);
-    console.log(editableContent)
+
     return () => {
 
     };

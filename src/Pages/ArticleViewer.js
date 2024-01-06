@@ -34,7 +34,7 @@ export default function ArticleViewer() {
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-  console.log(article )
+
   return (
     
     <>
