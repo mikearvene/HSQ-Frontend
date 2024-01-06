@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Modal, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import UpdateProfilePicModal from "./Subcomponents/UpdateProfilePicModal";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -186,24 +187,7 @@ export default function Profile(){
                     <span className="muted"><b><i>{personalEmail}</i></b></span> <span className="small" style={linkStyle} ><i>Edit</i></span>
                 </div>
             </div>
-
-            {/* Modal */}
-            <Modal show={showModal} onHide={closeUpdatePictureModal}>
-            <Modal.Header closeButton>
-            <Modal.Title>Update Profile Picture</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <input type="file" onChange={handleImageChange} />
-            </Modal.Body>
-            <Modal.Footer>
-            <Button variant="secondary" onClick={closeUpdatePictureModal}>
-            Close
-            </Button>
-            <Button variant="primary" onClick={handleUpload}>
-            Upload
-            </Button>
-            </Modal.Footer>
-            </Modal>
+            <UpdateProfilePicModal showModal={showModal} closeUpdatePictureModal={closeUpdatePictureModal} handleImageChange={handleImageChange} handleUpload={handleUpload}/>
         </>
     )
 }
