@@ -36,7 +36,7 @@ export default function ArticleImageView({ images }) {
 
     return (
         <>
-            <div className="d-flex flex-column justify-content-start align-items-center pt-5 pb-5 overflow-auto" style={{maxWidth:'70px', minWidth:'70px',  height: '300px', position: 'fixed', bottom: '10vh', left: '90%', borderColor:'#516473', borderStyle:'solid', borderRadius: '8px', backgroundColor: '', borderWidth:'1px', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
+            <div className="d-flex flex-column justify-content-start align-items-center pt-5 pb-5 overflow-auto" style={{maxWidth:'70px', minWidth:'70px',  height: '300px', position: 'relative', bottom: '65%', left: '90%', borderColor:'#516473', borderStyle:'solid', borderRadius: '8px', backgroundColor: '', borderWidth:'1px', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
                 {images.length === 0 ?
                     <div className="d-flex justify-content-center align-items-center p-3 text-muted text-center" style={{ height: '200px' }}>
                         <span><u>No Attached Images</u></span>

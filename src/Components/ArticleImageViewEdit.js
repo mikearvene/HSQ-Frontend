@@ -128,7 +128,7 @@ export default function ArticleImageViewEdit({ refresh, originalArticle,setOrigi
         <>
         {
         originalArticle === null ? <span>loading</span>:
-            <div className="d-flex flex-column justify-content-start align-items-center pt-3 pb-5 overflow-auto" style={{maxWidth:'70px', minWidth:'70px',  height: '300px', position: 'fixed', bottom: '20vh', left: '1%', borderColor:'#516473', borderStyle:'solid', borderRadius: '8px', backgroundColor: '', borderWidth:'1px', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
+            <div className="d-flex flex-column justify-content-start align-items-center pt-3 pb-5 overflow-auto" style={{maxWidth:'70px', minWidth:'70px',  height: '300px', position: 'sticky', bottom: '10%', left: '1%', borderColor:'#516473', borderStyle:'solid', borderRadius: '8px', backgroundColor: '', borderWidth:'1px', boxShadow: '0 0 1px rgba(0, 0, 0, 0.3)' }}>
                 {/* <span className="text-center text-muted small"><i>Attached Images</i></span> */}
                 
                 {/* <hr /> */}
