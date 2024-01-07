@@ -14,8 +14,9 @@ export default function Home(){
         <hr />
         <Container>
             <Row>
-                <Col>
+                <Col className="mr-5">
                     <h5 className="muted">Nothing to display...</h5>
+                    <h5 className="muted mt-5">(Company-wide announcements will be soon posted here.)</h5>
                 </Col>
             </Row>
         </Container>
