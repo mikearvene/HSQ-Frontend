@@ -13,7 +13,6 @@ export default function EditForm({props}){
     const [department, setDepartment] = useState(props.department); // Step 1
     
     const openEdit = () => {
-        console.log(formId)
         setShowEditForm(true);
     }
 

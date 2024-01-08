@@ -11,9 +11,6 @@ export default function UpdatePersonalEmailModal({openUpdateEmailModal, showEmai
         const input = e.target.value;
         setNewEmail(input);
       };
-    useEffect(()=>{
-        console.log(isEmailValid(newEmail))
-    },[newEmail])
     const handleEmailUpdate = async(e) =>{
 
         e.preventDefault();

@@ -31,7 +31,7 @@ export default function TeamDirectory (){
     useEffect(()=>{
         refreshEffect();
     },[])
-    console.log(result)
+
     return(
         <>
             <div className="row">

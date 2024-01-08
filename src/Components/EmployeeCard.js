@@ -7,7 +7,7 @@ export default function EmployeeCard({user, refreshEffect}){
     const handleImageLoad = () => {
         setLoading(false);
       };
-    console.log(user.profilePictureUrl)
+
     return(
         /*Add onClick here that opens a modal for user*/
         <div className="ml-3 mt-2 d-flex flex-column text-center align-items-center p-2" style={{height:'230px', width:'180px', backgroundColor:'', borderRadius:'8px', border: '2px solid #516473'}}>

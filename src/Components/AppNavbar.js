@@ -13,7 +13,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(()=>{
-        console.log(location.pathname)
+
         if(location.pathname === "/compose-article"){
             setIsInCompose(true)
         } else {
@@ -27,9 +27,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
          // Set the state based on the condition
          setIsInArticleView(isInArticlePath);
          setIsInEditArticleView(isInEditArticlePath)    
-        
-        console.log(`isInArticlePath: ${isInArticlePath}`)
-        console.log(`isInEditArticlePath: ${isInEditArticlePath}`)
+
     },[location])
     
     return (
