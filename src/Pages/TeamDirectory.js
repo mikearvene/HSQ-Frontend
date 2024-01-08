@@ -43,7 +43,7 @@ export default function TeamDirectory (){
                 </div>
             </div>
             <hr />
-            <div className="d-flex justify-content-start flex-wrap p-3">
+            <div className="d-flex justify-content-center align-items-center flex-wrap p-3">
                 {result !== null ? 
                     result.length > 0 ? 
                     <>
