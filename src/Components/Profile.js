@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import UpdateProfilePicModal from "./Subcomponents/UpdateProfilePicModal";
 import UpdateMobileNoModal from "./Subcomponents/UpdateMobileNoModal";
 import UpdatePersonalEmailModal from "./Subcomponents/UpdatePersonalEmailModal";
+import ProfileSkeleton from "./Subcomponents/ProfileSkeleton";
 
 export default function Profile(){
     const [firstName, setFirstName] = useState('');
@@ -18,10 +19,16 @@ export default function Profile(){
     const [showMobileNoModal, setShowMobileNoModal] =useState(false);
     const [showEmailModal, setShowEmailModal] =useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
         fetchUserData()
     },[])
+    useEffect(()=>{
+        console.log(loading)
+    },[loading])
+
+
     const fetchUserData = () =>{
         fetch(`${process.env.REACT_APP_API_URL}/api/users/user/detail`,{
             headers: {
@@ -84,6 +91,9 @@ export default function Profile(){
         const file = e.target.files[0];
         setSelectedImage(file);
       };
+      const handleImageLoad = () => {
+        setLoading(false);
+      };
 
       const handleUpload = () => {
         if (!selectedImage) {
@@ -133,12 +143,18 @@ export default function Profile(){
 
             <div  className="d-flex flex-column justify-content-center text-center">
                 {profilePictureUrl !== 'false' ? 
-                <div>
+                <div className="d-flex justify-content-center">
+                    
                     <img 
-                        src={profilePictureUrl} 
+                        src={profilePictureUrl}
+                        onLoad={handleImageLoad} 
                         alt="profile-picture" 
                         style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "cover" }}
                     />
+                    {loading? 
+                    <ProfileSkeleton/>
+                    :<></>
+                    }
                 </div>
                 :
                 <div>
