@@ -23,7 +23,8 @@ export default function TeamDirectorySearchArea ({refreshEffect, setLoading, set
         })
         .then(res => res.json())
         .then(data => {
-            setResult(data)
+            const sortedData = data.sort((a, b) => (a.department > b.department) ? 1 : -1);
+            setResult(sortedData);
             setLoading(false);
         })
     }
