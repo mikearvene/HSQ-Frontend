@@ -1,0 +1,19 @@
+.profile-skeleton-background {
+    background-color: #F3F3F3 !important;
+  }
+.profile-skeleton{
+  background-color: #516473 !important;
+  animation: pulse 1.5s infinite !important;
+}
+  
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
