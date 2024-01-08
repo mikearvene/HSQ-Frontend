@@ -1,4 +1,3 @@
-import QuickLinks from "../Components/QuickLinks"
 import { Container, Row, Col } from "react-bootstrap"
 
 
@@ -20,7 +19,6 @@ export default function Home(){
                 </Col>
             </Row>
         </Container>
-        {/* <QuickLinks /> */}
         </>
     )
 }

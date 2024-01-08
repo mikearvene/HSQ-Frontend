@@ -2,7 +2,6 @@ import { useEffect, useState,useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import UserContext from '../userContext';
 import { Row, Col, Container } from "react-bootstrap";
-import LoaderTwo from "../Components/Subcomponents/loader/LoaderTwo";
 import ArticleImageView from "../Components/ArticleImageView";
 
 export default function ArticleViewer() {
