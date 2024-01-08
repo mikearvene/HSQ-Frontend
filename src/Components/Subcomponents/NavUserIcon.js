@@ -2,7 +2,6 @@
 
 export default function NavUserIcon({setIsOpen, isOpen, user}){
     
-    console.log(user)
 
     const handleClick = () => {
         if(!isOpen){

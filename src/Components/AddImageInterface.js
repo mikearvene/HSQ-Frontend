@@ -65,7 +65,6 @@ export default function AddImageInterface({ fetchImageData, setImages }) {
         // Close the modal after adding images
         setShowModal(false);
     };
-    console.log(newImages.length)
     return (
         <>
             <div className="d-flex justify-content-center align-items-center" style={{cursor:'pointer', backgroundColor:'#516473', borderRadius:'5px'}}>

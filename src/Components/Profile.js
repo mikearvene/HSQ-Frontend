@@ -24,9 +24,6 @@ export default function Profile(){
     useEffect(()=>{
         fetchUserData()
     },[])
-    useEffect(()=>{
-        console.log(loading)
-    },[loading])
 
 
     const fetchUserData = () =>{
@@ -152,7 +149,7 @@ export default function Profile(){
                         style={{ borderRadius: '50%', width: '125px', height: '125px', border: '2px solid #516473', objectFit: "cover" }}
                     />
                     {loading? 
-                    <ProfileSkeleton/>
+                    <ProfileSkeleton borderRadius={'50%'} height={'125px'} width={'125px'}/>
                     :<></>
                     }
                 </div>
