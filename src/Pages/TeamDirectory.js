@@ -38,24 +38,28 @@ export default function TeamDirectory (){
                     <h4 className="text-muted">Team Directory</h4>
                 </div>
                 <div className="col-9 ml-auto d-flex align-items-center">
-                    <TeamDirectorySearchArea setLoading={setLoading} refreshEffect={refreshEffect}/>
+                    <TeamDirectorySearchArea setLoading={setLoading} refreshEffect={refreshEffect} setResult={setResult}/>
                 </div>
             </div>
             <hr />
             <div className="d-flex justify-content-start flex-wrap p-3">
                 {result !== null ? 
-                <>
-                    {
-                        result.map(user =>(
-                            <EmployeeCard 
-                            key={user._id}
-                            user={user}
-                            refreshEffect={refreshEffect}
-                            
-                            />
-                        ))
-                    }
-                </>
+                    result.length > 0 ? 
+                    <>
+                        {
+                            result.map(user =>(
+                                <EmployeeCard 
+                                key={user._id}
+                                user={user}
+                                refreshEffect={refreshEffect}
+                                
+                                />
+                            ))
+                        }
+                    </>
+                    :
+                    <h3 className="muted">0 Users found</h3>
+                
                 :
                 <><h2 className="muted">fetching data...</h2></>}
             </div>

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Form, Button, Dropdown} from "react-bootstrap"
 
-export default function TeamDirectorySearchArea ({refreshEffect, setLoading}){
+export default function TeamDirectorySearchArea ({refreshEffect, setLoading, setResult}){
     const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState(firstName);
+    const [lastName, setLastName] = useState('');
     const [category, setCategory] =useState('');
 
     const submitSearchRequest = () =>{
-        setLoading(true); 
-
+        console.log(lastName)
+        setLoading(true);
         fetch(`${process.env.REACT_APP_API_URL}/api/users/search`,{
             method: "POST",
             headers: {
@@ -23,6 +23,7 @@ export default function TeamDirectorySearchArea ({refreshEffect, setLoading}){
         })
         .then(res => res.json())
         .then(data => {
+            setResult(data)
             setLoading(false);
         })
     }
@@ -42,19 +43,28 @@ export default function TeamDirectorySearchArea ({refreshEffect, setLoading}){
             <Form.Control
             style={{borderRadius:'8px'}}
             type="text"
-            placeholder="Enter name..."
+            placeholder="First name..."
             onChange={(e) => setFirstName(e.target.value)}
             className='custom-search-input'
             value={firstName} 
             />
             
+            <Form.Control
+            style={{borderRadius:'8px'}}
+            type="text"
+            placeholder="Last name..."
+            onChange={(e) => setLastName(e.target.value)}
+            className='custom-search-input'
+            value={lastName} 
+            />
+            
             <div className="d-flex align-items-center">
                 <Dropdown onSelect={handleCategorySelect} className="ml-1" >
-                <Dropdown.Toggle variant="secondary" id="categoryDropdown" size='sm'>
-                {category ? category : 'Deparment'}
+                <Dropdown.Toggle variant="secondary" id="categoryDropdown" size='sm' style={{minWidth:'130px'}}>
+                {category ? category : 'Company-wide'}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                <Dropdown.Item eventKey="Company-wide">Company-wide</Dropdown.Item>
+                <Dropdown.Item eventKey="">Company-wide</Dropdown.Item>
                 <Dropdown.Item eventKey="Executive">Executive</Dropdown.Item>
                 <Dropdown.Item eventKey="Legal&Finance">Legal & Finance</Dropdown.Item>
                 <Dropdown.Item eventKey="IT">IT</Dropdown.Item>

@@ -16,7 +16,7 @@ export default function EmployeeCard({user, refreshEffect}){
             {user.profilePictureUrl !== null ? 
             <>
                 <img 
-                    className="mt-auto"
+                    className="mt-2"
                     src={user.profilePictureUrl}
                     onLoad={handleImageLoad} 
                     alt="profile-picture" 
@@ -30,7 +30,7 @@ export default function EmployeeCard({user, refreshEffect}){
             :
             <>
                 <img 
-                    className="mt-auto"
+                    className="mt-2"
                     src='/icons/sidebar-user-icon.svg' 
                     alt="profile-picture" 
                     style={{ borderRadius: '50%', width: '10vh', height: '10vh' }}
