@@ -19,6 +19,7 @@ import ComposeArticle from './Pages/ComposeArticle'
 import ArticleViewer from './Pages/ArticleViewer';
 import EditArticle from './Pages/EditArticle';
 import MyProfile from './Pages/MyProfile';
+import TeamDirectory from './Pages/TeamDirectory';
 
 function App() {
 
@@ -125,6 +126,7 @@ function App() {
                                     <Route path='/forms-repository' element={<FormsRepository/>} />
                                     <Route path='/wiki' element={<Wiki/>} />
                                     <Route path="/my-profile/*" element={<MyProfile />} />
+                                    <Route path="/team-directory" element={<TeamDirectory />} />
                                     <Route path='/login' element={<Login />} />
                                     <Route path='/logout' element={<Logout />} />
                                     <Route path="*" element={<PageNotFound />} />
