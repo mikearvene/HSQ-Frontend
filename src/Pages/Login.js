@@ -3,6 +3,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import UserContext from '../userContext';
 import Swal from 'sweetalert2';
+import ForgotPasswordModal from '../Components/ForgotPasswordModal';
 
 export default function Login(){
     const {user,setUser} = useContext(UserContext);
@@ -10,6 +11,7 @@ export default function Login(){
 	const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isActive, setIsActive] = useState(true);
+	const [showForgotModal, setShowForgotModal] = useState(false)
 
     useEffect(() => {
 
@@ -108,9 +110,14 @@ export default function Login(){
         })
 	}
 
-	const forgotPassword = () =>{
-		alert('This feature is not yet available')
-	}
+	const openResetPasswordModal = () => {
+		setShowForgotModal(true);
+	};
+
+	const closeResetPasswordModal = () => {
+		setShowForgotModal(false);
+	};
+
     return(
         user.id != null ? <Navigate to="/" /> 
     	:
@@ -141,7 +148,10 @@ export default function Login(){
 							}
 						</div>
 						<div className='text-center mb-4'>
-							<span className='cursor-pointer text-muted small' onClick={()=>{forgotPassword()}}>Forgot password?</span>
+							<span className='cursor-pointer text-muted small' >
+								<ForgotPasswordModal showForgotModal={showForgotModal} openResetPasswordModal={openResetPasswordModal} closeResetPasswordModal={closeResetPasswordModal}/>
+							</span>
+							
 						</div>
 						
 					</Form>
