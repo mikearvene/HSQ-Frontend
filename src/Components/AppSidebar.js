@@ -32,8 +32,8 @@ const AppSidebar = () => {
         <Link to='/forms-repository' className=''>Forms Repository</Link>
         <Link to={'/team-directory'}>Team Directory <span style={{position:'relative', right:'0%'}}><NewFeatureBadge/></span></Link>
         <Link to={'/wiki'}>Wiki</Link>
+        <Link to={'/news-and-updates'}>News & Updates <span style={{position:'relative', right:'0%'}}><NewFeatureBadge/></span></Link>
         <p className='user-select-none'><span className='text-muted'>My Calendar <ComingSoonBadge/></span></p>
-        <p className='user-select-none'><span className='text-muted'>News & Updates <ComingSoonBadge/></span></p>
         
         {/* <p className='user-select-none'><span className='text-muted'>Wiki <ComingSoonBadge/></span></p> */}
         
