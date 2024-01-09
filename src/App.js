@@ -20,6 +20,7 @@ import ArticleViewer from './Pages/ArticleViewer';
 import EditArticle from './Pages/EditArticle';
 import MyProfile from './Pages/MyProfile';
 import TeamDirectory from './Pages/TeamDirectory';
+import NewsAndUpdates from './Pages/NewsAndUpdates';
 
 function App() {
 
@@ -127,6 +128,7 @@ function App() {
                                     <Route path='/wiki' element={<Wiki/>} />
                                     <Route path="/my-profile/*" element={<MyProfile />} />
                                     <Route path="/team-directory" element={<TeamDirectory />} />
+                                    <Route path="/news-and-updates" element={<NewsAndUpdates />} />
                                     <Route path='/login' element={<Login />} />
                                     <Route path='/logout' element={<Logout />} />
                                     <Route path="*" element={<PageNotFound />} />
