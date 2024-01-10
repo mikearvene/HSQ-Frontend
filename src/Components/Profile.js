@@ -20,11 +20,19 @@ export default function Profile(){
     const [showEmailModal, setShowEmailModal] =useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [loading, setLoading] = useState(true)
+    const [noPictureAdded, setNoPictureAdded] = useState(true)
 
     useEffect(()=>{
         fetchUserData()
     },[])
+    useEffect(()=>{
 
+        if(selectedImage !== null){
+            setNoPictureAdded(false)
+        } else {
+            setNoPictureAdded(true)  
+        }
+    },[selectedImage])
 
     const fetchUserData = () =>{
         fetch(`${process.env.REACT_APP_API_URL}/api/users/user/detail`,{
@@ -62,11 +70,16 @@ export default function Profile(){
         cursor:'pointer'
     }
         const openUpdatePictureModal = () => {
+            if(loading){
+                return
+            }
             setShowModal(true);
         };
 
         const closeUpdatePictureModal = () => {
             setShowModal(false);
+            setSelectedImage(null)
+
         };
         const openUpdateMobileNoModal = () => {
             setShowMobileNoModal(true);
@@ -97,7 +110,7 @@ export default function Profile(){
             // Handle case where no image is selected
             return;
           }
-      
+        setLoading(true)
           const formData = new FormData();
           formData.append("image", selectedImage);
             if(typeof profilePictureKey === 'object'){
@@ -114,7 +127,6 @@ export default function Profile(){
             .then((data) => {
             fetchUserData()
 
-
             closeUpdatePictureModal();
             Swal.fire({
             title: 'Profile updated!',
@@ -125,6 +137,7 @@ export default function Profile(){
             });
             })
             .catch((error) => {
+                setLoading(false)
               // Handle error during upload
               Swal.fire({
                         title: 'Something went wrong. :(',
@@ -224,7 +237,7 @@ export default function Profile(){
                     </span>
                 </div>
             </div>
-            <UpdateProfilePicModal showModal={showModal} closeUpdatePictureModal={closeUpdatePictureModal} handleImageChange={handleImageChange} handleUpload={handleUpload}/>
+            <UpdateProfilePicModal noPictureAdded={noPictureAdded} showModal={showModal} closeUpdatePictureModal={closeUpdatePictureModal} handleImageChange={handleImageChange} handleUpload={handleUpload}/>
         </>
     )
 }
