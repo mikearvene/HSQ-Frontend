@@ -119,7 +119,7 @@ export default function Login(){
 	};
 
     return(
-        user.id != null ? <Navigate to="/news-and-updates" /> 
+        user.id != null ? <Navigate to="/" /> 
     	:
         <>
         <Container fluid>

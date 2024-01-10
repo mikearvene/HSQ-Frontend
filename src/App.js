@@ -68,11 +68,6 @@ function App() {
                 
             } else {
                 
-
-                if(user.id !== null){
-
-                window.location.href = '/login';
-                
                 setUser({
                     id: null,
                     firstName: null,
@@ -81,7 +76,6 @@ function App() {
                     isManager: null,
                     profilePicture:null
                 })
-                }
 
                 setIsDoneInitialing(true);
             }   
