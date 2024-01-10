@@ -21,6 +21,6 @@ export default function Logout() {
 	})
 
 	return (
-		<Navigate to="/" />
+		<Navigate to="/login" />
 	)
 }

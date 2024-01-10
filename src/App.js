@@ -67,6 +67,12 @@ function App() {
                 setIsDoneInitialing(true);
                 
             } else {
+                
+
+                if(user.id !== null){
+
+                window.location.href = '/login';
+                
                 setUser({
                     id: null,
                     firstName: null,
@@ -75,6 +81,7 @@ function App() {
                     isManager: null,
                     profilePicture:null
                 })
+                }
 
                 setIsDoneInitialing(true);
             }   
@@ -105,7 +112,7 @@ function App() {
                             }
                             
                         </div>
-                        {user.id == null? <Login /> 
+                        {user.id === null? <Login /> 
                         :
                         isInCompose ? <ComposeArticle /> :
                         <>
