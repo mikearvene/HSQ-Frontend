@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import { Col } from "react-bootstrap"
 import ProfileSkeleton from "../Components/Subcomponents/ProfileSkeleton";
+import OneImageNewsCard from "./Subcomponents/OneImageNewsCard";
+import TwoImageNewsCard from "./Subcomponents/TwoImageNewsCard";
+import ThreeImageNewsCard from "./Subcomponents/ThreeImageNewsCard";
 export default function NewsCard ({data}){
     const [timeDiff, setTimeDiff] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [imageCount, setImageCount] = useState(null);
     const handleImageLoad = () => {
         setLoading(false);
       };
       
       useEffect(() => {
+        if(data.imageUrl !== null){
+            setImageCount(data.imageUrl.length)
+        }
         const originalPostDate = new Date(data.originalPostDate);
         const currentTime = new Date();
     
@@ -31,12 +38,13 @@ export default function NewsCard ({data}){
         }
     
         setTimeDiff(displayTimeDiff);
-      }, [data.originalPostDate]);
+      }, []);
+
     return(
-        <Col md={12} className="mb-3 p-4" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:'8px', border: '1px solid #383C3F'}}>
-            <div className="d-flex flex-column ml-auto mr-auto" style={{width:'70%'}}>
+        <Col md={12} className="mb-3 p-3" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:'5px'}}>
+            <div className="d-flex flex-column ml-auto mr-auto pt-4 pb-4" style={{width:'85%'}}>
                 {/* uploader img and basic details */}
-            {data.author.profilePictureUrl !== null ? 
+                {data.author.profilePictureUrl !== null ? 
                 <div className="d-flex justify-content-start mb-2">
                     
                     <img 
@@ -76,9 +84,18 @@ export default function NewsCard ({data}){
                     <span>{data.message}</span>
                 </div>
                 {/* images */}
-                <div className="" style={{height:'250px', border: '1px solid #383C3F', borderRadius:'8px'}}>
 
+                {data.imageUrl !== null && (
+                <div className="d-flex" style={{ height: '250px', border: '1px solid #383C3F', borderRadius: '8px' }}>
+                    {imageCount === 1 ? (
+                    <OneImageNewsCard data={data}/>
+                    ) : imageCount === 2 ? (
+                    <TwoImageNewsCard data={data}/>
+                    ) : (
+                    <ThreeImageNewsCard data={data} imageCount={imageCount} />
+                    )}
                 </div>
+                )}
             </div>
             
             
