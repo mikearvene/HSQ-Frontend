@@ -131,7 +131,7 @@ h1{
 
 .main-content {
   min-height: 100vh;
-  border: solid;
+  /* border: solid; */
   border-width: 1px;
   border-radius: 8px;
   border-color: var(--brand-color-2);

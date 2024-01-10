@@ -45,6 +45,9 @@ export default function FormsRepository() {
 
     return (
         <>
+        <div className="p-3 mt-3" style={{borderStyle:'solid', borderColor:'#516473', borderRadius:'8px', borderWidth:'1px'}}>
+
+        
             <div className="row">
                 <div className="mb-0 col-3">
                     <h4 className="text-muted">Forms Repository</h4>
@@ -106,6 +109,7 @@ export default function FormsRepository() {
                     )}
                 </div>
             </div>
+        </div>
         </>
     );
 }
