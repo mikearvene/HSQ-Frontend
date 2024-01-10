@@ -7,13 +7,20 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
     const [title, setTitle] = useState('')
     const [department, setDepartment] = useState('Company-wide')
     const [message, setMessage] = useState('')
+    const [missingInfo, setMissingInfo] = useState(true)
     const linkStyle = {
         fontSize: "16px",
         color: "#016B83",
         textDecoration:'underline',
         cursor:'pointer'
     }
-
+    useEffect(()=>{
+        if(title.length === 0 || message.length === 0){
+            setMissingInfo(true)
+        } else {
+            setMissingInfo(false)
+        }
+    },[title, message])
     const handleMessageChange = (e) =>{
         const input = e.target.value;
         setMessage(input);
@@ -168,7 +175,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
                 <Button variant="secondary" size='sm' onClick={closeModal}>
                 Close
                 </Button>
-                <Button disabled={loading} style={{backgroundColor:'#016B83'}}size='sm' onClick={handlePost}>
+                <Button disabled={loading || missingInfo} style={{backgroundColor:'#016B83'}}size='sm' onClick={handlePost}>
                 Post
                 </Button>
                 </Modal.Footer>
