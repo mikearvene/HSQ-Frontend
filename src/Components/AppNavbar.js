@@ -13,7 +13,10 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(()=>{
-
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Optional smooth scrolling animation
+        });
         if(location.pathname === "/compose-article"){
             setIsInCompose(true)
         } else {
