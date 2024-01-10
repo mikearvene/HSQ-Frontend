@@ -6,7 +6,7 @@ export default function AddNewForm({ setForms, refreshEffect }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
-  const [department, setDepartment] = useState(""); // Step 1
+  const [department, setDepartment] = useState("company-wide"); // Step 1
   const [showAddNewForm, setShowAddNewForm] = useState(false);
 
   const openEdit = () => {
