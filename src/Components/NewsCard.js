@@ -20,8 +20,9 @@ export default function NewsCard ({data}){
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     
         let displayTimeDiff;
-    
-        if (minutes < 60) {
+        if (minutes === 0){
+            displayTimeDiff = `Just now`;
+        }else if (minutes < 60) {
           displayTimeDiff = `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
         } else if (hours < 24) {
           displayTimeDiff = `${hours} hour${hours === 1 ? '' : 's'} ago`;

@@ -1,11 +1,23 @@
 import { Container, Row, Col } from "react-bootstrap"
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
+import UserContext from '../userContext';
 import NewsCard from "../Components/NewsCard"
 import PostNewsAndUpdateModal from "../Components/Subcomponents/PostNewsAndUpdateModal";
 export default function NewsAndUpdates(){
+    const [selectedImage, setSelectedImage] = useState([]);
+    const { user } = useContext(UserContext);
     const [loading, setLoading] = useState(true);
     const [mainData, setMainData] = useState(null)
+    const [showModal, setShowModal] = useState(false);
+    
+    const openModal = () => {
+        setShowModal(true);
+    };
 
+    const closeModal = () => {
+        setShowModal(false);
+        setSelectedImage([])
+    };
     useEffect(() => {
         fetchData();
     }, []);
@@ -32,7 +44,9 @@ export default function NewsAndUpdates(){
                     <h4 className="text-muted">News & Updates</h4>
                 </div>
                 <div className="mb-0 col-3 d-flex justify-content-end align-items-center ml-auto mr-3">
-                    <PostNewsAndUpdateModal />
+
+                    <PostNewsAndUpdateModal setSelectedImage={setSelectedImage} selectedImage={selectedImage} user={user} showModal={showModal} openModal={openModal} closeModal={closeModal} fetchData={fetchData} setLoading={setLoading} loading={loading}/>
+
                 </div>
             </div>
             <hr />
