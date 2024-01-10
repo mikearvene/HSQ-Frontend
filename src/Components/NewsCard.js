@@ -38,7 +38,7 @@ export default function NewsCard ({data}){
         }
     
         setTimeDiff(displayTimeDiff);
-      }, [imageCount]);
+      }, [data]);
 
     return(
         <Col md={12} className="mb-3 p-3" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:'5px'}}>
