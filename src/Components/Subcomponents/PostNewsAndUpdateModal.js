@@ -13,9 +13,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
         textDecoration:'underline',
         cursor:'pointer'
     }
-    useEffect(()=>{
-        console.log(message)
-    },[message])
+
     const handleMessageChange = (e) =>{
         const input = e.target.value;
         setMessage(input);
@@ -44,7 +42,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
     const handleDepartmentSelect = (selectedDepartment) => {
         setDepartment(selectedDepartment);
     };
-    console.log(department)
+
     const handlePost = async(event) => {
         event.preventDefault();
         setLoading(true);
