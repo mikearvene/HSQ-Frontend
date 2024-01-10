@@ -61,7 +61,7 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
                 },
             });
         } else {
-            console.log(beneficiary)
+
             const formData = new FormData();
             formData.append('department', department);
             formData.append('beneficiary', JSON.stringify(beneficiary));
