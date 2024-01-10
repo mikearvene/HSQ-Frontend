@@ -34,6 +34,7 @@ export default function TeamDirectory (){
 
     return(
         <>
+        <div className="p-3 mt-3" style={{borderStyle:'solid', borderColor:'#516473', borderRadius:'8px', borderWidth:'1px'}}>
             <div className="row">
                 <div className="mb-0 col-3">
                     <h4 className="text-muted">Team Directory</h4>
@@ -64,6 +65,7 @@ export default function TeamDirectory (){
                 :
                 <><h2 className="muted">fetching data...</h2></>}
             </div>
+        </div>
         </>
     )
 }

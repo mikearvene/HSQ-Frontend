@@ -39,6 +39,7 @@ export default function NewsAndUpdates(){
     console.log(mainData)
     return(
         <>
+        <div className="pt-3">
             <div className="row">
                 <div className="mb-0 col-7">
                     <h4 className="text-muted">News & Updates</h4>
@@ -71,6 +72,7 @@ export default function NewsAndUpdates(){
                 <><h2 className="muted">fetching data...</h2></>}
                 </Row>
             </Container>
+        </div>
         </>
     )
 }

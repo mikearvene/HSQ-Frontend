@@ -120,7 +120,7 @@ function App() {
                             <AppSidebar />
                         </div>
                         <div className='col-6 mt-4 mb-4 mr-auto pl-0 main-content'>
-                            <div className='p-3' style={{}}>
+                            {/* <div className='' style={{}}> */}
                                 <Routes>
                                     
                                     <Route path="/" element={<Home/>} />
@@ -134,7 +134,7 @@ function App() {
                                     <Route path="*" element={<PageNotFound />} />
 
                                 </Routes> 
-                            </div>
+                            {/* </div> */}
                         </div>
                         <div className='col-1 mr-auto'>
                             <AppQuickLinksBar/>

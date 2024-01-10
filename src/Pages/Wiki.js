@@ -54,6 +54,7 @@ export default function Wiki() {
 
     return (
         <>
+        <div className="p-3 mt-3" style={{borderStyle:'solid', borderColor:'#516473', borderRadius:'8px', borderWidth:'1px', minHeight:'100vh'}}>
             <div className="row">
                 <div className="mb-0 col-3">
                     <h4 className="text-muted">Wiki</h4>
@@ -101,6 +102,7 @@ export default function Wiki() {
                     )}
                 </div>
             </div>
+        </div>
         </>
     );
 }

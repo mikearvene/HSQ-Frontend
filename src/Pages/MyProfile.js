@@ -11,6 +11,7 @@ export default function  MyProfile (){
     }
     return(
         <>
+        <div className="p-3 mt-3" style={{borderStyle:'solid', borderColor:'#516473', borderRadius:'8px', borderWidth:'1px'}}>
             <div className="row">
                 <div className="mb-0 col-5">
                     <h4 className="text-muted">My Profile</h4>
@@ -31,7 +32,7 @@ export default function  MyProfile (){
                     </Col> 
                 </Row>
             </Container>
-
+        </div>
         </>
     )
 }
