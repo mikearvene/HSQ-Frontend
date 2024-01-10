@@ -67,6 +67,7 @@ function App() {
                 setIsDoneInitialing(true);
                 
             } else {
+                
                 setUser({
                     id: null,
                     firstName: null,
@@ -105,7 +106,7 @@ function App() {
                             }
                             
                         </div>
-                        {user.id == null? <Login /> 
+                        {user.id === null? <Login /> 
                         :
                         isInCompose ? <ComposeArticle /> :
                         <>

@@ -96,8 +96,8 @@ export default function Login(){
 						title: 'custom-swal-title',
 						confirmButton: 'custom-swal-confirm-button', // Define your custom class here
 					}
-				})
-
+				});				
+				// window.location.href = '/news-and-updates';
             } else {
                 setUser({
                     id: null,
