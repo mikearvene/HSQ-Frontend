@@ -20,10 +20,6 @@ export default function Home(){
                     <Col md={12} className="mr-5 mb-3">
                         <MakeAPost user={user}/>
                     </Col>
-                    <Col className="mr-5">
-                        <h5 className="muted">Nothing to display...</h5>
-                        <h5 className="muted mt-5">(Company-wide announcements will be soon posted here.)</h5>
-                    </Col>
                 </Row>
             </Container>
         </div>
