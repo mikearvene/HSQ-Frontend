@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 import AppNavbar from './Components/AppNavbar';
 import Footer from './Components/Footer';
 import AppSidebar from './Components/AppSidebar';
-import Home from './Pages/Home';
+import Home from './Pages/Home/Home';
 import PageNotFound from './Pages/PageNotFound';
 import Login from './Pages/Login';
 import LoginNavbar from './Components/LoginNavbar';
