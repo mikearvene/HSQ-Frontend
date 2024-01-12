@@ -23,7 +23,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     useEffect(()=>{
         socket.emit("join_room", room);
         initNotifications()
-    },[])
+    },[user])
 
     const initNotifications = () =>{
         socket.emit("init_notifications", {room})
