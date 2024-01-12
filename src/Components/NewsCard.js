@@ -4,10 +4,12 @@ import ProfileSkeleton from "../Components/Subcomponents/ProfileSkeleton";
 import OneImageNewsCard from "./Subcomponents/OneImageNewsCard";
 import TwoImageNewsCard from "./Subcomponents/TwoImageNewsCard";
 import ThreeImageNewsCard from "./Subcomponents/ThreeImageNewsCard";
-export default function NewsCard ({data}){
+import EditNewsAndUpdateModal from "./Subcomponents/EditNewsAndUpdateModal";
+export default function NewsCard ({data, user, fetchData}){
     const [timeDiff, setTimeDiff] = useState(null);
     const [loading, setLoading] = useState(true);
     const [imageCount, setImageCount] = useState(null);
+    const [openEdit, setOpenEdit] = useState(false)
     const handleImageLoad = () => {
         setLoading(false);
       };
@@ -39,7 +41,13 @@ export default function NewsCard ({data}){
     
         setTimeDiff(displayTimeDiff);
       },[]);
-
+      
+      const openModal = () =>{
+        setOpenEdit(true)
+      }
+      useEffect(()=>{
+        console.log('openEdit is: ', openEdit)
+      },[openEdit])
     return(
         <Col md={12} className="mb-3 p-3" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:'5px'}}>
             <div className="d-flex flex-column ml-auto mr-auto pt-4 pb-4" style={{width:'85%'}}>
@@ -63,6 +71,11 @@ export default function NewsCard ({data}){
                     <ProfileSkeleton borderRadius={'50%'} height={'50px'} width={'50px'}/>
                     :<></>
                     }
+                    {user.id == data.author._id?
+                    <EditNewsAndUpdateModal data={data} user={user} fetchData={fetchData} openEdit={openEdit} setOpenEdit={setOpenEdit} openModal={openModal} setLoading={setLoading}/>
+                    :
+                    null
+                    }
                 </div>
                 :
                 <div className="d-flex justify-content-start mb-2">
@@ -76,6 +89,11 @@ export default function NewsCard ({data}){
                         <span className="small">{data.author.department.toLocaleUpperCase()} - {data.author.jobTitle}</span>
                         <span className="smallest">{timeDiff}</span>
                     </div>
+                    {user.id == data.author._id?
+                    <EditNewsAndUpdateModal data={data} user={user} fetchData={fetchData} openEdit={openEdit} setOpenEdit={setOpenEdit} openModal={openModal} setLoading={setLoading}/>
+                    :
+                    null
+                    }
                 </div>
                 }
                 {/* main post content */}
