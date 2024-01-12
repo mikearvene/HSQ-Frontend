@@ -24,6 +24,7 @@ import TeamDirectory from './Pages/TeamDirectory';
 import NewsAndUpdates from './Pages/NewsAndUpdates';
 
 function App() {
+    const [acknowledgeClick, setAcknowledgeClicked] = useState(false)
     const [updatePosted, setUpdatePosted] = useState(false)
     const [isInCompose, setIsInCompose] = useState(false)
     const [isInArticleView, setIsInArticleView] = useState(false)
@@ -90,7 +91,7 @@ function App() {
     return (
         
         <UserProvider value={{user, setUser, unsetUser}}>
-        <NotificationProvider value={{updatePosted, setUpdatePosted}}>
+        <NotificationProvider value={{updatePosted, setUpdatePosted, acknowledgeClick, setAcknowledgeClicked}}>
             <Router>
                 <Container fluid className=''>
                     {isDoneInitializing?
