@@ -66,6 +66,8 @@ export default function NewsAndUpdates(){
                                 <NewsCard
                                     key={data._id}
                                     data={data}
+                                    user={user}
+                                    fetchData={fetchData}
                                 />
                             ))
                         }

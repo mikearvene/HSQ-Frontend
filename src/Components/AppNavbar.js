@@ -10,6 +10,7 @@ import NavNotificationIcon from './Subcomponents/NavNotificationIcon';
 import io from "socket.io-client";
 import NavNotificationPop from './Subcomponents/NavNotificationPop';
 
+
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
@@ -21,6 +22,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     const [notification, setNotification] = useState(null)
     const [updateCount, setUpdateCount] = useState(0)
     const [room, setRoom] = useState('notification')
+    const audio = new Audio('/sounds/notification.mp3');
     const userId = user.id;
     useEffect(()=>{
         socket.emit("join_room", room);
@@ -29,15 +31,11 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
 
     useEffect(()=>{
         
-    },[])
-    
-    
-    useEffect(()=>{
         socket.emit("new_update_posted", {room})
         socket.on("new_update_posted", () => {
             initNotifications()
         });
-            
+        
     },[updatePosted, acknowledgeClick])
 
     const initNotifications = () =>{
