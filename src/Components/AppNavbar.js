@@ -13,7 +13,7 @@ import NavNotificationPop from './Subcomponents/NavNotificationPop';
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
-    let {updatePosted} = useContext(NotificationContext)
+    let {updatePosted, acknowledgeClick} = useContext(NotificationContext)
     const { user } = useContext(UserContext);
     let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +26,10 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
         socket.emit("join_room", room);
         initNotifications()
     },[])
+
+    useEffect(()=>{
+        
+    },[])
     
     useEffect(()=>{
         socket.emit("new_update_posted", {room})
@@ -33,7 +37,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
             initNotifications()
         });
             
-    },[updatePosted])
+    },[updatePosted, acknowledgeClick])
 
     const initNotifications = () =>{
         socket.emit("init_notifications", {userId, room})

@@ -18,7 +18,7 @@ export default function NavNotificationPop({notification, setNotifIsOpen}){
         <>
             <div className="d-flex flex-column overflow-auto justify-content-center align-items-center p-3" style={{border:`solid`,borderWidth:`1px`,borderRadius:`8px`,minHeighteight:`129px`, width:`300px`, zIndex: '1', position: 'fixed', transform: 'translate(-10%, 63%)', backgroundColor:'#F3F3F3'}}>
             
-            <div className="m-1 pb-4" style={{maxHeight:'300px'}}>
+            <div className="m-1 pb-4" style={{maxHeight:'300px', width:'90%'}}>
             <h6 className="muted">Notifications</h6>
             <hr />
             {unread !== null ? 

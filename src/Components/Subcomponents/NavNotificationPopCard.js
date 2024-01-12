@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { linkStyle } from '../../Util/styling';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import NotificationContext from '../../notificationContext';
 export default function NavNotificationPopCard({unread}){
+    const {setAcknowledgeClicked, acknowledgeClick} = useContext(NotificationContext)
     const [timeDiff, setTimeDiff] = useState(null);
-    console.log(unread)
+    console.log('this is the unread._id: ',unread._id)
     useEffect(() => {
 
         const originalPostDate = new Date(unread.originalPostDate);
@@ -29,10 +31,33 @@ export default function NavNotificationPopCard({unread}){
     
         setTimeDiff(displayTimeDiff);
       },[]);
+    const handleAcknowledge = ()=>{
+      const newsId = unread._id;
+      console.log('this is newIs: ', newsId)
+      fetch(`${process.env.REACT_APP_API_URL}/api/users/user/acknowledgeUpdate`,{
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          newsAndUpdateId:newsId
+        })
+      })
+      .then((res) =>{
+        console.log(res.status)
+        if(acknowledgeClick){
+          setAcknowledgeClicked(false);
+        } else {
+          setAcknowledgeClicked(true);
+        }
+        
+      })
+    }
     return(
         <>
         
-        <Link to={'/news-and-updates'}> 
+        <Link to={'/news-and-updates'} onClick={handleAcknowledge}> 
             <div className="p-2 border mb-1" style={{borderRadius:'5px'}}>
                 <span className="small" style={{color:'#383C3F'}}><b>{unread.author.firstName} {unread.author.lastName}</b> posted an update</span>
                 <span className='small d-block' style={{color:'#383C3F'}}>{timeDiff}</span>
