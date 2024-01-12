@@ -108,7 +108,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
             {/* Modal */}
             <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header>
-                    <Modal.Title>Write an update</Modal.Title>
+                    <Modal.Title>Create post</Modal.Title>
                     <span style={{cursor:'pointer'}} className="font-weight-bold" onClick={closeModal}>X</span>
                 </Modal.Header>
 

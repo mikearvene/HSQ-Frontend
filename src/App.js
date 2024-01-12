@@ -34,7 +34,8 @@ function App() {
         firstName: null,
         lastName: null,
         jobTitle: null,
-        isManager: null
+        isManager: null,
+        department:null
     });
 
     const unsetUser = () => {
@@ -61,7 +62,8 @@ function App() {
                     lastName: data.lastName,
                     jobTitle: data.jobTitle,
                     isManager: data.isManager,
-                    profilePicture: data.profilePictureUrl
+                    profilePicture: data.profilePictureUrl,
+                    department: data.department
                 })
 
                 setIsDoneInitialing(true);
@@ -74,7 +76,8 @@ function App() {
                     lastName: null,
                     jobTitle: null,
                     isManager: null,
-                    profilePicture:null
+                    profilePicture:null,
+                    department: null
                 })
 
                 setIsDoneInitialing(true);

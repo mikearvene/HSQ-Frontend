@@ -6,9 +6,11 @@ import PostNewsAndUpdateModal from "../Components/Subcomponents/PostNewsAndUpdat
 export default function NewsAndUpdates(){
     const [selectedImage, setSelectedImage] = useState([]);
     const { user } = useContext(UserContext);
+    const [usersDepartment] = useState(user.department.toLowerCase())
     const [loading, setLoading] = useState(true);
     const [mainData, setMainData] = useState(null)
     const [showModal, setShowModal] = useState(false);
+
     
     const openModal = () => {
         setShowModal(true);
@@ -19,7 +21,7 @@ export default function NewsAndUpdates(){
         setSelectedImage([])
     };
     useEffect(() => {
-        fetchData();
+        fetchData();   
     }, []);
 
     const fetchData = () => {
@@ -57,10 +59,11 @@ export default function NewsAndUpdates(){
                     mainData.length > 0 ? 
                     <>
                         {
-                            mainData.map(data =>(
-                                <NewsCard 
-                                key={data._id}
-                                data={data}                                
+                            mainData.map(data => (
+                                (data.department === usersDepartment || data.department === "company-wide") &&
+                                <NewsCard
+                                    key={data._id}
+                                    data={data}
                                 />
                             ))
                         }

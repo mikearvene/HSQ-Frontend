@@ -1,18 +1,20 @@
+import { useEffect } from 'react';
 
+export default function NavUserIcon({setNotifIsOpen,setIsOpen, isOpen, user}){
 
-export default function NavUserIcon({setIsOpen, isOpen, user}){
-    
 
     const handleClick = () => {
+        setNotifIsOpen(false)
         if(!isOpen){
             setIsOpen(true)
         } else if(isOpen){
             setIsOpen(false)
         }
     }
+      
 
     return(
-        <a style={{cursor:'pointer'}} onClick={handleClick}>
+        <a  style={{cursor:'pointer'}} onClick={handleClick}>
             {user.profilePicture !== "false" ? 
             <div className="d-flex">
             <div>

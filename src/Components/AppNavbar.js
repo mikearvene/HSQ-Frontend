@@ -6,11 +6,34 @@ import UserIconPop from './UserIconPop';
 import { useLocation } from 'react-router-dom';
 import UserContext from '../userContext';
 import NavNotificationIcon from './Subcomponents/NavNotificationIcon';
+// const dotenv = require('dotenv').config().parsed;
+import io from "socket.io-client";
+import NavNotificationPop from './Subcomponents/NavNotificationPop';
+
+const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
     const { user } = useContext(UserContext);
     let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+    const [notifIsOpen, setNotifIsOpen] = useState(false);
+    const [notification, setNotification] = useState(null)
+    const room = `${user.id}`;
+    
+    useEffect(()=>{
+        socket.emit("join_room", room);
+        initNotifications()
+    },[])
+
+    const initNotifications = () =>{
+        socket.emit("init_notifications", {room})
+
+        socket.on("init_notifications", (result) => {
+            setNotification(result.notifications)
+            // Handle the result as needed
+        });
+
+    }
 
     useEffect(()=>{
         window.scrollTo({
@@ -49,15 +72,15 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
                     <Col md='4' className='d-flex justify-content-end align-items-center'> 
                         <Row className='align-items-center'>
                             <Col md={3}>
-                            <NavNotificationIcon />
+                            <NavNotificationIcon setIsOpen={setIsOpen} notification={notification} notifIsOpen={notifIsOpen} setNotifIsOpen={setNotifIsOpen}/>
                             </Col>
                             <Col md={3}>
-                            <NavUserIcon setIsOpen={setIsOpen} isOpen={isOpen} user={user}/>
+                            <NavUserIcon setNotifIsOpen={setNotifIsOpen} setIsOpen={setIsOpen} isOpen={isOpen} user={user}/>
                             </Col>
                         </Row>
-                       
-                        
-                        {isOpen ? <UserIconPop />:
+
+                        {notifIsOpen ? <NavNotificationPop notification={notification}/> : <></>}
+                        {isOpen ? <UserIconPop setIsOpen={setIsOpen}/>:
                         <></>
                         }
                     </Col>
