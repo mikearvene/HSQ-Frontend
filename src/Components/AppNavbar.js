@@ -5,28 +5,38 @@ import Logo from './Subcomponents/Logo';
 import UserIconPop from './UserIconPop';
 import { useLocation } from 'react-router-dom';
 import UserContext from '../userContext';
+import NotificationContext from '../notificationContext';
 import NavNotificationIcon from './Subcomponents/NavNotificationIcon';
-// const dotenv = require('dotenv').config().parsed;
 import io from "socket.io-client";
 import NavNotificationPop from './Subcomponents/NavNotificationPop';
 
 const socket = io.connect(`${process.env.REACT_APP_SOCKET_URL}`);
 
 const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) => {
+    let {updatePosted} = useContext(NotificationContext)
     const { user } = useContext(UserContext);
     let location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [notifIsOpen, setNotifIsOpen] = useState(false);
     const [notification, setNotification] = useState(null)
-    const room = `${user.id}`;
-    
+    const [updateCount, setUpdateCount] = useState(0)
+    const [room, setRoom] = useState('notification')
+    const userId = user.id;
     useEffect(()=>{
         socket.emit("join_room", room);
         initNotifications()
     },[])
+    
+    useEffect(()=>{
+        socket.emit("new_update_posted", {room})
+        socket.on("new_update_posted", () => {
+            initNotifications()
+        });
+            
+    },[updatePosted])
 
     const initNotifications = () =>{
-        socket.emit("init_notifications", {room})
+        socket.emit("init_notifications", {userId, room})
 
         socket.on("init_notifications", (result) => {
             setNotification(result.notifications)

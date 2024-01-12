@@ -1,12 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap"
 import {useState, useEffect, useContext} from "react";
 import UserContext from '../userContext';
+import NotificationContext from '../notificationContext';
 import NewsCard from "../Components/NewsCard"
 import PostNewsAndUpdateModal from "../Components/Subcomponents/PostNewsAndUpdateModal";
 export default function NewsAndUpdates(){
+
     const [selectedImage, setSelectedImage] = useState([]);
+    const {updatePosted, setUpdatePosted} = useContext(NotificationContext)
     const { user } = useContext(UserContext);
-    const [usersDepartment] = useState(user.department.toLowerCase())
+    const [usersDepartment] = useState(user.depart? user.department.toLowerCase() : null)
     const [loading, setLoading] = useState(true);
     const [mainData, setMainData] = useState(null)
     const [showModal, setShowModal] = useState(false);
@@ -38,7 +41,6 @@ export default function NewsAndUpdates(){
         });
     };
 
-    console.log(mainData)
     return(
         <>
         <div className="pt-3">
@@ -48,7 +50,7 @@ export default function NewsAndUpdates(){
                 </div>
                 <div className="mb-0 col-3 d-flex justify-content-end align-items-center ml-auto mr-3">
 
-                    <PostNewsAndUpdateModal setSelectedImage={setSelectedImage} selectedImage={selectedImage} user={user} showModal={showModal} openModal={openModal} closeModal={closeModal} fetchData={fetchData} setLoading={setLoading} loading={loading}/>
+                    <PostNewsAndUpdateModal setUpdatePosted={setUpdatePosted} setSelectedImage={setSelectedImage} selectedImage={selectedImage} user={user} showModal={showModal} openModal={openModal} closeModal={closeModal} fetchData={fetchData} setLoading={setLoading} loading={loading}/>
 
                 </div>
             </div>
