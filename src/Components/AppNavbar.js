@@ -31,6 +31,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
         
     },[])
     
+    
     useEffect(()=>{
         socket.emit("new_update_posted", {room})
         socket.on("new_update_posted", () => {
