@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Modal, Button, Dropdown, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
-export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage, user, showModal,openModal,closeModal,fetchData, setLoading, loading}){
+export default function PostNewsAndUpdateModal({setUpdatePosted, setSelectedImage, selectedImage, user, showModal,openModal,closeModal,fetchData, setLoading, loading}){
     
     const [title, setTitle] = useState('')
     const [department, setDepartment] = useState('Company-wide')
@@ -14,6 +14,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
         textDecoration:'underline',
         cursor:'pointer'
     }
+    
     useEffect(()=>{
         if(title.length === 0 || message.length === 0){
             setMissingInfo(true)
@@ -21,6 +22,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
             setMissingInfo(false)
         }
     },[title, message])
+
     const handleMessageChange = (e) =>{
         const input = e.target.value;
         setMessage(input);
@@ -52,6 +54,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
 
     const handlePost = async(event) => {
         event.preventDefault();
+        setUpdatePosted(true)
         setLoading(true);
         if (title === '') {
             setLoading(false);
@@ -80,6 +83,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
                 body: formData,
             }).then((data) => {
                 if (data.status === 201) {
+                    setUpdatePosted(false)
                     setLoading(false);
                     fetchData();
                     closeModal();
@@ -97,6 +101,7 @@ export default function PostNewsAndUpdateModal({setSelectedImage, selectedImage,
                         text: 'Please try again',
                     });
                     setLoading(false);
+                    setUpdatePosted(false)
                 }
             });
         }

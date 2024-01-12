@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { UserProvider } from './userContext';
+import {NotificationProvider} from './notificationContext'
 import { Container } from 'react-bootstrap';
 import AppNavbar from './Components/AppNavbar';
 import Footer from './Components/Footer';
@@ -23,7 +24,7 @@ import TeamDirectory from './Pages/TeamDirectory';
 import NewsAndUpdates from './Pages/NewsAndUpdates';
 
 function App() {
-
+    const [updatePosted, setUpdatePosted] = useState(false)
     const [isInCompose, setIsInCompose] = useState(false)
     const [isInArticleView, setIsInArticleView] = useState(false)
     const [isInEditArticleView, setIsInEditArticleView] = useState(false)
@@ -89,6 +90,7 @@ function App() {
     return (
         
         <UserProvider value={{user, setUser, unsetUser}}>
+        <NotificationProvider value={{updatePosted, setUpdatePosted}}>
             <Router>
                 <Container fluid className=''>
                     {isDoneInitializing?
@@ -162,6 +164,7 @@ function App() {
                     
                 </Container>
             </Router>
+        </NotificationProvider>
         </UserProvider>
     );
 }
