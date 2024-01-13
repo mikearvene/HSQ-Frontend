@@ -4,24 +4,24 @@ import { useEffect, useState } from 'react';
 import { UserProvider } from './userContext';
 import {NotificationProvider} from './notificationContext'
 import { Container } from 'react-bootstrap';
-import AppNavbar from './Components/AppNavbar';
-import Footer from './Components/Footer';
-import AppSidebar from './Components/AppSidebar';
+import AppNavbar from './Components/AppNavbar/AppNavbar';
+import Footer from './Components/Footer/Footer';
+import AppSidebar from './Components/AppSideBar/AppSidebar';
 import Home from './Pages/Home/Home';
-import PageNotFound from './Pages/PageNotFound';
-import Login from './Pages/Login';
-import LoginNavbar from './Components/LoginNavbar';
-import Logout from './Pages/Logout';
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import Login from './Pages/Login/Login';
+import LoginNavbar from './Components/LoginNavbar/LoginNavbar';
+import Logout from './Pages/Logout/Logout';
 import LoaderOne from './Components/Subcomponents/loader/LoaderOne' 
-import FormsRepository from './Pages/FormsRepository';
-import Wiki from './Pages/Wiki';
-import AppQuickLinksBar from './Components/AppQuickLinksBar';
-import ComposeArticle from './Pages/ComposeArticle'
-import ArticleViewer from './Pages/ArticleViewer';
-import EditArticle from './Pages/EditArticle';
-import MyProfile from './Pages/MyProfile';
-import TeamDirectory from './Pages/TeamDirectory';
-import NewsAndUpdates from './Pages/NewsAndUpdates';
+import FormsRepository from './Pages/FormsRepository/FormsRepository';
+import Wiki from './Pages/Wiki/Wiki';
+import AppQuickLinksBar from './Components/AppQuickLinksBar/AppQuickLinksBar';
+import ComposeArticle from './Pages/ComposeArticle/ComposeArticle'
+import ArticleViewer from './Pages/ArticleViewer/ArticleViewer';
+import EditArticle from './Pages/EditArticle/EditArticle';
+import MyProfile from './Pages/MyProfile/MyProfile';
+import TeamDirectory from './Pages/TeamDirectory/TeamDirectory';
+import NewsAndUpdates from './Pages/NewsAndUpdates/NewsAndUpdates';
 
 function App() {
     const [acknowledgeClick, setAcknowledgeClicked] = useState(false)
