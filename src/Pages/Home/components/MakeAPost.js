@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import ProfileSkeleton from "../../../Components/Subcomponents/ProfileSkeleton";
+import ProfileSkeleton from "../../../Components/ProfileSkeleton";
 export default function MakeAPost({user}){
     const [imageLoading, setImageLoading] = useState(true);
     const [message, setMessage]=useState("")
