@@ -26,7 +26,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     const userId = user.id;
     useEffect(()=>{
         socket.emit("join_room", room);
-        initNotifications()
+        
     },[])
 
     useEffect(()=>{
@@ -35,8 +35,10 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
         socket.on("new_update_posted", () => {
             initNotifications()
         });
-        
-    },[updatePosted, acknowledgeClick])
+    },[updatePosted])
+    useEffect(()=>{
+        initNotifications() 
+    },[acknowledgeClick])
 
     const initNotifications = () =>{
         socket.emit("init_notifications", {userId, room})
