@@ -22,7 +22,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     const [notification, setNotification] = useState(null)
     const [updateCount, setUpdateCount] = useState(0)
     const [room, setRoom] = useState('notification')
-    const audio = new Audio('/sounds/notification.mp3');
+    
     const userId = user.id;
     useEffect(()=>{
         socket.emit("join_room", room);
@@ -38,7 +38,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
     },[updatePosted])
     useEffect(()=>{
         initNotifications() 
-    },[acknowledgeClick])
+    },[acknowledgeClick, user])
 
     const initNotifications = () =>{
         socket.emit("init_notifications", {userId, room})
@@ -70,6 +70,7 @@ const AppNavbar = ({setIsInCompose,setIsInArticleView, setIsInEditArticleView}) 
          setIsInEditArticleView(isInEditArticlePath)    
 
     },[location])
+    
     
     return (
         <nav className="navbarContainer" >
