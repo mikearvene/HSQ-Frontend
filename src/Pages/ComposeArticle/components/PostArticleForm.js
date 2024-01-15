@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Swal from 'sweetalert2';
 import { Button } from "react-bootstrap";
+import uploadUpdate from "../../../Util/uploadUpdate";
+import NotificationContext from "../../../notificationContext";
 
 export default function PostArticleForm({content,user, isPlaceholderVisible, isModalOpen, handleCloseModal}){
 
+    const {updatePosted, setUpdatePosted} = useContext(NotificationContext)
     const [title, setTitle] = useState('');
     const [loading, setLoading] = useState(false);
     const [department, setDepartment] = useState('company-wide');
@@ -79,8 +82,12 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
                 body: formData,
-            }).then((data) => {
+            }).then(async (data) => {
                 if (data.status === 201) {
+                    const jsonData = await data.json();
+                    let articleId = jsonData._id
+                    let userId = user.id;
+                    uploadUpdate(department, title,userId,setUpdatePosted, articleId)
                     setLoading(false);
                     handleCloseModal();
                     Swal.fire({
@@ -105,6 +112,8 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
             });
         }
     };
+
+    console.log(department)
     return(
         <>
 

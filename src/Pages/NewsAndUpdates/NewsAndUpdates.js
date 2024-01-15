@@ -9,7 +9,7 @@ export default function NewsAndUpdates(){
     const [selectedImage, setSelectedImage] = useState([]);
     const {updatePosted, setUpdatePosted} = useContext(NotificationContext)
     const { user } = useContext(UserContext);
-    const [usersDepartment] = useState(user.depart? user.department.toLowerCase() : null)
+    const [usersDepartment, setUsersDepartment] = useState(user.department? user.department.toLowerCase() : null)
     const [loading, setLoading] = useState(true);
     const [mainData, setMainData] = useState(null)
     const [showModal, setShowModal] = useState(false);
@@ -40,7 +40,9 @@ export default function NewsAndUpdates(){
             setLoading(false);
         });
     };
-
+    console.log(mainData)
+    console.log(usersDepartment)
+    console.log(user)
     return(
         <>
         <div className="pt-3">
@@ -62,7 +64,7 @@ export default function NewsAndUpdates(){
                     <>
                         {
                             mainData.map(data => (
-                                (data.department === usersDepartment || data.department === "company-wide") &&
+                                (data.department === usersDepartment || data.department === "company-wide" || data.author._id === user.id) &&
                                 <NewsCard
                                     key={data._id}
                                     data={data}
