@@ -93,7 +93,7 @@ function App() {
         <UserProvider value={{user, setUser, unsetUser}}>
         <NotificationProvider value={{updatePosted, setUpdatePosted, acknowledgeClick, setAcknowledgeClicked}}>
             <Router>
-                <Container fluid className=''>
+                <Container fluid className='' style={{minHeight:"100vh"}}>
                     {isDoneInitializing?
                     <div className='row' >
                         <div className='col-12 sticky-top pr-0 pl-0 navbar-min-height'>
@@ -150,7 +150,7 @@ function App() {
                         }
                         </>
                         }
-                        <div className='col-12 pr-0 pl-0'>
+                        <div className='col-12 pr-0 pl-0 mt-auto'>
                             <Footer />
                         </div>
                     </div>
