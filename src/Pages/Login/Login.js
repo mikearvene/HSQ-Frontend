@@ -122,7 +122,7 @@ export default function Login(){
         user.id != null ? <Navigate to="/" /> 
     	:
         <>
-        <Container fluid>
+        <Container fluid style={{height:"100vh"}}>
 			<Row className='justify-content-center mb-5 mt-5' style={{height:'507'}}>
 				<Col sm={6} lg={5} xl={4} className='' style={{height:'507', width:'486',borderRadius:'10px', border:'solid', borderWidth:'1px', backgroundColor:'#F3F3F3'}}>
 					<Form onSubmit={(e) => authenticate(e)} className='p-4'>
