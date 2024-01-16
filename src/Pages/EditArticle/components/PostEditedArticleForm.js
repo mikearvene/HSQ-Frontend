@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Button } from "react-bootstrap";
+import uploadUpdateEditArticle from "../../../Util/uploadUpdateEditArticle";
+import NotificationContext from "../../../notificationContext";
 
 export default function PostEditedArticleForm({originalArticle,content,user, isPlaceholderVisible, refresh, isModalOpen, handleCloseModal}){
+    const {updatePosted, setUpdatePosted} = useContext(NotificationContext)
     const { articleId } = useParams();
     const [title, setTitle] = useState('');
     const [loading, setLoading] = useState(false);
@@ -66,8 +69,10 @@ export default function PostEditedArticleForm({originalArticle,content,user, isP
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
                 body: formData,
-            }).then((data) => {
+            }).then(async(data) => {
                 if (data.status === 200) {
+                    let userId = user.id;
+                    uploadUpdateEditArticle(department, title,userId,setUpdatePosted, articleId)
                     setLoading(false);
                     handleCloseModal();
                     Swal.fire({

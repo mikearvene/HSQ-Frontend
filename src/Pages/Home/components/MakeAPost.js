@@ -14,7 +14,6 @@ export default function MakeAPost({user}){
     useEffect(()=>{
         user.profilePicture === 'false'? setImageLoading(false) : setImageLoading(true)
     },[user.profilePicture])
-    console.log(user)
     return(
         <>
         <div className="border p-3 row" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:"8px", width:'100%'}}>

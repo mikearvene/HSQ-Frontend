@@ -5,7 +5,7 @@ import NotificationContext from '../../../notificationContext';
 export default function NavNotificationPopCard({unread}){
     const {setAcknowledgeClicked, acknowledgeClick} = useContext(NotificationContext)
     const [timeDiff, setTimeDiff] = useState(null);
-    console.log('this is the unread._id: ',unread._id)
+
     useEffect(() => {
 
         const originalPostDate = new Date(unread.originalPostDate);
@@ -33,7 +33,7 @@ export default function NavNotificationPopCard({unread}){
       },[]);
     const handleAcknowledge = ()=>{
       const newsId = unread._id;
-      console.log('this is newIs: ', newsId)
+
       fetch(`${process.env.REACT_APP_API_URL}/api/users/user/acknowledgeUpdate`,{
         method: 'PUT',
         headers: {
@@ -45,7 +45,7 @@ export default function NavNotificationPopCard({unread}){
         })
       })
       .then((res) =>{
-        console.log(res.status)
+
         if(acknowledgeClick){
           setAcknowledgeClicked(false);
         } else {

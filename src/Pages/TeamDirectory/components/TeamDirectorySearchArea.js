@@ -7,7 +7,6 @@ export default function TeamDirectorySearchArea ({refreshEffect, setLoading, set
     const [category, setCategory] =useState('');
 
     const submitSearchRequest = () =>{
-        console.log(lastName)
         setLoading(true);
         fetch(`${process.env.REACT_APP_API_URL}/api/users/search`,{
             method: "POST",

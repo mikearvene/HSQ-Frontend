@@ -40,9 +40,6 @@ export default function NewsAndUpdates(){
             setLoading(false);
         });
     };
-    console.log(mainData)
-    console.log(usersDepartment)
-    console.log(user)
     return(
         <>
         <div className="pt-3">
