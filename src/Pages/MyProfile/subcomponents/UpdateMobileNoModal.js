@@ -19,7 +19,6 @@ export default function UpdateMobileNoModal({openUpdateMobileNoModal, showMobile
     };
 
     const handleMobileUpdate = async(e) =>{
-        console.log(newMobileNo)
         e.preventDefault();
         fetch(`${process.env.REACT_APP_API_URL}/api/users/user/update/mobileNo`, {
           method: "PUT",

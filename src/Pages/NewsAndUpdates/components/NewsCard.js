@@ -45,9 +45,7 @@ export default function NewsCard ({data, user, fetchData}){
       const openModal = () =>{
         setOpenEdit(true)
       }
-      useEffect(()=>{
-        console.log('openEdit is: ', openEdit)
-      },[openEdit])
+
     return(
         <Col md={12} className="mb-3 p-3" style={{backgroundColor: 'rgba(81, 100, 115, 0.3)', borderRadius:'5px'}}>
             <div className="d-flex flex-column ml-auto mr-auto pt-4 pb-4" style={{width:'85%'}}>

@@ -6,7 +6,7 @@ export default function NavNotificationPop({notification, setNotifIsOpen}){
     
     const [timeDiff, setTimeDiff] = useState(null);
     const [unread, setUnread] = useState(null)
-    console.log(notification)
+
     useEffect(()=>{
         if(notification !== null){
             setUnread(notification.unread.sort((a, b) => new Date(b.originalPostDate) - new Date(a.originalPostDate)))

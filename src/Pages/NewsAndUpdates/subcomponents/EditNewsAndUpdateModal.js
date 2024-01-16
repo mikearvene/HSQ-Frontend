@@ -3,7 +3,7 @@ import { Modal, Button, Dropdown, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 export default function EditNewsAndUpdateModal({ data,user, openEdit,setOpenEdit,fetchData, setLoading, loading, openModal}){
-    console.log(data)
+
     const [title, setTitle] = useState(data.title)
     const [department, setDepartment] = useState(data.department)
     const [message, setMessage] = useState(data.message)

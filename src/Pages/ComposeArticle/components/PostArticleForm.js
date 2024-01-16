@@ -113,7 +113,6 @@ export default function PostArticleForm({content,user, isPlaceholderVisible, isM
         }
     };
 
-    console.log(department)
     return(
         <>
 

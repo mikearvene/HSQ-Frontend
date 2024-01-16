@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function NewsCardImageView({ images, fullscreenIndex, setFullscreenIndex}) {
-    console.log(fullscreenIndex)
+
 
     const handleCloseFullscreen = () => {
         setFullscreenIndex(null);
