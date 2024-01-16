@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import { isPasswordComplex } from '../../../Util/isPasswordComplex';
 
 export default function UpdatePassword(){
     const [currentPassword, setCurrentPassword] = useState('');
@@ -18,12 +19,14 @@ export default function UpdatePassword(){
         }
 
         if(password !== confirmPassword && confirmPassword !== ''){
-  
+            
             setIsPasswordMatch(false)
         } else {
             setIsPasswordMatch(true)
         }
-		
+		if(!isPasswordComplex(password)){
+            setIsActive(false)
+        }  
     }, [currentPassword, password, confirmPassword]);
 
     const handleUpdatePassword = (e) => {
@@ -90,7 +93,9 @@ export default function UpdatePassword(){
                                 <Form.Label className='muted mb-0'>Confirm new password</Form.Label>
 								<Form.Control className='text-center custom-search-input ' type="password" placeholder="Confirm new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}required style={{borderRadius:'5px'}} />
 							</Form.Group>
-                            {!isPasswordMatch ? <span className='' style={{color:'#F22F41'}}><i>Make sure to match new password with confirm password</i></span> : <></>}
+                            {!isPasswordComplex(password) ? <span className='small' style={{color:'#F22F41'}}><i>Password should contain at least 8 characters, one uppercase leter, lowercase letter, number, and special character. </i></span> : <></>}
+                            {!isPasswordMatch ? <span className='small' style={{color:'#F22F41'}}><i>Make sure to match new password with confirm password</i></span> : <></>}
+                            
 						</div>
 						<div className='d-flex justify-content-center mt-4 mb-4'>
 							{ isActive ? <Button style={{backgroundColor:'#016B83',  border:'none'}}  type="submit" id="submitBtn" className='mt-3'>Update Password</Button> : <Button style={{backgroundColor:'#575757', border:'none'}} type="submit" id="submitBtn" className='mt-3' disabled>Update Password</Button>
