@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import MakeAPost from "./components/MakeAPost"
 import { useState, useContext } from "react"
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 export default function Home(){
 
     const { user } = useContext(UserContext);

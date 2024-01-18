@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import { Link } from 'react-router-dom';
 import LoaderTwo from "../../Components/Subcomponents/loader/LoaderTwo";
 import WikiSearchArea from "./components/WikiSearchArea";

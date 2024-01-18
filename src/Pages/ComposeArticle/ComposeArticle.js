@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import { Container, Button } from 'react-bootstrap';
 import PostArticleForm from './components/PostArticleForm';
 

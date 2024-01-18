@@ -1,6 +1,6 @@
 import { useEffect, useState,useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import { Row, Col, Container } from "react-bootstrap";
 import ArticleImageView from "./components/ArticleImageView";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import Swal from 'sweetalert2';
 import ForgotPasswordModal from './components/ForgotPasswordModal';
 
