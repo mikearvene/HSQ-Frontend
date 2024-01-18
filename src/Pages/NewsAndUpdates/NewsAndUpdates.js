@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import {useState, useEffect, useContext} from "react";
-import UserContext from '../../userContext';
-import NotificationContext from '../../notificationContext';
+import UserContext from '../../Contexts/userContext';
+import NotificationContext from '../../Contexts/notificationContext';
 import NewsCard from "./components/NewsCard"
 import PostNewsAndUpdateModal from "./subcomponents/PostNewsAndUpdateModal";
 export default function NewsAndUpdates(){

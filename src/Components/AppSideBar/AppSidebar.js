@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import UserInfoBox from '../Subcomponents/UserInfoBox';
 import ComingSoonBadge from './components/ComingSoonBadge';
 import NewFeatureBadge from './components/NewFeatureBadge';
@@ -29,7 +29,7 @@ const AppSidebar = () => {
         {/* Add sidenavbar content here */}
         <Link to='/' className=''>Home</Link>
         <Link to={'/my-profile/detail'}>My Profile</Link>
-        <span className='user-select-none d-block mb-1'><span className='text-muted'>My Calendar <ComingSoonBadge/></span></span>
+        <Link to={'/my-calendar'}>My Calendar</Link>
         <Link to={'/news-and-updates'}>News & Updates</Link>
         <Link to='/forms-repository' className=''>Forms Repository</Link>
         <Link to={'/team-directory'}>Team Directory</Link>

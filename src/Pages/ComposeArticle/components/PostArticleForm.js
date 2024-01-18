@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import Swal from 'sweetalert2';
 import { Button } from "react-bootstrap";
 import uploadUpdate from "../../../Util/uploadUpdate";
-import NotificationContext from "../../../notificationContext";
+import NotificationContext from "../../../Contexts/notificationContext";
 
 export default function PostArticleForm({content,user, isPlaceholderVisible, isModalOpen, handleCloseModal}){
 

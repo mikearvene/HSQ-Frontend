@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Button } from "react-bootstrap";
 import uploadUpdateEditArticle from "../../../Util/uploadUpdateEditArticle";
-import NotificationContext from "../../../notificationContext";
+import NotificationContext from "../../../Contexts/notificationContext";
 
 export default function PostEditedArticleForm({originalArticle,content,user, isPlaceholderVisible, refresh, isModalOpen, handleCloseModal}){
     const {updatePosted, setUpdatePosted} = useContext(NotificationContext)

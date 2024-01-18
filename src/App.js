@@ -1,8 +1,8 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { UserProvider } from './userContext';
-import {NotificationProvider} from './notificationContext'
+import { UserProvider } from './Contexts/userContext';
+import {NotificationProvider} from './Contexts/notificationContext'
 import { Container } from 'react-bootstrap';
 import AppNavbar from './Components/AppNavbar/AppNavbar';
 import Footer from './Components/Footer/Footer';
@@ -22,6 +22,7 @@ import EditArticle from './Pages/EditArticle/EditArticle';
 import MyProfile from './Pages/MyProfile/MyProfile';
 import TeamDirectory from './Pages/TeamDirectory/TeamDirectory';
 import NewsAndUpdates from './Pages/NewsAndUpdates/NewsAndUpdates';
+import MyCalendar from './Pages/MyCalendar/MyCalendar';
 
 function App() {
     const [acknowledgeClick, setAcknowledgeClicked] = useState(false)
@@ -134,6 +135,7 @@ function App() {
                                     <Route path='/forms-repository' element={<FormsRepository/>} />
                                     <Route path='/wiki' element={<Wiki/>} />
                                     <Route path="/my-profile/*" element={<MyProfile />} />
+                                    <Route path="/my-calendar" element={<MyCalendar/>} />
                                     <Route path="/team-directory" element={<TeamDirectory />} />
                                     <Route path="/news-and-updates" element={<NewsAndUpdates />} />
                                     <Route path='/login' element={<Login />} />

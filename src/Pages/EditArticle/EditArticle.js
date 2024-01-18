@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
-import UserContext from '../../userContext';
+import UserContext from '../../Contexts/userContext';
 import { Container, Button } from 'react-bootstrap';
 import PostEditedArticleForm from './components/PostEditedArticleForm';
 import ArticleImageViewEdit from './components/ArticleImageViewEdit';

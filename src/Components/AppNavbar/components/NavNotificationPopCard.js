@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { linkStyle } from '../../../Util/styling';
 import { useState, useEffect, useContext } from "react";
-import NotificationContext from '../../../notificationContext';
+import NotificationContext from '../../../Contexts/notificationContext';
 export default function NavNotificationPopCard({unread}){
     const {setAcknowledgeClicked, acknowledgeClick} = useContext(NotificationContext)
     const [timeDiff, setTimeDiff] = useState(null);
