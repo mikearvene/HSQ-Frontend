@@ -130,18 +130,16 @@ function App() {
                         <div className='col-6 mt-4 mb-4 mr-auto pl-0 main-content'>
                             {/* <div className='' style={{}}> */}
                                 <Routes>
-                                    
                                     <Route path="/" element={<Home/>} />
                                     <Route path='/forms-repository' element={<FormsRepository/>} />
                                     <Route path='/wiki' element={<Wiki/>} />
                                     <Route path="/my-profile/*" element={<MyProfile />} />
-                                    <Route path="/my-calendar" element={<MyCalendar/>} />
+                                    <Route path="/my-calendar/*" element={<MyCalendar/>} />
                                     <Route path="/team-directory" element={<TeamDirectory />} />
                                     <Route path="/news-and-updates" element={<NewsAndUpdates />} />
                                     <Route path='/login' element={<Login />} />
                                     <Route path='/logout' element={<Logout />} />
                                     <Route path="*" element={<PageNotFound />} />
-
                                 </Routes> 
                             {/* </div> */}
                         </div>
