@@ -21,3 +21,15 @@
   border: none;
   font-size: 2rem;
 }
+
+.good {
+  background-color: green;
+}
+
+.late {
+  background-color: yellow;
+}
+
+.absent {
+  background-color: red;
+}
