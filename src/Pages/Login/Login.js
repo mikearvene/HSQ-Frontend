@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import UserContext from '../../Contexts/userContext';
 import Swal from 'sweetalert2';
 import ForgotPasswordModal from './components/ForgotPasswordModal';
+import { clockIn } from '../../Util/clockIn';
 
 export default function Login(){
     const {user,setUser} = useContext(UserContext);
@@ -76,7 +77,7 @@ export default function Login(){
         })
         
         .then(res => res.json())
-        .then(data => {
+        .then( async data => {
             if(typeof data !== "undefined"){
 
                 setUser({
@@ -86,18 +87,29 @@ export default function Login(){
                     jobTitle: data.jobTitle,
                     isManager: data.isManager
                 })
-                
-            
-				// alert(`You are now logged in`);
-				Swal.fire({
-					title: "Login Successful",
-					text: `Welcome!`,
-					customClass: {
-						title: 'custom-swal-title',
-						confirmButton: 'custom-swal-confirm-button', // Define your custom class here
-					}
-				});				
-				// window.location.href = '/news-and-updates';
+                const isClockedIn = await clockIn();
+				console.log(isClockedIn)
+				if(isClockedIn){
+					Swal.fire({
+						title: "Clock-in Successful",
+						text: `Welcome!`,
+						customClass: {
+							title: 'custom-swal-title',
+							confirmButton: 'custom-swal-confirm-button',
+						}
+					})
+				} else {
+
+					Swal.fire({
+						title: "Login Successful",
+						text: `Welcome!`,
+						customClass: {
+							title: 'custom-swal-title',
+							confirmButton: 'custom-swal-confirm-button', 
+						}
+					});			
+				}
+
             } else {
                 setUser({
                     id: null,
