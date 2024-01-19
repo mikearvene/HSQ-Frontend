@@ -1,6 +1,6 @@
 .viewType {
   display: flex;
-  justify-content: end;
+  justify-content: center;
 }
 
 .monthPagination {
@@ -21,7 +21,20 @@
   border: none;
   font-size: 2rem;
 }
-
+.calendarContainer{
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer{
+  padding: 2rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-color: #516473;
+  border-radius: 8px;
+  border-width: 1px;
+}
 .good {
   background-color: green;
 }
