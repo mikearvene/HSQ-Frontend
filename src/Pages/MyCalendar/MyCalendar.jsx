@@ -21,6 +21,9 @@ const MyCalendar = () => {
               "Content-Type": "application/json",
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
+            body: JSON.stringify({
+              all:true
+            })
           }
         );
 
@@ -52,19 +55,21 @@ const MyCalendar = () => {
 
   return (
     // mockdata is the one that I used at the moment
-    <div style={{ paddingTop: "20px" }}>
-      <div className={styles.viewType}>
-        <select
-          id="viewType"
-          value={viewType}
-          onChange={(e) => setViewType(e.target.value)}
-          className="mx-2"
-        >
-          <option value="table">Table View</option>
-          <option value="calendar">Calendar View</option>
-        </select>
+    <div className={styles.mainContainer}>
+      <div style={{ padding: "1rem" }}>
+        <div className={`${styles.viewType} `}>
+          <select
+            id="viewType"
+            value={viewType}
+            onChange={(e) => setViewType(e.target.value)}
+            className="mx-2"
+          >
+            <option value="table">Table View</option>
+            <option value="calendar">Calendar View</option>
+          </select>
+        </div>
+        {viewType === "table" ? <TableView data={data} /> : <CalendarView data={data} />}
       </div>
-      {viewType === "table" ? <TableView data={data} /> : <CalendarView data={data} />}
     </div>
   );
 };
