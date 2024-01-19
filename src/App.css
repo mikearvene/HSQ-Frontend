@@ -378,3 +378,9 @@ h1{
   border-color: #016B83 !important;
 }
 /* Pagelink - pagination */
+
+.linkStyle {
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+}
