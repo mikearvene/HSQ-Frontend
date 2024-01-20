@@ -9,6 +9,9 @@ export default function HsqToolsDropDown({ComingSoonBadge, isHsqToolsDropped}){
                 <div className="mb-2">
                 <span className="user-select-none text-muted mt-3">Zen Projects <ComingSoonBadge/> </span>
                 </div>
+                <div className="mb-2">
+                <span className="user-select-none text-muted mt-3">Vault <ComingSoonBadge/> </span>
+                </div>
                 {/* <div className="mb-2">
                 <span className="user-select-none text-muted mt-3">HSQ Connect <ComingSoonBadge/> </span>
                 </div>

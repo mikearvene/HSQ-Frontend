@@ -42,12 +42,14 @@ const AppSidebar = () => {
           <span className='linkStyle' onClick={handleMyCalendarClick}>My Calendar</span>
           <MyCalendarDropdown ComingSoonBadge={ComingSoonBadge} isMyCalendarDropped={isMyCalendarDropped}/>
         </div>
-        
+        <div className='mb-2'>
+          <span className='linkStyle'>My Department <ComingSoonBadge/></span>
+        </div>
         <Link to={'/news-and-updates'}>News & Updates</Link>
         <Link to='/forms-repository' className=''>Forms Repository</Link>
         <Link to={'/team-directory'}>Team Directory</Link>
         <div className='mb-2'>
-          <span className='linkStyle' onClick={handleHsqToolsClick}>HSQ Tools</span>
+          <span className='linkStyle' onClick={handleHsqToolsClick}>HSQ Tools/Apps</span>
           <HsqToolsDropDown ComingSoonBadge={ComingSoonBadge} isHsqToolsDropped={isHsqToolsDropped}/>
         </div>
         <Link to={'/wiki'}>Wiki</Link>
