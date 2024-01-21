@@ -3,6 +3,7 @@ import { useTable, usePagination } from "react-table";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Table from "react-bootstrap/Table";
 import styles from './calendar.module.css';
+import { getStatusColor } from "../../Util/utils";
 
 const TableView = ({ data }) => {
   const columns = React.useMemo(
@@ -110,7 +111,8 @@ const TableView = ({ data }) => {
             return (
               <tr {...row.getRowProps()} key={key}>
                 {row.cells.map((cell, key) => (
-                  <td {...cell.getCellProps()} key={key}>
+                  <td {...cell.getCellProps()} key={key} className={key === 1 && styles.statusRow}>
+                    {key === 1 && <div className={`${styles.barBG} ${getStatusColor(row.cells[1].value)}`}></div>}
                     {cell.render("Cell")}
                   </td>
                 ))}
