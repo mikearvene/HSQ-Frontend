@@ -79,7 +79,8 @@ const TableView = ({ data }) => {
         >
           <IoIosArrowBack />
         </button>
-        <h2 className={styles.headerPagination}>{currentMonth}</h2>
+        
+        <h4 className={`${styles.headerPagination} text-muted`}>{currentMonth}</h4>
         <button
           onClick={() =>
             setCurrentMonthIndex((prevIndex) =>

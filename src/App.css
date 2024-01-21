@@ -384,3 +384,9 @@ h1{
   color: inherit !important;
   cursor: pointer !important;
 }
+
+.general-center{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

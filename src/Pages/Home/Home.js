@@ -2,9 +2,11 @@ import { Container, Row, Col } from "react-bootstrap"
 import MakeAPost from "./components/MakeAPost"
 import { useState, useContext } from "react"
 import UserContext from '../../Contexts/userContext';
+import HomeCard from "./components/HomeCard";
 export default function Home(){
 
     const { user } = useContext(UserContext);
+    const [isShowModal, setIsShowModal] = useState(false)
 
     return(
         <>
@@ -20,6 +22,16 @@ export default function Home(){
                     <Col md={12} className="mr-5 mb-3">
                         <MakeAPost user={user}/>
                     </Col>
+                </Row>
+                <Row >
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
+                    <HomeCard />
                 </Row>
             </Container>
         </div>
