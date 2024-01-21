@@ -23,15 +23,18 @@
 }
 
 .good {
-  background-color: green !important;
+  background-color: #24EF06 !important;
+  /* color: #000000;  optional */
 }
 
 .late {
-  background-color: yellow !important;
+  background-color: #FF9D2B !important;
+  /* color: #000000;  optional */
 }
 
 .absent {
-  background-color: red !important;
+  background-color: #F22F41 !important;
+  /* color: #000000;  optional */
 }
 
 .statusRow {
