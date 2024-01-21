@@ -48,8 +48,6 @@ const MyCalendar = () => {
     return <p>Error: {error}</p>;
   }
 
-  console.log(data);
-
   return (
     // mockdata is the one that I used at the moment
     <div style={{ paddingTop: "20px" }}>

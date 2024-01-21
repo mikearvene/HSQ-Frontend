@@ -3,7 +3,7 @@
   justify-content: end;
 }
 
-.monthPagination {
+.monthPagination, .calendarContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,14 +22,27 @@
   font-size: 2rem;
 }
 
+.activeDate {
+  border-radius: 3px;
+}
+
 .good {
-  background-color: green;
+  background-color: green !important;
 }
 
 .late {
-  background-color: yellow;
+  background-color: yellow !important;
 }
 
 .absent {
-  background-color: red;
+  background-color: red !important;
+}
+
+.statusRow {
+  display: flex;
+  gap: 5px;
+}
+
+.barBG {
+  width: 7px;
 }
