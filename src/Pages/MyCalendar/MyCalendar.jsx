@@ -3,6 +3,8 @@ import TableView from "./TableView";
 import LoaderTwo from "../../Components/Subcomponents/loader/LoaderTwo";
 import styles from "./calendar.module.css";
 import CalendarView from "./CalendarView";
+import { clockIn } from "../../Util/clockIn";
+import Swal from "sweetalert2";
 
 const MyCalendar = () => {
   const [data, setData] = useState([]);
@@ -22,8 +24,8 @@ const MyCalendar = () => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify({
-              all:true
-            })
+              all: true,
+            }),
           }
         );
 
@@ -50,25 +52,51 @@ const MyCalendar = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
-  console.log(data);
-
+  const handleClockIn = async() =>{
+    const isClockedIn = await clockIn();
+    if(isClockedIn === true){
+      Swal.fire({
+        title: "Clock-in Successful!",
+        customClass: {
+          title: 'custom-swal-title',
+          confirmButton: 'custom-swal-confirm-button',
+        }
+      })
+    } else {
+      Swal.fire({
+        title: `${isClockedIn.error}`,
+        customClass: {
+          title: 'custom-swal-title',
+          confirmButton: 'custom-swal-confirm-button', 
+        }
+      });			
+    }
+  }
   return (
     // mockdata is the one that I used at the moment
     <div className={styles.mainContainer}>
+      <div className="d-flex justify-content-end">
+        <div onClick={handleClockIn} className="border p-1 borderRadius-8 mr-3" style={{cursor:'pointer'}}>
+          <span>Clock-in <img src="/icons/pop-clock-out.svg" alt="" /></span>
+        </div>
+      </div>
       <div style={{ padding: "1rem" }}>
         <div className={`${styles.viewType} `}>
           <select
             id="viewType"
             value={viewType}
             onChange={(e) => setViewType(e.target.value)}
-            className="mx-2"
+            className={styles.viewSelect}
           >
             <option value="table">Table View</option>
             <option value="calendar">Calendar View</option>
           </select>
         </div>
-        {viewType === "table" ? <TableView data={data} /> : <CalendarView data={data} />}
+        {viewType === "table" ? (
+          <TableView data={data} />
+        ) : (
+          <CalendarView data={data} />
+        )}
       </div>
     </div>
   );

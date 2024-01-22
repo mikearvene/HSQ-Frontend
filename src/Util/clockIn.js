@@ -14,7 +14,7 @@ const clockIn = async() =>{
   if(response.status === 200){
     result = true
   } else {
-    result = false;
+    result = response.json();
   }
 
   return result;
