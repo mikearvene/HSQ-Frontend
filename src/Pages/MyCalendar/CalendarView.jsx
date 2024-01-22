@@ -26,6 +26,7 @@ const CalendarView = ({ data }) => {
         onChange={setDate}
         value={date}
         tileClassName={tileClassName}
+        className={styles.calendar}
       />
     </div>
   );

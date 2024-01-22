@@ -1,8 +1,8 @@
-.tableContainer {
+.tableContainer, .calendarContainer {
   border-radius: 8px;
   background: #575757;
   margin-top: 25px;
-  padding: 20px 22px 12px;
+  padding: 20px 22px 15px;
 }
 
 .tableView {
@@ -45,17 +45,46 @@
   color: #F3F3F3;
 }
 
+.calendar {
+  background-color: #575757 !important;
+  color: #F3F3F3;
+  border: none !important;
+}
+
+.weekday {
+  margin: 2px;
+}
+
+.calendar button {
+  color: #F3F3F3;
+  border-radius: 3px;
+}
+
+.calendar button:hover, button:focus {
+  color: #000000;
+  background-color: #E6E6E6 !important;
+}
+
 .good {
   background-color: #24EF06 !important;
-  /* color: #000000;  optional */
+  /* color: #000000;   */
 }
 
 .late {
   background-color: #FF9D2B !important;
-  /* color: #000000;  optional */
+  /* color: #000000;   */
 }
 
 .absent {
   background-color: #F22F41 !important;
-  /* color: #000000;  optional */
+  /* color: #000000;   */
+}
+
+.viewSelect {
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 212px;
+  text-align: center;
+  padding: 9px 0;
 }

@@ -22,8 +22,8 @@ const MyCalendar = () => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify({
-              all:true
-            })
+              all: true,
+            }),
           }
         );
 
@@ -60,13 +60,17 @@ const MyCalendar = () => {
             id="viewType"
             value={viewType}
             onChange={(e) => setViewType(e.target.value)}
-            className="mx-2"
+            className={styles.viewSelect}
           >
             <option value="table">Table View</option>
             <option value="calendar">Calendar View</option>
           </select>
         </div>
-        {viewType === "table" ? <TableView data={data} /> : <CalendarView data={data} />}
+        {viewType === "table" ? (
+          <TableView data={data} />
+        ) : (
+          <CalendarView data={data} />
+        )}
       </div>
     </div>
   );
