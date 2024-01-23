@@ -64,35 +64,47 @@
   height: 2.0625rem; 
 }
 
-.monthPagination, .calendarContainer {
+.monthPagination {
   display: flex;
   align-items: center;
-  margin: 30px 0;
+  width: 16.53569rem;
+  height: 1.4375rem; 
+  justify-content: space-between;
 }
 
 .headerPagination {
   text-align: center;
   margin: 0;
+  color: #F3F3F3;
+  font-size: 1.25rem !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal; 
 }
 
 .paginationButton {
   background-color: transparent;
   border: none;
-  font-size: 2rem;
+  color: #F3F3F3;
 }
-.calendarContainer{
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.paginationButton svg {
+  width: 0.625rem; 
 }
-.mainContainer{
-  padding: 2rem;
-  margin-top: 1rem;
-  border-style: solid;
-  border-color: #516473;
-  border-radius: 8px;
-  border-width: 1px;
+
+.calendar {
+  background-color: #575757 !important;
+  color: #F3F3F3;
+  border: none !important;
+}
+
+.calendar button {
+  color: #F3F3F3;
+  border-radius: 3px;
+}
+
+.calendar button:hover, .calendar button:focus, .calendar button:active{
+  background-color: #006edc !important;
 }
 
 .good {
@@ -106,14 +118,6 @@
 }
 
 .absent {
-  background-color: red;
-}
-
-.mainContainer{
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #516473;
-  border-width: 1px;
-  padding: 2rem;
-  margin-top: 1rem;
+  background-color: #F22F41 !important;
+  /* color: #000000;   */
 }
