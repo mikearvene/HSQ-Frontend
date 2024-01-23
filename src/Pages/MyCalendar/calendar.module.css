@@ -1,48 +1,123 @@
+.attendanceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tableContainer, .calendarContainer {
+  border-radius: 8px;
+  background: #575757;
+  margin-top: 1.56rem;
+  padding: 1.63rem 1.38rem 0.81rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarContainer {
+  width: 443px;
+}
+
+.tableContainer {
+  /* width: 36.125rem; width in figma  */
+  width: 100%;
+  flex-direction: column;
+}
+
+.tableView {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-radius: 8px;
+  color: #F3F3F3 !important;
+  text-transform: capitalize;
+  user-select: none;
+  margin: 0.87rem 0;
+}
+
+.tableView tr, td, th {
+  border: 3px solid #F3F3F3 !important;
+  font-size: 0.64rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.tableView th {
+  font-weight: 700;
+}
+
 .viewType {
   display: flex;
   justify-content: center;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+}
+
+.viewSelect {
+  background-color: transparent;
+  text-align: center;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--mute, #575757);
+  width: 13.25rem;
+  height: 2.0625rem; 
 }
 
 .monthPagination {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 30px 0;
+  width: 16.53569rem;
+  height: 1.4375rem; 
+  justify-content: space-between;
 }
 
 .headerPagination {
-  min-width: 18rem;
   text-align: center;
   margin: 0;
+  color: #F3F3F3;
+  font-size: 1.25rem !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal; 
 }
 
 .paginationButton {
   background-color: transparent;
   border: none;
-  font-size: 2rem;
+  color: #F3F3F3;
 }
-.calendarContainer{
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.paginationButton svg {
+  width: 0.625rem; 
 }
-.mainContainer{
-  padding: 2rem;
-  margin-top: 1rem;
-  border-style: solid;
-  border-color: #516473;
-  border-radius: 8px;
-  border-width: 1px;
+
+.calendar {
+  background-color: #575757 !important;
+  color: #F3F3F3;
+  border: none !important;
 }
+
+.calendar button {
+  color: #F3F3F3;
+  border-radius: 3px;
+}
+
+.calendar button:hover, .calendar button:focus, .calendar button:active{
+  background-color: #006edc !important;
+}
+
 .good {
-  background-color: green;
+  background-color: #24EF06 !important;
+  /* color: #000000;   */
 }
 
 .late {
-  background-color: yellow;
+  background-color: #FF9D2B !important;
+  /* color: #000000;   */
 }
 
 .absent {
-  background-color: red;
+  background-color: #F22F41 !important;
+  /* color: #000000;   */
 }
