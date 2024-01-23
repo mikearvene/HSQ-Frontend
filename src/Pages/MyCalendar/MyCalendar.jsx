@@ -3,6 +3,8 @@ import TableView from "./TableView";
 import LoaderTwo from "../../Components/Subcomponents/loader/LoaderTwo";
 import styles from "./calendar.module.css";
 import CalendarView from "./CalendarView";
+import { clockIn } from "../../Util/clockIn";
+import Swal from "sweetalert2";
 
 const MyCalendar = () => {
   const [data, setData] = useState([]);
@@ -50,7 +52,26 @@ const MyCalendar = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
+  const handleClockIn = async() =>{
+    const isClockedIn = await clockIn();
+    if(isClockedIn === true){
+      Swal.fire({
+        title: "Clock-in Successful!",
+        customClass: {
+          title: 'custom-swal-title',
+          confirmButton: 'custom-swal-confirm-button',
+        }
+      })
+    } else {
+      Swal.fire({
+        title: `${isClockedIn.error}`,
+        customClass: {
+          title: 'custom-swal-title',
+          confirmButton: 'custom-swal-confirm-button', 
+        }
+      });			
+    }
+  }
   return (
     // mockdata is the one that I used at the moment
     <div>

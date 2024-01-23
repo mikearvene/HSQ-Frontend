@@ -15,20 +15,12 @@ const TableView = ({ data }) => {
       {
         Header: "Time In",
         accessor: "clockIn",
-        Cell: ({ value }) =>
-          new Date(value).toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
+        Cell: ({ value }) => new Date(value).toLocaleTimeString(),
       },
       {
         Header: "Time Out",
         accessor: "clockOut",
-        Cell: ({ value }) =>
-          new Date(value).toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
+        Cell: ({ value }) => new Date(value).toLocaleTimeString(),
       },
     ],
     []
@@ -54,20 +46,20 @@ const TableView = ({ data }) => {
       : tableData;
   }, [tableData, uniqueMonths, currentMonthIndex]);
 
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    useTable(
-      {
-        columns,
-        data: filteredData,
-        initialState: {
-          pageIndex: 0,
-          pageSize: 31,
-          sortBy: [{ id: "date", desc: true }],
-        },
-      },
-      useSortBy,
-      usePagination
-    );
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+  } = useTable(
+    {
+      columns,
+      data: filteredData,
+      initialState: { pageIndex: 0 },
+    },
+    usePagination
+  );
 
   const currentMonth = uniqueMonths[currentMonthIndex];
 
@@ -97,9 +89,8 @@ const TableView = ({ data }) => {
             />
           </svg>
         </button>
-
-        <h4 className={`${styles.headerPagination}`}>{currentMonth}</h4>
-
+        
+        <h4 className={`${styles.headerPagination} text-muted`}>{currentMonth}</h4>
         <button
           onClick={() =>
             setCurrentMonthIndex(
@@ -142,7 +133,7 @@ const TableView = ({ data }) => {
             return (
               <tr {...row.getRowProps()} key={key}>
                 {row.cells.map((cell, key) => (
-                  <td {...cell.getCellProps()} key={key}>
+                  <td {...cell.getCellProps()} key={key} >
                     {cell.render("Cell")}
                   </td>
                 ))}

@@ -414,6 +414,14 @@ h1{
   align-items: center !important;
 }
 
+.borderRadius-8{
+  border-radius: 8px;
+}
+
+.borderRadius-5{
+  border-radius: 8px;
+}
+
 .react-calendar__tile {
   margin: 3px !important;
   flex: 0 0 12.550% !important;
