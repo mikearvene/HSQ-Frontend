@@ -53,8 +53,8 @@ const MyCalendar = () => {
 
   return (
     // mockdata is the one that I used at the moment
-    <div className={styles.mainContainer}>
-      <div style={{ padding: "1rem" }}>
+    <div>
+      <div className={styles.attendanceContainer}>
         <div className={`${styles.viewType} `}>
           <select
             id="viewType"
