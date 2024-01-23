@@ -413,3 +413,12 @@ h1{
   justify-content: center !important;
   align-items: center !important;
 }
+
+.react-calendar__tile {
+  margin: 3px !important;
+  flex: 0 0 12.550% !important;
+}
+
+.react-calendar__navigation {
+  gap: 3px;
+}
